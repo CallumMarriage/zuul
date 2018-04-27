@@ -12,7 +12,7 @@ package com.callum.model.commands;
 
 public class CommandFactory {
     // a constant array that holds all valid command words
-    private static final String[] ALL_COMMANDS = new String[]{ "go", "quit", "help"};
+    private static final String[] ALL_COMMANDS = new String[]{ "go", "quit", "help", "attack", "look", "xray"};
 
     public Command createCommand(String command){
         switch (command) {
@@ -21,6 +21,8 @@ public class CommandFactory {
             case "quit": return new QuitCommand();
             case "look": return new LookCommand();
             case "xray": return new XrayCommand();
+            case "attack": return new AttackCommand();
+            case "pickup": return new PickupCommand();
             default: return null;
         }
     }

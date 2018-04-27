@@ -1,5 +1,8 @@
 package com.callum.model.rooms;
 
+import com.callum.model.characters.Character;
+
+import java.security.SecureRandom;
 import java.util.Random;
 
 /**
@@ -15,10 +18,10 @@ public class TransporterRoom extends Room {
      *
      * @param description
      */
-    public TransporterRoom(String description) {
+    public TransporterRoom(String description, boolean isLocked) {
 
-        super(description);
-        roomSet = new RoomSet(new Random(42));
+        super(description, isLocked);
+        roomSet = new RoomSet(new SecureRandom());
     }
 
     @Override

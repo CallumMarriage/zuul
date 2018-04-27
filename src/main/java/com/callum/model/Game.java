@@ -1,14 +1,18 @@
 package com.callum.model;
 
+import com.callum.model.characters.enemies.*;
+import com.callum.model.characters.player.Player;
+import com.callum.model.characters.weapons.Weapon;
 import com.callum.model.commands.Command;
-import com.callum.model.rooms.NormalRoom;
-import com.callum.model.rooms.Room;
-import com.callum.model.rooms.RoomSet;
-import com.callum.model.rooms.TransporterRoom;
+import com.callum.model.items.Key;
+import com.callum.model.rooms.*;
+import org.apache.commons.io.FileUtils;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.security.SecureRandom;
 import java.util.Random;
+import java.util.Scanner;
 
 /**
  *  This class is the main class of the "World of Zuul" application. 
@@ -30,57 +34,90 @@ import java.util.Random;
 public class Game {
     private Parser parser;
     private Room currentRoom;
+    private Player currentPlayer;
 
     /**
      * Create the game and initialise its internal map.
      */
-    public Game() 
-    {
+    public Game() {
         createRooms();
         parser = new Parser();
+        Weapon weapon = new Weapon("Sword", 50);
+        currentPlayer = new Player(weapon, "Steve", 200);
     }
 
+
+    private EnemySet generateEnemies(){
+
+        EnemySet enemies = new EnemySet(new SecureRandom());
+
+
+        File file = FileUtils.getFile("./src/main/resources/enemies.txt");
+
+        try {
+            Scanner scanner = new Scanner(file);
+            while(scanner.hasNext()){
+                String line = scanner.next();
+                String[] lineSplit = line.split(",");
+                Enemy enemy = EnemyFactory.createEnemy(lineSplit);
+                enemies.addEnemy(enemy);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        return enemies;
+    }
     /**
      * Create all the rooms and link their exits together.
      */
-    private void createRooms()
-    {
+    private void createRooms() {
         Room outside, theatre, pub, lab, office, club;
-      
-        // create the rooms
-        outside = new NormalRoom("outside the main entrance of the university");
-        theatre = new NormalRoom("a lecture theatre");
-        pub = new NormalRoom("the campus pub");
-        lab = new NormalRoom("a computing lab");
-        office = new NormalRoom("the computing admin office");
-        TransporterRoom transporterRoom = new TransporterRoom("the Transporter Room");
-        club = new NormalRoom("The club");
 
-        RoomSet roomSet = new RoomSet(new Random(5));
+        EnemySet enemies = generateEnemies();
+
+        // create the rooms
+        outside = new NormalRoom("outside the main entrance of the university", false);
+        theatre = new NormalRoom("a lecture theatre", false);
+        pub = new NormalRoom("the campus pub", false);
+        lab = new NormalRoom("a computing lab", true);
+        office = new NormalRoom("the computing admin office", false);
+        TransporterRoom transporterRoom = new TransporterRoom("the Transporter Room", false);
+
+        RoomSet roomSet = new RoomSet(new SecureRandom());
 
         // initialise room exits
 	    outside.joinRooms("east", theatre);
         outside.joinRooms("south", lab);
         outside.joinRooms("west", pub);
         outside.joinRooms("north", transporterRoom);
-        outside.joinRooms("north", club);
 
         lab.joinRooms("east", office);
-        roomSet.addRoom(outside);
+        lab.setEnemy(new BossEnemy( new Weapon("Staff", 50), "Paul", 100));
+
         roomSet.addRoom(theatre);
         roomSet.addRoom(pub);
-        roomSet.addRoom(lab);
         roomSet.addRoom(office);
+
+        roomSet.findRandomRoom().setItem(new Key("LabKey", "Lab"));
+
         transporterRoom.setRoomSet(roomSet);
+
+        Random random = new Random(20);
+        for(Room room : roomSet.getRooms()){
+            if(random.nextBoolean()) {
+                room.setEnemy(enemies.findRandomEnemy());
+            }
+        }
         currentRoom = outside;  // start game outside
     }
 
     /**
      *  Main play routine.  Loops until end of play.
      */
-    public void play() 
-    {            
+    public void play() {
         printWelcome();
+
 
         // Enter the main command loop.  Here we repeatedly read commands and
         // execute them until the game is over.
@@ -99,9 +136,9 @@ public class Game {
      * Main method to start the game outside BlueJ
      */
     public static void main(String[] args) {
-	Game g = new Game();
-	g.play();
-	System.out.println(g);
+        Game g = new Game();
+        g.play();
+        System.out.println(g);
     }
 
     /*
@@ -115,8 +152,7 @@ public class Game {
     /**
      * Print out the opening message for the player.
      */
-    private void printWelcome()
-    {
+    private void printWelcome() {
         System.out.println();
         System.out.println("Welcome to the World of Zuul!");
         System.out.println("World of Zuul is a new, incredibly boring adventure game.");
@@ -131,6 +167,10 @@ public class Game {
 
     public Room getCurrentRoom(){
         return this.currentRoom;
+    }
+
+    public Player getCurrentPlayer() {
+        return currentPlayer;
     }
 }
 

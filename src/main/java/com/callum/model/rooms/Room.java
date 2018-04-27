@@ -1,5 +1,8 @@
 package com.callum.model.rooms;
 import com.callum.model.Directions;
+import com.callum.model.characters.Character;
+import com.callum.model.characters.enemies.Enemy;
+import com.callum.model.items.Item;
 
 import java.util.Set;
 import java.util.HashMap;
@@ -22,24 +25,37 @@ import java.util.HashMap;
 public abstract class Room {
     protected String description;
     protected HashMap<String, Room> exits;        // stores exits of this room.
+    protected Enemy enemy;
+    protected Item item;
+    protected boolean isLocked;
 
     /**
      * Create a room described "description". Initially, it has no exits.
      * "description" is something like "in a kitchen" or "in an open court 
      * yard".
      */
-    public Room(String description) {
+    public Room(String description,boolean isLocked) {
         this.description = description;
+        this.isLocked = isLocked;
         exits = new HashMap<String, Room>();
+        this.item = null;
     }
 
+    public boolean getLocked(){
+        return this.isLocked;
+    }
+
+    public void setLocked(Boolean newLocked){
+        this.isLocked = newLocked;
+
+    }
     /**
      * Define an exit from this room.
      */
     public void setExit(String direction, Room neighbor) {
-	if (Directions.isDirection(direction)) {
-	    exits.put(direction, neighbor);
-	}
+        if (Directions.isDirection(direction)) {
+            exits.put(direction, neighbor);
+        }
     }
 
     /**
@@ -80,9 +96,19 @@ public abstract class Room {
      *     You are in the kitchen.
      *     Exits: north west
      */
-    public String getLongDescription()
-    {
-        return "You are in " + description + ".\n" + getExitString();
+    public String getLongDescription() {
+
+        String string =  "You are in " + description + ".\n" + getExitString();
+
+        if(getItem()!=null && getItem().isActive()){
+            string += "\nThe room contains " + getItem().giveDescription();
+        }
+
+        if(getEnemy() == null || getEnemy().getDead()){
+            string += "\nIt is empty, you may move on";
+        }
+
+        return string;
     }
 
     /**
@@ -102,5 +128,29 @@ public abstract class Room {
      * "direction". If there is no room in that direction, return null.
      */
     public abstract Room getExit(String direction);
+
+    public void setEnemy(Enemy enemy){
+        this.enemy = enemy;
+    }
+
+    public Enemy getEnemy() {
+        if(enemy != null) {
+            return enemy;
+        } else{
+            return null;
+        }
+    }
+
+    public void setItem(Item item){
+        this.item = item;
+    }
+
+    public Item getItem(){
+        if(item != null && item.isActive()){
+            return item;
+        } else {
+            return null;
+        }
+    }
 }
 
