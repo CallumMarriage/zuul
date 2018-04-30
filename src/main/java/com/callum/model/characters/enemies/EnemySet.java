@@ -10,19 +10,22 @@ import java.util.ArrayList;
  */
 public class EnemySet {
     private ArrayList enemies;
-    private SecureRandom random;
 
-    public EnemySet(SecureRandom random){
-        this.random = random;
+    public EnemySet(){
         enemies = new ArrayList();
     }
 
     public Enemy findRandomEnemy(){
+        SecureRandom random = new SecureRandom();
         if(enemies.size()==0){
             return null;
         }
         int i = random.nextInt(enemies.size());
         return (Enemy) enemies.get(i);
+    }
+
+    public ArrayList getEnemies(){
+        return enemies;
     }
 
     public void addEnemy(Enemy enemy) {

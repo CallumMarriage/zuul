@@ -15,8 +15,8 @@ public class NormalRoom extends Room {
      *
      * @param description
      */
-    public NormalRoom(String description, boolean isLocked) {
-        super(description, isLocked);
+    public NormalRoom(String name,String description, boolean isLocked, boolean isBossRoom) {
+        super(name, description, isLocked, isBossRoom);
     }
 
     @Override

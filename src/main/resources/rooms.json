@@ -1,0 +1,60 @@
+[
+  {
+    "roomName":"Pub",
+    "isLocked":"false",
+    "description":"This is the pub",
+    "roomType":"NormalRoom",
+    "isBossRoom":"false"
+  },
+  {
+    "roomName":"Library",
+    "isLocked":"false",
+    "description":"This is the library",
+    "roomType":"NormalRoom",
+    "isBossRoom":"false"
+  },
+  {
+    "roomName":"TheRoom",
+    "isLocked":"false",
+    "description":"the Transporter room",
+    "roomType":"NormalRoom",
+    "isBossRoom":"false"
+
+  },
+  {
+    "roomName":"Computer",
+    "isLocked":"false",
+    "description":"The Computer Room",
+    "roomType":"NormalRoom",
+    "isBossRoom":"false"
+  },
+  {
+    "roomName":"Laboratory",
+    "isLocked":"false",
+    "description":"The Laboratory Room",
+    "roomType":"NormalRoom",
+    "isBossRoom":"false"
+  },
+  {
+    "roomName":"Fish",
+    "isLocked":"false",
+    "description":"The Fish Room",
+    "roomType":"NormalRoom",
+    "isBossRoom":"false"
+
+  },
+  {
+    "roomName":"Dog",
+    "isLocked":"false",
+    "description":"The Dog Room",
+    "roomType":"NormalRoom",
+    "isBossRoom":"false"
+  },
+  {
+    "roomName":"Toliet",
+    "isLocked":"false",
+    "description":"The Toliet Room",
+    "roomType":"NormalRoom",
+    "isBossRoom":"false"
+  }
+]

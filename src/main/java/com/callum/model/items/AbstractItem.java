@@ -1,15 +1,20 @@
 package com.callum.model.items;
 
+import com.callum.model.characters.Character;
+
+
 /**
  * Created by callummarriage on 26/04/2018.
  */
-public class AbstractItem implements Item{
+public abstract class AbstractItem implements Item{
 
     protected boolean isActive;
     protected String name;
+    protected String description;
 
-    public AbstractItem(String name){
-        isActive = false;
+    public AbstractItem(String name, String description){
+        this.description = description;
+        isActive = true;
         this.name = name;
     }
 
@@ -19,13 +24,24 @@ public class AbstractItem implements Item{
     }
 
     @Override
-    public void setInactive(boolean setInactive) {
+    public void setActive(boolean setInactive) {
         this.isActive = setInactive;
     }
 
     @Override
+    public String getLongDescription(){
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("\nThe room contains a ");
+        sb.append(description + ".");
+        return sb.toString();
+    }
+
+    public abstract Integer act(Character character);
+
+    @Override
     public String giveDescription() {
-        return "This is a " + name + ".";
+        return "\nYou have picked up the " + name + ".";
     }
 
     public String getName(){

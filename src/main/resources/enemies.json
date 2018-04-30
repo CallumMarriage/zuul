@@ -1,0 +1,68 @@
+[
+  {
+    "type":"KnightEnemy",
+    "name":"Steve",
+    "health":"80",
+    "weapon": {
+      "name":"Sword",
+      "description":"A sword",
+      "type":"weapon",
+      "value":"27"
+    }
+  },
+  {
+    "type":"KnightEnemy",
+    "name":"Bill",
+    "health":"55",
+    "weapon": {
+      "name":"Sword",
+      "description":"A sword",
+      "type":"weapon",
+      "value":"20"
+    }
+  },
+  {
+    "type":"KnightEnemy",
+    "name":"Garry",
+    "health":"68",
+    "weapon": {
+      "name":"Sword",
+      "description":"A sword",
+      "type":"weapon",
+      "value":"30"
+    }
+  },
+  {
+    "type":"KnightEnemy",
+    "name":"Larry",
+    "health":"40",
+    "weapon": {
+      "name":"Sword",
+      "description":"A sword",
+      "type":"weapon",
+      "value":"20"
+    }
+  },
+  {
+    "type":"KnightEnemy",
+    "name":"Bob",
+    "health":"30",
+    "weapon": {
+      "name":"Sword",
+      "description":"A sword",
+      "type":"weapon",
+      "value":"30"
+    }
+  },
+  {
+  "type":"BossEnemy",
+  "name":"Paul",
+  "health":"105",
+  "weapon": {
+    "name":"Staff",
+    "description":"A mighty Staff",
+    "type":"weapon",
+    "value":"60"
+  }
+}
+]

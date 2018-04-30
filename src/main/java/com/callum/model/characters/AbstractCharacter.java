@@ -1,6 +1,6 @@
 package com.callum.model.characters;
 
-import com.callum.model.characters.weapons.Weapon;
+import com.callum.model.items.Weapon;
 
 /**
  * Created by callummarriage on 26/04/2018.
@@ -20,7 +20,7 @@ public abstract class AbstractCharacter implements Character {
     }
 
     @Override
-    public abstract void attack(Character opponent);
+    public abstract boolean attack(Character opponent);
 
     @Override
     public abstract void speak(String command);
@@ -48,5 +48,10 @@ public abstract class AbstractCharacter implements Character {
     @Override
     public void kill(){
         this.isDead = true;
+    }
+
+    @Override
+    public Weapon getWeapon(){
+        return this.weapon;
     }
 }

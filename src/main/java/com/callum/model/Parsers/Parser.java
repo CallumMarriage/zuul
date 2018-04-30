@@ -1,4 +1,4 @@
-package com.callum.model;
+package com.callum.model.Parsers;
 import com.callum.model.commands.Command;
 import com.callum.model.commands.CommandFactory;
 
@@ -65,12 +65,15 @@ public class Parser {
             word2 = null;
 
 
+
         Command command = commandFactory.createCommand(word1);
 
         if(command != null){
             if(command.getNumberArgument() == 1){
                 command.addArgument(word2);
             }
+        } else {
+            System.out.println("I do not recognise that command! For the commands type help");
         }
 
         return command;

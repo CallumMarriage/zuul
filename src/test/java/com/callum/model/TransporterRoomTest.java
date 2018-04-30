@@ -16,9 +16,9 @@ public class TransporterRoomTest {
 
     @Test
     public void testGetExitOne(){
-        TransporterRoom transporterRoom = new TransporterRoom("a", false);
-        NormalRoom room = new NormalRoom("other", false);
-        RoomSet roomSet = new RoomSet(new SecureRandom());
+        TransporterRoom transporterRoom = new TransporterRoom("a", "a", false, false);
+        NormalRoom room = new NormalRoom("other", "other", false, false);
+        RoomSet roomSet = new RoomSet();
         roomSet.addRoom(room);
         transporterRoom.setRoomSet(roomSet);
 
@@ -32,10 +32,10 @@ public class TransporterRoomTest {
 
     @Test
     public void testGetExitMultiple(){
-        TransporterRoom transporterRoom = new TransporterRoom("a", false);
-        NormalRoom room = new NormalRoom("other", false);
-        NormalRoom room2 = new NormalRoom("another", false);
-        RoomSet roomSet = new RoomSet(new SecureRandom());
+        TransporterRoom transporterRoom = new TransporterRoom("a", "a", false, false);
+        NormalRoom room = new NormalRoom("other", "other", false, false);
+        NormalRoom room2 = new NormalRoom("another", "another", false, false);
+        RoomSet roomSet = new RoomSet();
         roomSet.addRoom(room);
         roomSet.addRoom(room2);
         transporterRoom.setRoomSet(roomSet);

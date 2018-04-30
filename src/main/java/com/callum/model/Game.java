@@ -1,18 +1,16 @@
 package com.callum.model;
 
-import com.callum.model.characters.enemies.*;
+import com.callum.model.Parsers.Parser;
+import com.callum.model.Parsers.RoomParser;
 import com.callum.model.characters.player.Player;
-import com.callum.model.characters.weapons.Weapon;
+import com.callum.model.items.Weapon;
 import com.callum.model.commands.Command;
-import com.callum.model.items.Key;
 import com.callum.model.rooms.*;
-import org.apache.commons.io.FileUtils;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.security.SecureRandom;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.callum.model.constants.GameConstants.BASICMAP;
 
 /**
  *  This class is the main class of the "World of Zuul" application. 
@@ -40,76 +38,11 @@ public class Game {
      * Create the game and initialise its internal map.
      */
     public Game() {
-        createRooms();
+        MapBuilder mapBuilder = new MapBuilder();
+        mapBuilder.start(generateBasicMap());
         parser = new Parser();
-        Weapon weapon = new Weapon("Sword", 50);
+        Weapon weapon = new Weapon("Sword","The Sword of Destiny!",  50);
         currentPlayer = new Player(weapon, "Steve", 200);
-    }
-
-
-    private EnemySet generateEnemies(){
-
-        EnemySet enemies = new EnemySet(new SecureRandom());
-
-
-        File file = FileUtils.getFile("./src/main/resources/enemies.txt");
-
-        try {
-            Scanner scanner = new Scanner(file);
-            while(scanner.hasNext()){
-                String line = scanner.next();
-                String[] lineSplit = line.split(",");
-                Enemy enemy = EnemyFactory.createEnemy(lineSplit);
-                enemies.addEnemy(enemy);
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        return enemies;
-    }
-    /**
-     * Create all the rooms and link their exits together.
-     */
-    private void createRooms() {
-        Room outside, theatre, pub, lab, office, club;
-
-        EnemySet enemies = generateEnemies();
-
-        // create the rooms
-        outside = new NormalRoom("outside the main entrance of the university", false);
-        theatre = new NormalRoom("a lecture theatre", false);
-        pub = new NormalRoom("the campus pub", false);
-        lab = new NormalRoom("a computing lab", true);
-        office = new NormalRoom("the computing admin office", false);
-        TransporterRoom transporterRoom = new TransporterRoom("the Transporter Room", false);
-
-        RoomSet roomSet = new RoomSet(new SecureRandom());
-
-        // initialise room exits
-	    outside.joinRooms("east", theatre);
-        outside.joinRooms("south", lab);
-        outside.joinRooms("west", pub);
-        outside.joinRooms("north", transporterRoom);
-
-        lab.joinRooms("east", office);
-        lab.setEnemy(new BossEnemy( new Weapon("Staff", 50), "Paul", 100));
-
-        roomSet.addRoom(theatre);
-        roomSet.addRoom(pub);
-        roomSet.addRoom(office);
-
-        roomSet.findRandomRoom().setItem(new Key("LabKey", "Lab"));
-
-        transporterRoom.setRoomSet(roomSet);
-
-        Random random = new Random(20);
-        for(Room room : roomSet.getRooms()){
-            if(random.nextBoolean()) {
-                room.setEnemy(enemies.findRandomEnemy());
-            }
-        }
-        currentRoom = outside;  // start game outside
     }
 
     /**
@@ -121,7 +54,7 @@ public class Game {
 
         // Enter the main command loop.  Here we repeatedly read commands and
         // execute them until the game is over.
-                
+
         boolean finished = false;
         while (!finished) {
             Command command = parser.getCommand();
@@ -145,8 +78,7 @@ public class Game {
      * Provide string representation
      */
     public String toString() {
-	String s = "Current room is " + currentRoom;
-	return s;
+        return "Current room is " + currentRoom;
     }
 
     /**
@@ -171,6 +103,23 @@ public class Game {
 
     public Player getCurrentPlayer() {
         return currentPlayer;
+    }
+
+    public List<Area> generateBasicMap(){
+
+        RoomSet roomSet = RoomParser.readFile(BASICMAP);
+
+        Room outside = roomSet.getRooms().get(0);
+        currentRoom = outside;
+        Room office = roomSet.getRooms().get(2);
+        Room lab = roomSet.getRooms().get(1);
+        Area baseArea = new Area(outside, office);
+        Area bossArea = new Area(lab);
+
+        List<Area> areas = new ArrayList<>();
+        areas.add(baseArea);
+        areas.add(bossArea);
+        return areas;
     }
 }
 

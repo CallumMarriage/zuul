@@ -1,16 +1,17 @@
 package com.callum.model.characters.enemies;
 
 
-import com.callum.model.characters.weapons.Weapon;
+import com.callum.model.items.Weapon;
 
 /**
  * Created by callummarriage on 26/04/2018.
  */
 public class EnemyFactory {
 
-    public static Enemy createEnemy(String[] lineSplit){
-        switch (lineSplit[0]){
-            case "KnightEnemy": return new KnightEnemy(new Weapon(lineSplit[1], Integer.parseInt(lineSplit[4])) , lineSplit[2], Integer.parseInt(lineSplit[3]));
+    public static Enemy createEnemy(String type, String name, String health, Weapon weapon){
+        switch (type){
+            case "KnightEnemy": return new KnightEnemy( weapon, name, Integer.parseInt(health));
+            case "BossEnemy": return new BossEnemy(weapon, name, Integer.parseInt(health));
             default: return null;
         }
     }

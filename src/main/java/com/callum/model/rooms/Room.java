@@ -4,6 +4,8 @@ import com.callum.model.characters.Character;
 import com.callum.model.characters.enemies.Enemy;
 import com.callum.model.items.Item;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 import java.util.HashMap;
 
@@ -26,20 +28,30 @@ public abstract class Room {
     protected String description;
     protected HashMap<String, Room> exits;        // stores exits of this room.
     protected Enemy enemy;
-    protected Item item;
+    protected List<Item> items;
+    protected String name;
     protected boolean isLocked;
+    protected boolean isBossRoom;
 
     /**
      * Create a room described "description". Initially, it has no exits.
      * "description" is something like "in a kitchen" or "in an open court 
      * yard".
      */
-    public Room(String description,boolean isLocked) {
+    public Room(String name, String description,boolean isLocked, boolean isBossRoom) {
+        this.name = name;
         this.description = description;
         this.isLocked = isLocked;
         exits = new HashMap<String, Room>();
-        this.item = null;
+        this.items = new ArrayList<>();
+        this.isBossRoom = isBossRoom;
+        this.enemy = null;
     }
+
+    public boolean getIsBossRoom(){
+        return this.isBossRoom;
+    }
+
 
     public boolean getLocked(){
         return this.isLocked;
@@ -61,20 +73,41 @@ public abstract class Room {
     /**
      * Connect two rooms.
      */
-    public void joinRooms(String direction, Room otherRoom){
+    public boolean joinRooms(String direction, Room otherRoom){
 
         for(String exit : exits.keySet()){
             if(direction.equals(exit)){
-                System.out.println("Warning!!!!! " + otherRoom.description + " Was not created!! (Cant have two rooms in one direction)");
-                return;
+                System.out.println(direction +"-"+ otherRoom.getShortDescription() + "-FAILED");
+                return false;
             }
         }
-
         this.setExit(direction, otherRoom);
         otherRoom.setExit(Directions.opposite(direction), this);
-
+        return true;
     }
 
+    public boolean joinRandomRooms(Room otherRoom){
+        List<String> directions = new ArrayList<>();
+        directions.add("south");
+        directions.add("west");
+        directions.add("east");
+        directions.add("north");
+
+        for(String direction: directions) {
+            boolean isValid = true;
+            for (String exit : exits.keySet()) {
+                if (direction.equals(exit)) {
+                    isValid = false;
+                    break;
+                }
+            }
+            if(isValid) {
+                joinRooms(direction, otherRoom);
+                return true;
+            }
+        }
+        return false;
+    }
     /**
      * Returns a String representation of the room
      */
@@ -98,17 +131,27 @@ public abstract class Room {
      */
     public String getLongDescription() {
 
-        String string =  "You are in " + description + ".\n" + getExitString();
+        StringBuilder sb = new StringBuilder();
+        sb.append("You are in ");
+        sb.append(description);
+        sb.append(".\n");
+        sb.append(getExitString());
 
-        if(getItem()!=null && getItem().isActive()){
-            string += "\nThe room contains " + getItem().giveDescription();
+        if(items.size() > 0) {
+            for (Item item : this.items) {
+                if (item.isActive()) {
+                    sb.append(item.getLongDescription());
+                } else {
+                    sb.append("\nYou have already pickup up the ");
+                    sb.append(item.getName());
+                }
+            }
         }
-
         if(getEnemy() == null || getEnemy().getDead()){
-            string += "\nIt is empty, you may move on";
+            sb.append("\nIt is empty, you may move on");
         }
 
-        return string;
+        return sb.toString();
     }
 
     /**
@@ -142,15 +185,24 @@ public abstract class Room {
     }
 
     public void setItem(Item item){
-        this.item = item;
+        this.items.add(item);
     }
 
-    public Item getItem(){
-        if(item != null && item.isActive()){
-            return item;
-        } else {
-            return null;
+    public List<Item> getItems(){
+        List<Item> activeItems = new ArrayList<>();
+        for(Item item : this.items){
+            if(item.isActive()){
+                activeItems.add(item);
+            }
         }
+        return activeItems;
+    }
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
 

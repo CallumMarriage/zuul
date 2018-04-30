@@ -12,10 +12,8 @@ import java.util.Random;
  */
 public class RoomSet {
     private ArrayList rooms;
-    private SecureRandom random;
 
-    public RoomSet(SecureRandom random){
-        this.random = random;
+    public RoomSet(){
         rooms = new ArrayList();
     }
 
@@ -24,6 +22,8 @@ public class RoomSet {
     }
 
     public Room findRandomRoom(){
+        SecureRandom random = new SecureRandom();
+
         if(rooms.size()==0){
             return null;
         }

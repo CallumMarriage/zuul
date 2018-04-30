@@ -1,4 +1,0 @@
-KnightEnemy,Sword,Steve,38,20
-KnightEnemy,Sword,John,56,30
-KnightEnemy,Sword,Ben,30,30
-BossEnemy,Staff,Paul,100,50

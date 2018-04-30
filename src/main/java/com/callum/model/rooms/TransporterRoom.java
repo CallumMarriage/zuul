@@ -18,10 +18,10 @@ public class TransporterRoom extends Room {
      *
      * @param description
      */
-    public TransporterRoom(String description, boolean isLocked) {
+    public TransporterRoom(String name, String description, boolean isLocked, boolean isBossRoom) {
 
-        super(description, isLocked);
-        roomSet = new RoomSet(new SecureRandom());
+        super(name,description, isLocked, isBossRoom);
+        roomSet = new RoomSet();
     }
 
     @Override

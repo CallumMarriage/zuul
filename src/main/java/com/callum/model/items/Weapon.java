@@ -1,4 +1,4 @@
-package com.callum.model.characters.weapons;
+package com.callum.model.items;
 
 import com.callum.model.characters.Character;
 
@@ -7,28 +7,25 @@ import java.security.SecureRandom;
 /**
  * Created by callummarriage on 26/04/2018.
  */
-public class Weapon {
+public class Weapon extends AbstractItem {
 
-    private String name;
     private int maxDamage;
 
-    public Weapon(String name, int maxDamage){
-        this.name = name;
+    public Weapon(String name, String description, int maxDamage){
+        super(name, description);
         this.maxDamage = maxDamage;
     }
 
-    public Integer dealDamage(Character character){
+    public Integer getDamage(){
+        return maxDamage;
+    }
+
+    @Override
+    public Integer act(Character character) {
         SecureRandom rand = new SecureRandom();
         int i = rand.nextInt(maxDamage) + 1;
         character.setHealth(character.getHealth() - i);
         return i;
     }
 
-    public String getName(){
-        return this.name;
-    }
-
-    public Integer getDamage(){
-        return maxDamage;
-    }
 }

@@ -1,0 +1,14 @@
+[
+  {
+    "name":"lab-key",
+    "description":"The Lab Key",
+    "type":"key",
+    "value":"lab"
+  },
+  {
+    "name":"health-pack",
+    "description": "Health Pack",
+    "type": "health",
+    "value": "10"
+  }
+]

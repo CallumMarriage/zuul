@@ -14,7 +14,6 @@ public class GoCommand extends OneArgCommand {
 
     }
 
-
     public String getSyntax() {
         return "go direction";
     }
@@ -22,11 +21,13 @@ public class GoCommand extends OneArgCommand {
     public boolean act(Game g){
 
         if(g.getCurrentRoom().getEnemy() == null || g.getCurrentRoom().getEnemy().getHealth() <=0){
-            if(g.getCurrentRoom().getLocked()){
-                System.out.println("The room is locked, you have to find the key!");
-                return false;
-            }
             if(g.getCurrentRoom().getExit(direction)!= null){
+                if(g.getCurrentRoom().getExit(direction).getLocked()){
+                    if(!g.getCurrentPlayer().unlock(g.getCurrentRoom().getExit(direction))){
+                        System.out.println("The room is locked, you have to find the key!");
+                        return false;
+                    }
+                }
                 g.setCurrentRoom(g.getCurrentRoom().getExit(direction));
                 System.out.println(g.getCurrentRoom().getLongDescription());
                 Enemy newEnemy = g.getCurrentRoom().getEnemy();
@@ -39,7 +40,6 @@ public class GoCommand extends OneArgCommand {
                        System.out.println("The enemy lays slain");
                    }
                }
-
             } else{
                 System.out.println("You cant go that way you idiot!!");
 

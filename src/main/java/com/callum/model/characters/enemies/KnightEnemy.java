@@ -1,7 +1,7 @@
 package com.callum.model.characters.enemies;
 
 import com.callum.model.characters.Character;
-import com.callum.model.characters.weapons.Weapon;
+import com.callum.model.items.Weapon;
 
 /**
  * Created by callummarriage on 26/04/2018.
@@ -10,12 +10,14 @@ public class KnightEnemy extends Enemy {
 
     public KnightEnemy(Weapon weapon, String name, int health){
         super(name, weapon, health);
+        type ="Knight";
     }
 
     @Override
-    public void attack(Character opponent) {
-        int damage = weapon.dealDamage(opponent);
+    public boolean attack(Character opponent) {
+        int damage = weapon.act(opponent);
         System.out.println("The enemy has attacked you doing " + damage + " damage");
+        return true;
     }
 
     @Override
