@@ -3,7 +3,8 @@ package com.callum.model;
 import com.callum.model.Parsers.Parser;
 import com.callum.model.Parsers.RoomParser;
 import com.callum.model.characters.player.Player;
-import com.callum.model.items.Weapon;
+import com.callum.model.items.characterItems.weapons.Sword;
+import com.callum.model.items.characterItems.weapons.Weapon;
 import com.callum.model.commands.Command;
 import com.callum.model.rooms.*;
 
@@ -41,7 +42,8 @@ public class Game {
         MapBuilder mapBuilder = new MapBuilder();
         mapBuilder.start(generateBasicMap());
         parser = new Parser();
-        Weapon weapon = new Weapon("Sword","The Sword of Destiny!",  50);
+        Weapon weapon = new Sword("Sword","The Sword of Destiny!",  50);
+        System.out.println("Starting weapon: " + weapon.getName() + ".");
         currentPlayer = new Player(weapon, "Steve", 200);
     }
 
@@ -50,7 +52,6 @@ public class Game {
      */
     public void play() {
         printWelcome();
-
 
         // Enter the main command loop.  Here we repeatedly read commands and
         // execute them until the game is over.
@@ -62,7 +63,7 @@ public class Game {
                 finished = command.act(this);
             }
         }
-        System.out.println("Thank you for playing.  Good bye.");
+        System.out.println("Your score was: " + getCurrentPlayer().getScore() +"\nThank you for playing.  Good bye.");
     }
 
     /**

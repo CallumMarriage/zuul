@@ -6,7 +6,7 @@
     "weapon": {
       "name":"Sword",
       "description":"A sword",
-      "type":"weapon",
+      "type":"sword",
       "value":"27"
     }
   },
@@ -17,7 +17,7 @@
     "weapon": {
       "name":"Sword",
       "description":"A sword",
-      "type":"weapon",
+      "type":"sword",
       "value":"20"
     }
   },
@@ -28,7 +28,7 @@
     "weapon": {
       "name":"Sword",
       "description":"A sword",
-      "type":"weapon",
+      "type":"sword",
       "value":"30"
     }
   },
@@ -39,7 +39,7 @@
     "weapon": {
       "name":"Sword",
       "description":"A sword",
-      "type":"weapon",
+      "type":"sword",
       "value":"20"
     }
   },
@@ -50,7 +50,7 @@
     "weapon": {
       "name":"Sword",
       "description":"A sword",
-      "type":"weapon",
+      "type":"sword",
       "value":"30"
     }
   },
@@ -61,7 +61,7 @@
   "weapon": {
     "name":"Staff",
     "description":"A mighty Staff",
-    "type":"weapon",
+    "type":"staff",
     "value":"60"
   }
 }

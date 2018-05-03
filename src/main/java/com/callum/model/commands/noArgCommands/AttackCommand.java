@@ -1,11 +1,8 @@
-package com.callum.model.commands;
+package com.callum.model.commands.noArgCommands;
 
 import com.callum.model.Game;
-import com.callum.model.characters.Character;
 import com.callum.model.characters.enemies.Enemy;
 import com.callum.model.characters.player.Player;
-
-import java.util.Random;
 
 /**
  * Created by callummarriage on 26/04/2018.
@@ -31,6 +28,7 @@ public class AttackCommand extends NoArgCommand {
                 }
             } else {
                 currentEnemy.kill();
+                g.getCurrentPlayer().updateScore(currentEnemy.getValue());
                 if (currentEnemy.getType().equals("Boss")) {
                     System.out.println("You have defeated " + currentEnemy.getName() + ", the world bows to your glory. \n YOU WIN!!");
                     return true;

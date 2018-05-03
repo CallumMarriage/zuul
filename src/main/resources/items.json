@@ -1,14 +1,38 @@
 [
   {
     "name":"lab-key",
-    "description":"The Lab Key",
+    "description":"The Lab Key.",
     "type":"key",
     "value":"lab"
   },
   {
     "name":"health-pack",
-    "description": "Health Pack",
+    "description": "Health Pack.",
     "type": "health",
     "value": "10"
+  },
+  {
+    "name":"DragonsBourne-sword",
+    "description": "The mighty Dragons Bourne.",
+    "type": "sword",
+    "value": "100"
+  },
+  {
+    "name":"nilfgardian-shield",
+    "description": "The mighty Nilfgardian Shield.",
+    "type": "shield",
+    "value": "40"
+  },
+  {
+    "name" : "baisc-helmet",
+    "description": "A simple helmet for a simple man.",
+    "type": "helmet",
+    "value": "30"
+  },
+  {
+    "name" : "basic-chestplate",
+    "description": "A simple chestplate for a simple man.",
+    "type": "chestplate",
+    "value": "70"
   }
 ]

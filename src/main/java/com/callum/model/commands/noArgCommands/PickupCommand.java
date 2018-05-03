@@ -1,7 +1,8 @@
-package com.callum.model.commands;
+package com.callum.model.commands.noArgCommands;
 
 import com.callum.model.Game;
 import com.callum.model.characters.player.Player;
+import com.callum.model.commands.noArgCommands.NoArgCommand;
 import com.callum.model.items.Item;
 
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.List;
 /**
  * Created by callummarriage on 26/04/2018.
  */
-public class PickupCommand extends NoArgCommand{
+public class PickupCommand extends NoArgCommand {
     @Override
     public String getSyntax() {
         return "pickup";
@@ -24,7 +25,7 @@ public class PickupCommand extends NoArgCommand{
                     System.out.println("There is nothing to pickup");
                 } else {
                     for(Item item : items){
-                        p.pickUp(item);
+                        p.setCharacterItem(item);
                         item.setActive(false);
                     }
                 }

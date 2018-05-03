@@ -1,14 +1,12 @@
-package com.callum.model.commands;
+package com.callum.model.commands.noArgCommands;
 
 import com.callum.model.Game;
+import com.callum.model.commands.Command;
 
 /**
  * Created by callummarriage on 25/04/2018.
  */
-public class OneArgCommand implements Command {
-
-    protected  String direction;
-
+public class NoArgCommand implements Command {
     @Override
     public int getNumberArgument() {
         return 1;
@@ -26,10 +24,6 @@ public class OneArgCommand implements Command {
 
     @Override
     public void addArgument(String arg) {
-        if(arg.split(" ").length == 1){
-            this.direction = arg;
-        } else {
-            System.out.println("You have given an invalid direction");
-        }
+
     }
 }

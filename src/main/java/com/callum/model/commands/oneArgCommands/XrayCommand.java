@@ -1,4 +1,4 @@
-package com.callum.model.commands;
+package com.callum.model.commands.oneArgCommands;
 
 import com.callum.model.Game;
 import com.callum.model.rooms.Room;
@@ -15,7 +15,7 @@ public class XrayCommand extends OneArgCommand {
 
     @Override
     public boolean act(Game g) {
-        Room room = g.getCurrentRoom().getExit(direction);
+        Room room = g.getCurrentRoom().getExit(arg);
 
         String desc = "In the south there is " + room.getShortDescription() + ".\n" + room.getExitString();
 

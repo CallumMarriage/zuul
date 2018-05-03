@@ -94,26 +94,13 @@ public class MapBuilder {
     }
 
     public Boolean connectTwoAreas(Area previousArea, Area currentArea) throws Exception{
+        if( previousArea.getCentralRoom().joinRooms("north", currentArea.getSouthRoom())){
+            return true;
+        } else{
+            System.out.println("Error connecting Areas");
+            return false;
+        }
 
-
-        SecureRandom secureRandom = new SecureRandom();
-        int numOfRooms = previousArea.getNumberOfRooms();
-        if( numOfRooms != 1){
-            numOfRooms = secureRandom.nextInt(numOfRooms);
-        }
-        if(numOfRooms ==1){
-            numOfRooms ++;
-        }
-        if(numOfRooms ==0){
-            numOfRooms +=2;
-        }
-        switch (numOfRooms){
-            case 2: return previousArea.getNorthRoom().joinRandomRooms( currentArea.getNorthRoom());
-            case 3: return previousArea.getSouthRoom().joinRandomRooms( currentArea.getSouthRoom());
-            case 4: return previousArea.getEastRoom().joinRandomRooms( currentArea.getEastRoom());
-            case 5: return previousArea.getWestRoom().joinRandomRooms( currentArea.getWestRoom());
-            default: return false;
-        }
     }
 
     public List<RoomSet> buildAreas(RoomSet rooms){
@@ -147,6 +134,7 @@ public class MapBuilder {
         List<Room> newRooms = rooms.getRooms();
 
         switch (newRooms.size()){
+            case 1: return new Area(newRooms.get(0));
             case 2: return new Area(newRooms.get(0), newRooms.get(1));
             case 3: return new Area(newRooms.get(0), newRooms.get(1), newRooms.get(2));
             case 4: return new Area(newRooms.get(0), newRooms.get(1), newRooms.get(2), newRooms.get(3));

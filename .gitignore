@@ -27,3 +27,4 @@ hs_err_pid*
 .classpath
 target/
 !/src/main/java/com/callum/model/commands/PickupCommand.java
+!/src/main/java/com/callum/model/Game.java

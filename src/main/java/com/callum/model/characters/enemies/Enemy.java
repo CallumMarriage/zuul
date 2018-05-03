@@ -2,7 +2,7 @@ package com.callum.model.characters.enemies;
 
 import com.callum.model.characters.AbstractCharacter;
 import com.callum.model.characters.Character;
-import com.callum.model.items.Weapon;
+import com.callum.model.items.characterItems.weapons.Weapon;
 
 /**
  * Created by callummarriage on 26/04/2018.
@@ -10,10 +10,12 @@ import com.callum.model.items.Weapon;
 public abstract class Enemy extends AbstractCharacter {
 
     protected String type;
+    int value;
 
     public Enemy(String name, Weapon weapon, int health) {
         super(name, weapon, health);
     }
+
 
 
     public String getType() {
@@ -32,6 +34,14 @@ public abstract class Enemy extends AbstractCharacter {
 
     public void getDescription(){
         System.out.println("A figure approaches, " + name + " towers over you!");
+    }
+
+    public int getValue() {
+        return value;
+    }
+
+    public void setValue(int value) {
+        this.value = value;
     }
 
 }

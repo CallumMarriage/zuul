@@ -1,13 +1,11 @@
-package com.callum.model.commands;
+package com.callum.model.commands.noArgCommands;
 
 import com.callum.model.Game;
-
-import java.util.List;
 
 /**
  * Created by callummarriage on 24/04/2018.
  */
-public class HelpCommand extends NoArgCommand{
+public class HelpCommand extends NoArgCommand {
 
     private String[] commands;
 

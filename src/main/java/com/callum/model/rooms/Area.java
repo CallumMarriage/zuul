@@ -21,22 +21,22 @@ public class Area {
             numberOfRooms = 1;
             if(room.length >= 2){
                 this.northRoom = room[1];
-                centralRoom.joinRandomRooms( northRoom);
+                centralRoom.joinRooms( "north", northRoom);
                 numberOfRooms = 2;
             }
             if (room.length >= 3) {
                 this.southRoom = room[2];
-                centralRoom.joinRandomRooms( southRoom);
+                centralRoom.joinRooms("south", southRoom);
                 numberOfRooms = 3;
             }
             if (room.length >= 4) {
                 this.eastRoom = room[3];
-                centralRoom.joinRandomRooms(eastRoom);
+                centralRoom.joinRooms("east", eastRoom);
                 numberOfRooms = 4;
             }
             if (room.length >= 5) {
                 this.westRoom = room[4];
-                centralRoom.joinRandomRooms(westRoom);
+                centralRoom.joinRooms("west", westRoom);
                 numberOfRooms = 5;
             }
         } catch (Exception e){

@@ -1,11 +1,9 @@
 package com.callum.model.Parsers;
 
-import com.callum.model.characters.enemies.Enemy;
-import com.callum.model.characters.enemies.EnemyFactory;
+import com.callum.model.characters.enemies.factory.EnemyFactory;
 import com.callum.model.characters.enemies.EnemySet;
-import com.callum.model.items.Item;
-import com.callum.model.items.ItemFactory;
-import com.callum.model.items.Weapon;
+import com.callum.model.items.factory.ItemFactory;
+import com.callum.model.items.characterItems.weapons.Weapon;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -13,8 +11,6 @@ import org.json.simple.parser.ParseException;
 
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import static com.callum.model.constants.GameConstants.ENEMIES;
 

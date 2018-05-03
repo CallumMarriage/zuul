@@ -18,7 +18,6 @@ public class Health extends AbstractItem {
         return value;
     }
 
-
     @Override
     public Integer act(Character character) {
         return value;

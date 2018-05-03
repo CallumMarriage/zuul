@@ -1,7 +1,7 @@
 package com.callum.model.Parsers;
 
 import com.callum.model.items.Item;
-import com.callum.model.items.ItemFactory;
+import com.callum.model.items.factory.ItemFactory;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;

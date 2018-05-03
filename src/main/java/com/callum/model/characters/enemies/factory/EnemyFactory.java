@@ -1,7 +1,10 @@
-package com.callum.model.characters.enemies;
+package com.callum.model.characters.enemies.factory;
 
 
-import com.callum.model.items.Weapon;
+import com.callum.model.characters.enemies.BossEnemy;
+import com.callum.model.characters.enemies.Enemy;
+import com.callum.model.characters.enemies.KnightEnemy;
+import com.callum.model.items.characterItems.weapons.Weapon;
 
 /**
  * Created by callummarriage on 26/04/2018.

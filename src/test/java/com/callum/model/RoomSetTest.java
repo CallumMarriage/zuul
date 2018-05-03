@@ -3,14 +3,12 @@ package com.callum.model;
 
 
 import com.callum.model.characters.enemies.KnightEnemy;
-import com.callum.model.items.Weapon;
+import com.callum.model.items.characterItems.weapons.Sword;
 import com.callum.model.rooms.NormalRoom;
 import com.callum.model.rooms.Room;
 import com.callum.model.rooms.RoomSet;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.security.SecureRandom;
 
 import static org.junit.Assert.*;
 
@@ -26,7 +24,7 @@ public class RoomSetTest {
     public void beforeTest(){
         roomSet = new RoomSet();
 
-         enemy = new KnightEnemy(new Weapon("Steve","The sword", 10), "Steve", 200);
+         enemy = new KnightEnemy(new Sword("Steve","The sword", 10), "Steve", 200);
     }
 
     @Test

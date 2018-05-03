@@ -1,4 +1,4 @@
-package com.callum.model.commands;
+package com.callum.model.commands.noArgCommands;
 
 import com.callum.model.Game;
 

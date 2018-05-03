@@ -4,13 +4,13 @@ import com.callum.model.characters.enemies.BossEnemy;
 import com.callum.model.characters.enemies.Enemy;
 import com.callum.model.characters.enemies.EnemySet;
 import com.callum.model.characters.enemies.KnightEnemy;
-import com.callum.model.items.Weapon;
-import com.callum.model.commands.AttackCommand;
+import com.callum.model.items.characterItems.weapons.Sword;
+import com.callum.model.items.characterItems.weapons.Weapon;
+import com.callum.model.commands.noArgCommands.AttackCommand;
 import com.callum.model.commands.Command;
-import com.callum.model.commands.GoCommand;
+import com.callum.model.commands.oneArgCommands.GoCommand;
 import com.callum.model.rooms.*;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -29,7 +29,7 @@ public class RoomTest {
 
     @Test
     public void testRoomConnect(){
-        enemy = new KnightEnemy(new Weapon("Steve","the sword", 10), "Steve", 200);
+        enemy = new KnightEnemy(new Sword("Steve","the sword", 10), "Steve", 200);
         Game game = null;
         try {
             game = new Game();
@@ -45,6 +45,7 @@ public class RoomTest {
             e.printStackTrace();
         }
 
+        assert game != null;
         game.setCurrentRoom(room);
         assertEquals("Room", game.getCurrentRoom().getShortDescription());
 
@@ -58,7 +59,7 @@ public class RoomTest {
 
     @Test
     public void testEnemy(){
-        enemy = new KnightEnemy(new Weapon("Steve","the sword", 10), "Steve", 200);
+        enemy = new KnightEnemy(new Sword("Steve","the sword", 10), "Steve", 200);
         Game game = null;
         try {
             game = new Game();
@@ -69,7 +70,7 @@ public class RoomTest {
         NormalRoom room = new NormalRoom("Room", "Room", false, false);
         NormalRoom room2 = new NormalRoom("Room2", "Room2", false, false);
 
-        room2.setEnemy(new BossEnemy(new Weapon("Sword","the sword", 30), "Enemy", 10));
+        room2.setEnemy(new BossEnemy(new Sword("Sword","the sword", 30), "Enemy", 10));
         try {
             room.joinRooms("north", room2);
         } catch (Exception e){
@@ -99,6 +100,11 @@ public class RoomTest {
         goCommand2.act(game);
 
         command.act(game);
+    }
+
+    @Test
+    public void testRandomRoom(){
+
     }
 
     @Test
@@ -252,13 +258,13 @@ public class RoomTest {
 
         EnemySet enemySet = new EnemySet();
 
-        Weapon weapon = new Weapon("Sword", "the sword", 100);
+        Weapon weapon = new Sword("Sword", "the sword", 100);
         Enemy enemy = new KnightEnemy(weapon, "steve", 100);
-        Weapon weapon1 = new Weapon("Sword", "the sword", 100);
+        Weapon weapon1 = new Sword("Sword", "the sword", 100);
         Enemy enemy1 = new KnightEnemy(weapon1, "barry", 100);
-        Weapon weapon2 = new Weapon("Sword", "the sword", 100);
+        Weapon weapon2 = new Sword("Sword", "the sword", 100);
         Enemy enemy2 = new KnightEnemy(weapon2, "henry", 100);
-        Weapon weapon3 = new Weapon("Sword", "the sword", 100);
+        Weapon weapon3 = new Sword("Sword", "the sword", 100);
         Enemy enemy3 = new BossEnemy(weapon3, "clive", 100);
 
 

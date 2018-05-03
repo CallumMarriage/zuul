@@ -1,21 +1,14 @@
 package com.callum.model.Parsers;
 
-import com.callum.model.rooms.RoomFactory;
+import com.callum.model.rooms.factory.RoomFactory;
 import com.callum.model.rooms.RoomSet;
-import com.sun.org.apache.xpath.internal.operations.Bool;
-import org.apache.commons.io.FileUtils;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.lang.reflect.Array;
-import java.security.SecureRandom;
-
-import static com.callum.model.constants.GameConstants.ROOMS;
 
 /**
  * Created by callummarriage on 27/04/2018.

@@ -4,10 +4,8 @@ import com.callum.model.characters.Character;
 import com.callum.model.characters.enemies.Enemy;
 import com.callum.model.items.Item;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-import java.util.HashMap;
+import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 
 
 /*
@@ -77,37 +75,22 @@ public abstract class Room {
 
         for(String exit : exits.keySet()){
             if(direction.equals(exit)){
-                System.out.println(direction +"-"+ otherRoom.getShortDescription() + "-FAILED");
-                return false;
-            }
-        }
-        this.setExit(direction, otherRoom);
-        otherRoom.setExit(Directions.opposite(direction), this);
-        return true;
-    }
-
-    public boolean joinRandomRooms(Room otherRoom){
-        List<String> directions = new ArrayList<>();
-        directions.add("south");
-        directions.add("west");
-        directions.add("east");
-        directions.add("north");
-
-        for(String direction: directions) {
-            boolean isValid = true;
-            for (String exit : exits.keySet()) {
-                if (direction.equals(exit)) {
-                    isValid = false;
-                    break;
-                }
-            }
-            if(isValid) {
-                joinRooms(direction, otherRoom);
+                getExit(exit).setExit("north", otherRoom);
                 return true;
             }
         }
-        return false;
+        this.setExit(direction, otherRoom);
+        try {
+            otherRoom.setExit(Directions.opposite(direction), this);
+        } catch(NullPointerException e){
+            System.out.println(otherRoom.description);
+            System.out.println(direction);
+            e.printStackTrace();
+        }
+        return true;
     }
+
+
     /**
      * Returns a String representation of the room
      */
@@ -139,16 +122,20 @@ public abstract class Room {
 
         if(items.size() > 0) {
             for (Item item : this.items) {
-                if (item.isActive()) {
-                    sb.append(item.getLongDescription());
-                } else {
-                    sb.append("\nYou have already pickup up the ");
-                    sb.append(item.getName());
+                if(item != null) {
+                    if (item.isActive()) {
+                        sb.append(item.getLongDescription());
+                    } else {
+                        sb.append("\nYou have already picked up the ");
+                        sb.append(item.getName());
+                    }
                 }
             }
         }
         if(getEnemy() == null || getEnemy().getDead()){
             sb.append("\nIt is empty, you may move on");
+        } else if(!getEnemy().getDead()){
+            sb.append("\nThere is an enemy present, you will have to defeat them before moving on!");
         }
 
         return sb.toString();
@@ -159,11 +146,14 @@ public abstract class Room {
      * "Exits: north west".
      */
     public String getExitString() {
-        String returnString = "Exits:";
+        StringBuilder returnString = new StringBuilder();
+        returnString.append("Exits:");
         Set<String> keys = exits.keySet();
-        for(String d : keys)
-            returnString += " " + d;
-        return returnString;
+        for(String d : keys) {
+            returnString.append(" ");
+            returnString.append(d);
+        }
+        return returnString.toString();
     }
 
     /**

@@ -1,4 +1,11 @@
-package com.callum.model.commands;
+package com.callum.model.commands.factory;
+
+import com.callum.model.commands.*;
+import com.callum.model.commands.noArgCommands.*;
+import com.callum.model.commands.oneArgCommands.ChangeWeaponCommand;
+import com.callum.model.commands.oneArgCommands.GoCommand;
+import com.callum.model.commands.oneArgCommands.XrayCommand;
+
 /**
  * This class is part of the "World of Zuul" application. 
  * "World of Zuul" is a very simple, text based adventure game.
@@ -12,7 +19,7 @@ package com.callum.model.commands;
 
 public class CommandFactory {
     // a constant array that holds all valid command words
-    private static final String[] ALL_COMMANDS = new String[]{ "go", "quit", "help", "attack", "look", "xray", "pickup", "heal", "stats"};
+    private static final String[] ALL_COMMANDS = new String[]{ "go", "quit", "help", "attack", "look", "xray", "pickup", "heal", "stats", "pickup", "change", "inventory"};
 
     public Command createCommand(String command){
         switch (command) {
@@ -21,10 +28,12 @@ public class CommandFactory {
             case "quit": return new QuitCommand();
             case "look": return new LookCommand();
             case "xray": return new XrayCommand();
-            case "attack": return new AttackCommand();
+            case "attack" : return new AttackCommand();
             case "pickup": return new PickupCommand();
             case "heal": return new HealCommand();
             case "stats": return new StatsCommand();
+            case "change": return new ChangeWeaponCommand();
+            case "inventory": return new ListItemsCommand();
             default: return null;
         }
     }
