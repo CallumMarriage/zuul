@@ -32,8 +32,12 @@ public abstract class Enemy extends AbstractCharacter {
     @Override
     public abstract void speak(String command);
 
-    public void getDescription(){
+    public void printDescription(){
         System.out.println("A figure approaches, " + name + " towers over you!");
+    }
+
+    public String getDescription(){
+        return "\nThere is an enemy present, you will have to defeat them before moving on!" + "\nA figure approaches, " + name + " towers over you!";
     }
 
     public int getValue() {

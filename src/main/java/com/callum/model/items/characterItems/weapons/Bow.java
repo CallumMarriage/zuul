@@ -19,7 +19,6 @@ public class Bow extends AbstractWeapon {
         SecureRandom rand = new SecureRandom();
         int i = rand.nextInt(maxDamage) + 1;
         if(character.deflectAttack()){
-            System.out.println("BOOOM! Shot deflected MotherFucker!!!");
             return 0;
         } else {
             character.setHealth(character.getHealth() - i);

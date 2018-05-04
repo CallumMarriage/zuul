@@ -33,7 +33,7 @@ public class GoCommand extends OneArgCommand {
 
                 if(newEnemy != null) {
                     if(!newEnemy.getDead()) {
-                       newEnemy.getDescription();
+                        System.out.println(newEnemy.getDescription());
                        return false;
                    } else{
                        System.out.println("The enemy lays slain");

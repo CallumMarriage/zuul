@@ -20,10 +20,11 @@ public class Chestplate extends AbstractArmour {
             System.out.println("The enemy has struck your Chestplate...");
             if(random.nextBoolean()){
                 System.out.println("And was deflected!");
+                return true;
             } else {
                 System.out.println("And your " + name + " has failed you!");
+                return false;
             }
-            return true;
         }
 
         return false;

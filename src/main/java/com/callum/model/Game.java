@@ -99,6 +99,11 @@ public class Game {
         System.out.println("Type 'help' if you need help.");
         System.out.println();
         System.out.println(currentRoom.getLongDescription());
+        if(currentRoom.getEnemy() == null){
+            System.out.println("\nIt is empty, you may move on");
+        } else if(!currentRoom.getEnemy().getDead()){
+            System.out.println(currentRoom.getEnemy().getDescription());
+        }
     }
 
     public void setCurrentRoom(Room newRoom){

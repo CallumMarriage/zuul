@@ -141,12 +141,6 @@ public abstract class Room {
                 }
             }
         }
-        if(getEnemy() == null || getEnemy().getDead()){
-            sb.append("\nIt is empty, you may move on");
-        } else if(!getEnemy().getDead()){
-            sb.append("\nThere is an enemy present, you will have to defeat them before moving on!");
-        }
-
         return sb.toString();
     }
 
