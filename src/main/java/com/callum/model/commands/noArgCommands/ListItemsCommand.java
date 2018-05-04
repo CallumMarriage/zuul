@@ -23,12 +23,7 @@ public class ListItemsCommand extends NoArgCommand {
             return false;
         }
         for(Item item : g.getCurrentPlayer().getItems()){
-            if(item instanceof AbstractCharacterItem) {
-                Boolean isEquiped = ((AbstractCharacterItem) item).getIsEquipped();
-                System.out.println(item.getName() + " | active: " + isEquiped);
-            } else {
-                System.out.println(item.getName());
-            }
+            System.out.println(item.getName());
         }
         return false;
     }

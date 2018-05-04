@@ -15,7 +15,7 @@
     "name":"DragonsBourne-sword",
     "description": "The mighty Dragons Bourne.",
     "type": "sword",
-    "value": "100"
+    "value": "70"
   },
   {
     "name":"nilfgardian-shield",
@@ -33,6 +33,6 @@
     "name" : "basic-chestplate",
     "description": "A simple chestplate for a simple man.",
     "type": "chestplate",
-    "value": "70"
+    "value": "60"
   }
 ]

@@ -7,8 +7,4 @@ import com.callum.model.items.Item;
  */
 public interface CharacterItem extends Item{
 
-    void setEquipped(Boolean equipped);
-
-    boolean getIsEquipped();
-
 }

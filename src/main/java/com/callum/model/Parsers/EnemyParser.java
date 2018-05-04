@@ -12,19 +12,17 @@ import org.json.simple.parser.ParseException;
 import java.io.FileReader;
 import java.io.IOException;
 
-import static com.callum.model.constants.GameConstants.ENEMIES;
-
 /**
  * Created by callummarriage on 29/04/2018.
  */
 public class EnemyParser {
 
-    public static EnemySet readFile(){
+    public static EnemySet readFile(String enemiesFile){
 
         EnemySet enemies = new EnemySet();
 
         try {
-            Object object = new JSONParser().parse(new FileReader(ENEMIES));
+            Object object = new JSONParser().parse(new FileReader(enemiesFile));
 
             JSONArray jsonArray= (JSONArray) object;
 

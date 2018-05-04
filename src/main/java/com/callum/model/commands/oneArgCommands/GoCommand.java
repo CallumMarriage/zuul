@@ -38,7 +38,9 @@ public class GoCommand extends OneArgCommand {
                    } else{
                        System.out.println("The enemy lays slain");
                    }
-               }
+               } else{
+                    System.out.println("The room is empty, you may move on.");
+                }
             } else{
                 System.out.println("You cant go that way you idiot!!");
             }

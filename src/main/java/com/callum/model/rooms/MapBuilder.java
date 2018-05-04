@@ -8,21 +8,18 @@ import com.callum.model.characters.enemies.EnemySet;
 import com.callum.model.items.Item;
 import com.callum.model.Parsers.ItemParser;
 
-import java.security.SecureRandom;
-import java.util.ArrayList;
 import java.util.List;
 
-import static com.callum.model.constants.GameConstants.ROOMS;
 
 /**
  * Created by callummarriage on 29/04/2018.
  */
 public class MapBuilder {
 
-    public Room start(){
-        List<RoomSet> rooms = RoomParser.readFile(ROOMS);
-        List<Item> items = ItemParser.readFile();
-        EnemySet enemies = EnemyParser.readFile();
+    public Room start(String enemiesFile, String itemsFile, String roomsFile){
+        List<RoomSet> rooms = RoomParser.readFile(roomsFile);
+        List<Item> items = ItemParser.readFile(itemsFile);
+        EnemySet enemies = EnemyParser.readFile(enemiesFile);
         return createRooms(rooms, items, enemies);
     }
 

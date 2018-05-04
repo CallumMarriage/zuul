@@ -101,40 +101,32 @@ public class Player extends AbstractCharacter{
         System.out.println("You have picked up " + item.getBasicInfo());
         if(item instanceof Weapon){
             if(this.weapon != null) {
-                weapon.setEquipped(false);
                 items.add(this.weapon);
                 assignedItems.remove(this.weapon);
             }
             this.weapon = (Weapon) item;
             assignedItems.add(this.weapon);
-            this.weapon.setEquipped(true);
         } else if(item instanceof Armour){
             armour += ((Armour) item).getValue();
             if (item instanceof Shield) {
                 if(shield != null){
                     assignedItems.remove(this.shield);
-                    this.shield.setEquipped(false);
                     items.add(this.shield);
                 }
                 this.shield = (Shield) item;
                 assignedItems.add(this.shield);
-                this.shield.setEquipped(true);
             } else if (item instanceof Helmet) {
                 if(helmet != null){
-                    this.helmet.setEquipped(false);
                     assignedItems.remove(this.helmet);
                     items.add(this.helmet);
                 }
                 this.helmet = (Helmet) item;
-                this.helmet.setEquipped(true);
             } else if (item instanceof Chestplate) {
                 if(chestplate != null){
-                    chestplate.setEquipped(false);
                     assignedItems.remove(this.chestplate);
                     items.add(this.chestplate);
                 }
                 this.chestplate = (Chestplate) item;
-                this.chestplate.setEquipped(true);
                 assignedItems.add(this.chestplate);
             }
         } else {
@@ -146,32 +138,41 @@ public class Player extends AbstractCharacter{
         for(Item item: items){
             if(item instanceof Weapon && item.getName().equals(name)){
                 if(this.weapon != null){
-                    this.weapon.setEquipped(false);
+                    assignedItems.remove(this.weapon);
+                    items.add(this.weapon);
                 }
+                items.remove(item);
                 this.weapon = (Weapon) item;
-                weapon.setEquipped(true);
+                assignedItems.add(this.weapon);
+
                 System.out.println("You are now using the " + item.getName());
             } else if(item instanceof Armour) {
                 if (item instanceof Helmet && item.getName().equals(name)) {
                     if(this.helmet != null){
-                        this.helmet.setEquipped(false);
+                        assignedItems.remove(this.helmet);
+                        items.add(this.helmet);
                     }
+                    items.remove(item);
                     this.helmet = (Helmet) item;
-                    this.helmet.setActive(true);
+                    assignedItems.add(this.helmet);
                     System.out.println("You are now wearing " + item.getName());
                 } else if (item instanceof Chestplate && item.getName().equals(name)){
                     if(this.chestplate != null){
-                        this.chestplate.setEquipped(false);
+                        items.add(this.chestplate);
+                        assignedItems.remove(this.chestplate);
                     }
+                    items.remove(item);
                     this.chestplate = (Chestplate) item;
-                    this.chestplate.setEquipped(true);
+                    assignedItems.add(this.chestplate);
                     System.out.println("You are now wearing " + item.getName());
                 } else if(item instanceof Shield && item.getName().equals(name)){
                     if(this.shield != null){
-                        this.shield.setEquipped(false);
+                        assignedItems.remove(this.chestplate);
+                        items.add(this.shield);
                     }
+                    items.remove(item);
                     this.shield = (Shield) item;
-                    this.shield.setActive(true);
+                    assignedItems.add(this.shield);
                     System.out.println("You now hold " + item.getName());
                 }
             }
