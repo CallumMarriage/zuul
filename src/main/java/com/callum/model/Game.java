@@ -35,13 +35,13 @@ public class Game {
     /**
      * Create the game and initialise its internal map.
      */
-    public Game() throws Exception {
+    public Game(int numberOfLevls) throws Exception {
         parser = new Parser();
         Weapon weapon = new Sword("Sword","The Sword of Destiny!",  50);
         System.out.println("Starting weapon: " + weapon.getName() + ".");
         currentPlayer = new Player(weapon, "Steve", 200);
         level = 1;
-        numberOfLevls = 2;
+        this.numberOfLevls = numberOfLevls;
     }
 
     public void loadLevel() throws Exception {
@@ -80,15 +80,13 @@ public class Game {
         System.out.println("Your score was: " + getCurrentPlayer().getScore() +"\nThank you for playing.  Good bye.");
     }
 
-
-
     /**
      * Main method to start the game outside BlueJ
      */
     public static void main(String[] args) {
         try {
             Game g = null;
-            g = new Game();
+            g = new Game(2);
             printWelcome();
             g.loadLevel();
             g.play();
@@ -112,7 +110,7 @@ public class Game {
     private static void printWelcome() {
         System.out.println();
         System.out.println("Welcome to the World of Zuul!");
-        System.out.println("World of Zuul is a new, incredibly boring adventure game.");
+        System.out.println("Bruh.. this shit is dope.");
         System.out.println("Type 'help' if you need help.");
         System.out.println();
     }

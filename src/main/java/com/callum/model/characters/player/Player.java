@@ -3,10 +3,7 @@ package com.callum.model.characters.player;
 import com.callum.model.characters.AbstractCharacter;
 import com.callum.model.characters.Character;
 import com.callum.model.items.characterItems.CharacterItem;
-import com.callum.model.items.characterItems.armour.Armour;
-import com.callum.model.items.characterItems.armour.Chestplate;
-import com.callum.model.items.characterItems.armour.Helmet;
-import com.callum.model.items.characterItems.armour.Shield;
+import com.callum.model.items.characterItems.armour.*;
 import com.callum.model.items.factory.ItemFactory;
 import com.callum.model.items.characterItems.weapons.Weapon;
 import com.callum.model.items.Item;
@@ -24,20 +21,13 @@ public class Player extends AbstractCharacter{
 
     private List<Item> items;
     private int score;
-    private Helmet helmet;
-    private Chestplate chestplate;
-    private Shield shield;
-    private int armour;
+
     private List<CharacterItem> assignedItems;
 
     public Player(Weapon weapon, String name, int health){
         super(name, weapon, health);
         items = new ArrayList<>();
         score = 0;
-        helmet = null;
-        chestplate = null;
-        shield = null;
-        armour = 0;
         assignedItems = new ArrayList<>();
         assignedItems.add(weapon);
     }
@@ -88,7 +78,7 @@ public class Player extends AbstractCharacter{
                 Weapon weapon = (Weapon) ItemFactory.createItem("sword","destiny","The Sword Of Destiney", "50" );
                 Player player = new Player(weapon,"name", 0 );
                 Integer increase = item.act(player);
-                System.out.println("\n You have increased your health by " + increase);
+                System.out.println("You have increased your health by " + increase);
                 this.health += increase;
                 item.setActive(false);
                 return;
@@ -100,12 +90,14 @@ public class Player extends AbstractCharacter{
     public void setCharacterItem(Item item){
         System.out.println("You have picked up " + item.getBasicInfo());
         if(item instanceof Weapon){
+
             if(this.weapon != null) {
                 items.add(this.weapon);
                 assignedItems.remove(this.weapon);
             }
             this.weapon = (Weapon) item;
             assignedItems.add(this.weapon);
+
         } else if(item instanceof Armour){
             armour += ((Armour) item).getValue();
             if (item instanceof Shield) {
@@ -151,28 +143,35 @@ public class Player extends AbstractCharacter{
                     if(this.helmet != null){
                         assignedItems.remove(this.helmet);
                         items.add(this.helmet);
+                        health -= this.helmet.getValue();
                     }
                     items.remove(item);
                     this.helmet = (Helmet) item;
                     assignedItems.add(this.helmet);
+                    health += this.helmet.getValue();
                     System.out.println("You are now wearing " + item.getName());
                 } else if (item instanceof Chestplate && item.getName().equals(name)){
                     if(this.chestplate != null){
                         items.add(this.chestplate);
                         assignedItems.remove(this.chestplate);
+                        health -= this.chestplate.getValue();
+
                     }
                     items.remove(item);
                     this.chestplate = (Chestplate) item;
                     assignedItems.add(this.chestplate);
+                    health += this.chestplate.getValue();
                     System.out.println("You are now wearing " + item.getName());
                 } else if(item instanceof Shield && item.getName().equals(name)){
                     if(this.shield != null){
                         assignedItems.remove(this.chestplate);
                         items.add(this.shield);
+                        health -= this.shield.getValue();
                     }
                     items.remove(item);
                     this.shield = (Shield) item;
                     assignedItems.add(this.shield);
+                    health += this.chestplate.getValue();
                     System.out.println("You now hold " + item.getName());
                 }
             }
@@ -209,26 +208,5 @@ public class Player extends AbstractCharacter{
 
     public int getScore(){
         return this.score;
-    }
-
-    public Helmet getHelmet() {
-        return helmet;
-    }
-
-    public Chestplate getChestplate() {
-        return chestplate;
-    }
-
-    public Shield getShield() {
-        return shield;
-    }
-
-
-    public int getArmour() {
-        return armour;
-    }
-
-    public void setArmour(int armour) {
-        this.armour = armour;
     }
 }

@@ -1,5 +1,8 @@
 package com.callum.model.characters;
 
+import com.callum.model.items.characterItems.armour.Chestplate;
+import com.callum.model.items.characterItems.armour.Helmet;
+import com.callum.model.items.characterItems.armour.Shield;
 import com.callum.model.items.characterItems.weapons.Weapon;
 
 /**
@@ -23,5 +26,15 @@ public interface Character {
 
      Weapon getWeapon();
 
-    boolean deflectAttack();
+     boolean deflectAttack();
+
+     Helmet getHelmet();
+
+     Chestplate getChestplate();
+
+     Shield getShield();
+
+     int getArmour();
+
+     void setArmour(int armour);
 }

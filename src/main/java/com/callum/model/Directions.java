@@ -1,4 +1,5 @@
 package com.callum.model;
+
 import java.util.HashMap;
 
 /**
@@ -23,6 +24,7 @@ public class Directions {
         opposites.put("south", "north");
         opposites.put("east", "west");
         opposites.put("west", "east");
+        opposites.put("up", "down");
     }
 
     /**

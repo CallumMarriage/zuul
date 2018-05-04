@@ -1,7 +1,5 @@
 package com.callum.model.characters.enemies;
 
-import com.callum.model.characters.Character;
-
 import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;

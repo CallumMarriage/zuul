@@ -2,7 +2,7 @@
   {
     "roomName":"ThroneRoom",
     "isLocked":"true",
-    "description":"the Throne Room, it is a huge room with a large throne in the center",
+    "description":"the Board Room, a large dark room with a large table lined with chairs.\n At the end of the table sits a man in a dark suit",
     "roomType":"NormalRoom",
     "isBossRoom":"true",
     "Exits":[

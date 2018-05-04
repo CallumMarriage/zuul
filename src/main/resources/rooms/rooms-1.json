@@ -10,16 +10,6 @@
     ]
   },
   {
-    "roomName":"Library",
-    "isLocked":"false",
-    "description":"This is the library",
-    "roomType":"NormalRoom",
-    "isBossRoom":"false",
-    "Exits":[
-
-    ]
-  },
-  {
     "roomName":"Computer",
     "isLocked":"false",
     "description":"The Computer Room",
@@ -27,6 +17,16 @@
     "isBossRoom":"false",
     "Exits":[
 
+    ]
+  },
+  {
+    "roomName":"Library",
+    "isLocked":"false",
+    "description":"This is the library",
+    "roomType":"NormalRoom",
+    "isBossRoom":"false",
+    "Exits":[
+      {"room":"Computer", "direction": "north"}
     ]
   },
   {
@@ -62,13 +62,14 @@
   {
     "roomName":"Corridor",
     "isLocked":"false",
-    "description":"The Corridor, there are no windows either side.. but at the end there is a single giant door.",
+    "description":"The Corridor, there are no windows either side.. there is a door to the east and at the end there is a single giant door.",
     "roomType":"NormalRoom",
     "isBossRoom":"false",
     "Exits":[
-      {"room": "ThroneRoom", "direction": "north"}
+      {"room": "ThroneRoom", "direction": "north"},
+      {"room": "Fish", "direction": "east" }
     ]
-  }
+  },
   {
     "roomName":"Reception",
     "isLocked":"false",

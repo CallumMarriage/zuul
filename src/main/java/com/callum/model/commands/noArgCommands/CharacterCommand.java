@@ -16,28 +16,33 @@ public class CharacterCommand extends NoArgCommand {
         System.out.println("YOUR CHARACTER");
 
         if(g.getCurrentPlayer().getWeapon() != null){
-            System.out.println("Weapon : " + g.getCurrentPlayer().getWeapon().getBasicInfo());
+            System.out.println("Weapon : " + g.getCurrentPlayer().getWeapon().getCharacterItemsAndValues());
         } else {
             System.out.println("Weapon : EMPTY");
         }
 
         if(g.getCurrentPlayer().getHelmet() != null){
-            System.out.println("Helmet : " + g.getCurrentPlayer().getHelmet().getBasicInfo());
+            System.out.println("Helmet : " + g.getCurrentPlayer().getHelmet().getCharacterItemsAndValues());
         } else {
             System.out.println("Helmet : EMPTY");
         }
 
         if(g.getCurrentPlayer().getChestplate() != null){
-            System.out.println("Chestplate : " + g.getCurrentPlayer().getChestplate().getBasicInfo());
+            System.out.println("Chestplate : " + g.getCurrentPlayer().getChestplate().getCharacterItemsAndValues());
         } else {
             System.out.println("Chestplate : EMPTY");
         }
 
         if(g.getCurrentPlayer().getShield() != null){
-            System.out.println("Shield : " + g.getCurrentPlayer().getShield().getBasicInfo());
+            System.out.println("Shield : " + g.getCurrentPlayer().getShield().getCharacterItemsAndValues());
         } else {
             System.out.println("Shield : EMPTY");
         }
         return false;
+    }
+
+    @Override
+    public String getSyntax(){
+        return "character";
     }
 }

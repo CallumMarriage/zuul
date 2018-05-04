@@ -1,12 +1,10 @@
 package com.callum.model.rooms;
+
 import com.callum.model.Directions;
-import com.callum.model.characters.Character;
 import com.callum.model.characters.enemies.Enemy;
 import com.callum.model.items.Item;
 
 import java.util.*;
-import java.util.concurrent.ThreadLocalRandom;
-
 
 /*
  * Class Room - a room in an adventure game.

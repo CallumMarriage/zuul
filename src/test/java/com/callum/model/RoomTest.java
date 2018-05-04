@@ -27,7 +27,7 @@ public class RoomTest {
         enemy = new KnightEnemy(new Sword("Steve","the sword", 10), "Steve", 200);
         Game game = null;
         try {
-            game = new Game();
+            game = new Game(1);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -57,7 +57,7 @@ public class RoomTest {
         enemy = new KnightEnemy(new Sword("Steve","the sword", 10), "Steve", 200);
         Game game = null;
         try {
-            game = new Game();
+            game = new Game(1);
         } catch (Exception e) {
             e.printStackTrace();
         }

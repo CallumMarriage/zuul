@@ -2,6 +2,8 @@ package com.callum.model.items.characterItems;
 
 import com.callum.model.characters.Character;
 import com.callum.model.items.AbstractItem;
+import com.callum.model.items.characterItems.armour.Armour;
+import com.callum.model.items.characterItems.weapons.Weapon;
 
 /**
  * Created by callummarriage on 02/05/2018.
@@ -15,4 +17,16 @@ public abstract class AbstractCharacterItem extends AbstractItem implements Char
 
     @Override
     public abstract Integer act(Character character);
+
+    @Override
+    public String getCharacterItemsAndValues(){
+        if(this instanceof Armour){
+            Armour armour = (Armour) this;
+            return this.getName() + " : Armour : "+ armour.getValue();
+        } else if(this instanceof Weapon) {
+            Weapon weapon = (Weapon) this;
+            return this.getName() + " : Damage : " + weapon.getDamage() + " | Health : " + weapon.getWeaponHealth();
+        }
+        return null;
+    }
 }

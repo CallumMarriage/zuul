@@ -4,10 +4,6 @@ import com.callum.model.Game;
 import com.callum.model.characters.enemies.Enemy;
 import com.callum.model.characters.player.Player;
 
-import static com.callum.model.constants.GameConstants.ENEMIES2;
-import static com.callum.model.constants.GameConstants.ITEMS2;
-import static com.callum.model.constants.GameConstants.ROOMS2;
-
 /**
  * Created by callummarriage on 26/04/2018.
  */

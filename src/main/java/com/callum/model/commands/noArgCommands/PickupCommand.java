@@ -2,7 +2,6 @@ package com.callum.model.commands.noArgCommands;
 
 import com.callum.model.Game;
 import com.callum.model.characters.player.Player;
-import com.callum.model.commands.noArgCommands.NoArgCommand;
 import com.callum.model.items.Item;
 
 import java.util.List;
@@ -21,7 +20,7 @@ public class PickupCommand extends NoArgCommand {
         if(g.getCurrentRoom().getEnemy() == null || g.getCurrentRoom().getEnemy().getDead())  {
                 Player p = g.getCurrentPlayer();
                 List<Item> items = g.getCurrentRoom().getItems();
-                if(items == null){
+                if(items == null || items.size() == 0){
                     System.out.println("There is nothing to pickup");
                 } else {
                     for(Item item : items){
@@ -30,7 +29,7 @@ public class PickupCommand extends NoArgCommand {
                     }
                 }
             } else{
-                System.out.println("The enemy blocks the item");
+                System.out.println("You must first defeat the enemy.");
         }
         return false;
     }

@@ -1,11 +1,8 @@
 package com.callum.model.rooms;
 
-import com.callum.model.rooms.Room;
-
 import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 /**
  * Created by callummarriage on 20/04/2018.

@@ -1,10 +1,5 @@
 package com.callum.model.rooms;
 
-import com.callum.model.characters.Character;
-
-import java.security.SecureRandom;
-import java.util.Random;
-
 /**
  * Created by callummarriage on 20/04/2018.
  */

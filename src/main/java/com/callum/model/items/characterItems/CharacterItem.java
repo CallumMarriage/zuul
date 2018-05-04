@@ -7,4 +7,5 @@ import com.callum.model.items.Item;
  */
 public interface CharacterItem extends Item{
 
+    String getCharacterItemsAndValues();
 }

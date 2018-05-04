@@ -1,5 +1,8 @@
 package com.callum.model.characters;
 
+import com.callum.model.items.characterItems.armour.Chestplate;
+import com.callum.model.items.characterItems.armour.Helmet;
+import com.callum.model.items.characterItems.armour.Shield;
 import com.callum.model.items.characterItems.weapons.Weapon;
 
 /**
@@ -11,12 +14,20 @@ public abstract class AbstractCharacter implements Character {
     protected Weapon weapon;
     protected int health;
     protected boolean isDead;
+    protected Helmet helmet;
+    protected Chestplate chestplate;
+    protected Shield shield;
+    protected int armour;
 
     public AbstractCharacter(String name, Weapon weapon, int health) {
         this.weapon = weapon;
         this.name = name;
         this.health = health;
         this.isDead = false;
+        helmet = null;
+        chestplate = null;
+        shield = null;
+        armour = 0;
     }
 
     @Override
@@ -56,4 +67,29 @@ public abstract class AbstractCharacter implements Character {
     }
 
     public abstract boolean deflectAttack();
+
+    @Override
+    public Helmet getHelmet() {
+        return helmet;
+    }
+
+    @Override
+    public Chestplate getChestplate() {
+        return chestplate;
+    }
+
+    @Override
+    public Shield getShield() {
+        return shield;
+    }
+
+    @Override
+    public int getArmour() {
+        return armour;
+    }
+
+    @Override
+    public void setArmour(int armour) {
+        this.armour = armour;
+    }
 }
