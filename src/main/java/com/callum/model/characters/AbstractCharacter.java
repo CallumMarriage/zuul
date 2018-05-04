@@ -1,12 +1,6 @@
 package com.callum.model.characters;
 
-import com.callum.model.items.characterItems.armour.Armour;
 import com.callum.model.items.characterItems.weapons.Weapon;
-
-import java.security.SecureRandom;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 
 /**
  * Created by callummarriage on 26/04/2018.

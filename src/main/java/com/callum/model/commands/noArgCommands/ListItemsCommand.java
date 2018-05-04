@@ -18,6 +18,10 @@ public class ListItemsCommand extends NoArgCommand {
 
     public boolean act(Game g){
 
+        if(g.getCurrentPlayer().getItems().size() == 0){
+            System.out.println("You have no items");
+            return false;
+        }
         for(Item item : g.getCurrentPlayer().getItems()){
             if(item instanceof AbstractCharacterItem) {
                 Boolean isEquiped = ((AbstractCharacterItem) item).getIsEquipped();

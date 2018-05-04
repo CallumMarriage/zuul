@@ -1,9 +1,9 @@
 [
   {
-    "name":"lab-key",
-    "description":"The Lab Key.",
+    "name":"ThroneRoom-key",
+    "description":"The ThroneRoom Key.",
     "type":"key",
-    "value":"lab"
+    "value":"ThroneRoom"
   },
   {
     "name":"health-pack",
@@ -24,7 +24,7 @@
     "value": "40"
   },
   {
-    "name" : "baisc-helmet",
+    "name" : "basic-helmet",
     "description": "A simple helmet for a simple man.",
     "type": "helmet",
     "value": "30"

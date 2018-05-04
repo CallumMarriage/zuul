@@ -30,6 +30,7 @@ public abstract class Room {
     protected String name;
     protected boolean isLocked;
     protected boolean isBossRoom;
+    protected boolean isStartingRoom;
 
     /**
      * Create a room described "description". Initially, it has no exits.
@@ -44,8 +45,16 @@ public abstract class Room {
         this.items = new ArrayList<>();
         this.isBossRoom = isBossRoom;
         this.enemy = null;
+        this.isStartingRoom = false;
     }
 
+    public boolean getIsStartingRoom(){
+        return this.isStartingRoom;
+    }
+
+    public void setIsStartingRoom(boolean setStartingRoom){
+        this.isStartingRoom = true;
+    }
     public boolean getIsBossRoom(){
         return this.isBossRoom;
     }

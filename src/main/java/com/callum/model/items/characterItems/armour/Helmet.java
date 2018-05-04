@@ -13,10 +13,14 @@ public class Helmet extends AbstractArmour {
 
     @Override
     public boolean deflect() {
-        Random random = new SecureRandom();
-        Integer deflection = random.nextInt((20)+1);
 
-        if(deflection > 17){
+        Random random = new SecureRandom();
+        Integer deflection = random.nextInt((value)+1);
+
+        if(deflection > (int)(value*(80.0f/100.0f))){
+            System.out.println("The enemy has struck your Helmet...");
+
+            System.out.println("And was deflected!");
             return true;
         }
 

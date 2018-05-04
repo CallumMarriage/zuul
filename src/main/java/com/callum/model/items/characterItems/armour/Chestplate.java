@@ -14,9 +14,15 @@ public class Chestplate extends AbstractArmour {
     @Override
     public boolean deflect() {
         Random random = new SecureRandom();
-        Integer deflection = random.nextInt((20)+1);
+        Integer deflection = random.nextInt((value)+1);
 
-        if(deflection > 12) {
+        if(deflection > (int)(value*(60.0f/100.0f))) {
+            System.out.println("The enemy has struck your Chestplate...");
+            if(random.nextBoolean()){
+                System.out.println("And was deflected!");
+            } else {
+                System.out.println("And your " + name + " has failed you!");
+            }
             return true;
         }
 

@@ -1,60 +1,95 @@
 [
   {
-    "roomName":"Pub",
-    "isLocked":"false",
-    "description":"This is the pub",
+    "roomName":"ThroneRoom",
+    "isLocked":"true",
+    "description":"the Throne Room, it is a huge room with a large throne in the center",
     "roomType":"NormalRoom",
-    "isBossRoom":"false"
+    "isBossRoom":"true",
+    "Exits":[
+
+    ]
   },
   {
     "roomName":"Library",
     "isLocked":"false",
     "description":"This is the library",
     "roomType":"NormalRoom",
-    "isBossRoom":"false"
-  },
-  {
-    "roomName":"TheRoom",
-    "isLocked":"false",
-    "description":"the Transporter room",
-    "roomType":"NormalRoom",
-    "isBossRoom":"false"
+    "isBossRoom":"false",
+    "Exits":[
 
+    ]
   },
   {
     "roomName":"Computer",
     "isLocked":"false",
     "description":"The Computer Room",
     "roomType":"NormalRoom",
-    "isBossRoom":"false"
-  },
-  {
-    "roomName":"Laboratory",
-    "isLocked":"false",
-    "description":"The Laboratory Room",
-    "roomType":"NormalRoom",
-    "isBossRoom":"false"
+    "isBossRoom":"false",
+    "Exits":[
+
+    ]
   },
   {
     "roomName":"Fish",
     "isLocked":"false",
     "description":"The Fish Room",
     "roomType":"NormalRoom",
-    "isBossRoom":"false"
+    "isBossRoom":"false",
+    "Exits":[
 
-  },
-  {
-    "roomName":"Dog",
-    "isLocked":"false",
-    "description":"The Dog Room",
-    "roomType":"NormalRoom",
-    "isBossRoom":"false"
+    ]
   },
   {
     "roomName":"Toliet",
     "isLocked":"false",
     "description":"The Toliet Room",
     "roomType":"NormalRoom",
-    "isBossRoom":"false"
+    "isBossRoom":"false",
+    "Exits":[
+
+    ]
+  },
+  {
+    "roomName": "Pub",
+    "isLocked": "false",
+    "description": "This is the pub",
+    "roomType": "NormalRoom",
+    "isBossRoom": "false",
+    "Exits": [
+      {"room": "Toliet", "direction": "north" }
+    ]
+  },
+  {
+    "roomName":"Corridor",
+    "isLocked":"false",
+    "description":"The Corridor, there are no windows either side.. but at the end there is a single giant door.",
+    "roomType":"NormalRoom",
+    "isBossRoom":"false",
+    "Exits":[
+      {"room": "ThroneRoom", "direction": "north"}
+    ]
+  }
+  {
+    "roomName":"Reception",
+    "isLocked":"false",
+    "description":"the computing admin office",
+    "roomType":"NormalRoom",
+    "isBossRoom":"false",
+    "Exits": [
+      {"room": "Pub", "direction": "east"},
+      {"room": "Library", "direction": "west"},
+      {"room": "Corridor", "direction": "north"}
+    ]
+  },
+  {
+    "roomName":"Outside",
+    "isLocked":"false",
+    "description":"outside the main entrance of the university",
+    "roomType":"NormalRoom",
+    "isBossRoom":"false",
+    "isStartingRoom": "true",
+    "Exits": [
+      {"room": "Reception", "direction": "north"}
+    ]
   }
 ]

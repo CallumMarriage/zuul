@@ -8,7 +8,7 @@ import com.callum.model.items.characterItems.AbstractCharacterItem;
  */
 public abstract class AbstractArmour extends AbstractCharacterItem implements Armour {
 
-    private Integer value;
+    public Integer value;
 
     public AbstractArmour(String name, String description, Integer value) {
         super(name, description);

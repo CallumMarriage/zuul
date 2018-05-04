@@ -8,10 +8,6 @@ import com.callum.model.items.characterItems.weapons.Weapon;
 import com.callum.model.commands.Command;
 import com.callum.model.rooms.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import static com.callum.model.constants.GameConstants.BASICMAP;
 
 /**
  *  This class is the main class of the "World of Zuul" application. 
@@ -38,9 +34,14 @@ public class Game {
     /**
      * Create the game and initialise its internal map.
      */
-    public Game() {
+    public Game() throws Exception {
         MapBuilder mapBuilder = new MapBuilder();
-        mapBuilder.start(generateBasicMap());
+        Room room = mapBuilder.start();
+        if(room != null){
+            currentRoom = room;
+        } else {
+            throw new Exception("No starting Room generated");
+        }
         parser = new Parser();
         Weapon weapon = new Sword("Sword","The Sword of Destiny!",  50);
         System.out.println("Starting weapon: " + weapon.getName() + ".");
@@ -70,9 +71,15 @@ public class Game {
      * Main method to start the game outside BlueJ
      */
     public static void main(String[] args) {
-        Game g = new Game();
-        g.play();
-        System.out.println(g);
+        try {
+            Game g = null;
+            g = new Game();
+            g.play();
+            System.out.println(g);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /*
@@ -104,23 +111,6 @@ public class Game {
 
     public Player getCurrentPlayer() {
         return currentPlayer;
-    }
-
-    public List<Area> generateBasicMap(){
-
-        RoomSet roomSet = RoomParser.readFile(BASICMAP);
-
-        Room outside = roomSet.getRooms().get(0);
-        currentRoom = outside;
-        Room office = roomSet.getRooms().get(2);
-        Room lab = roomSet.getRooms().get(1);
-        Area baseArea = new Area(outside, office);
-        Area bossArea = new Area(lab);
-
-        List<Area> areas = new ArrayList<>();
-        areas.add(baseArea);
-        areas.add(bossArea);
-        return areas;
     }
 }
 

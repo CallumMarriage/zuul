@@ -2,6 +2,7 @@ package com.callum.model.characters.player;
 
 import com.callum.model.characters.AbstractCharacter;
 import com.callum.model.characters.Character;
+import com.callum.model.items.characterItems.CharacterItem;
 import com.callum.model.items.characterItems.armour.Armour;
 import com.callum.model.items.characterItems.armour.Chestplate;
 import com.callum.model.items.characterItems.armour.Helmet;
@@ -27,6 +28,7 @@ public class Player extends AbstractCharacter{
     private Chestplate chestplate;
     private Shield shield;
     private int armour;
+    private List<CharacterItem> assignedItems;
 
     public Player(Weapon weapon, String name, int health){
         super(name, weapon, health);
@@ -36,6 +38,12 @@ public class Player extends AbstractCharacter{
         chestplate = null;
         shield = null;
         armour = 0;
+        assignedItems = new ArrayList<>();
+        assignedItems.add(weapon);
+    }
+
+    public List<CharacterItem> getAssignedItems(){
+        return this.assignedItems;
     }
 
     public List<Item> getItems(){
@@ -95,33 +103,39 @@ public class Player extends AbstractCharacter{
             if(this.weapon != null) {
                 weapon.setEquipped(false);
                 items.add(this.weapon);
+                assignedItems.remove(this.weapon);
             }
-            items.add(item);
             this.weapon = (Weapon) item;
+            assignedItems.add(this.weapon);
             this.weapon.setEquipped(true);
         } else if(item instanceof Armour){
             armour += ((Armour) item).getValue();
             if (item instanceof Shield) {
                 if(shield != null){
-                    shield.setEquipped(false);
+                    assignedItems.remove(this.shield);
+                    this.shield.setEquipped(false);
+                    items.add(this.shield);
                 }
-                items.add(item);
                 this.shield = (Shield) item;
+                assignedItems.add(this.shield);
                 this.shield.setEquipped(true);
             } else if (item instanceof Helmet) {
                 if(helmet != null){
-                    helmet.setEquipped(false);
+                    this.helmet.setEquipped(false);
+                    assignedItems.remove(this.helmet);
+                    items.add(this.helmet);
                 }
-                items.add(item);
                 this.helmet = (Helmet) item;
                 this.helmet.setEquipped(true);
             } else if (item instanceof Chestplate) {
                 if(chestplate != null){
                     chestplate.setEquipped(false);
+                    assignedItems.remove(this.chestplate);
+                    items.add(this.chestplate);
                 }
-                items.add(item);
                 this.chestplate = (Chestplate) item;
                 this.chestplate.setEquipped(true);
+                assignedItems.add(this.chestplate);
             }
         } else {
             items.add(item);
@@ -182,9 +196,7 @@ public class Player extends AbstractCharacter{
             Random random = new SecureRandom();
             int rand = random.nextInt(armour.size() -1 + 1);
 
-            if (armour.get(rand).deflect()) {
-                return true;
-            }
+            return armour.get(rand).deflect();
         }
         return false;
 

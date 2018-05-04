@@ -13,15 +13,15 @@ public class Shield extends AbstractArmour {
 
     @Override
     public boolean deflect() {
-
         Random random = new SecureRandom();
-        Integer deflection = random.nextInt((20)+1);
+        Integer deflection = random.nextInt((value)+1);
 
-        return deflection > 13;
-    }
+        if(deflection > (int)(value*(55.0f/100.0f))){
+            System.out.println("The enemy has struck your Shield...");
+            System.out.println("And was deflected!");
+            return true;
+        }
 
-    @Override
-    public String getBasicInfo() {
-        return name;
+        return false;
     }
 }

@@ -4,15 +4,16 @@ import com.callum.model.characters.Character;
 
 import java.security.SecureRandom;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by callummarriage on 26/04/2018.
  */
 public class EnemySet {
-    private ArrayList enemies;
+    private List<Enemy> enemies;
 
     public EnemySet(){
-        enemies = new ArrayList();
+        enemies = new ArrayList<Enemy>();
     }
 
     public Enemy findRandomEnemy(){
@@ -21,10 +22,10 @@ public class EnemySet {
             return null;
         }
         int i = random.nextInt(enemies.size());
-        return (Enemy) enemies.get(i);
+        return enemies.get(i);
     }
 
-    public ArrayList getEnemies(){
+    public List<Enemy> getEnemies(){
         return enemies;
     }
 
