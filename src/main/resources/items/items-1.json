@@ -1,5 +1,11 @@
 [
   {
+    "name":"Arrow",
+    "description": "An arrow.",
+    "type": "arrow",
+    "value": "10"
+  },
+  {
     "name":"ThroneRoom-key",
     "description":"The ThroneRoom Key.",
     "type":"key",
@@ -34,5 +40,11 @@
     "description": "A simple chestplate for a simple man.",
     "type": "chestplate",
     "value": "60"
+  },
+  {
+    "name" : "bow",
+    "description": "A bow",
+    "type": "bow",
+    "value": "10"
   }
 ]

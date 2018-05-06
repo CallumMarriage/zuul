@@ -6,6 +6,7 @@ import com.callum.model.items.Key;
 import com.callum.model.items.characterItems.armour.Chestplate;
 import com.callum.model.items.characterItems.armour.Helmet;
 import com.callum.model.items.characterItems.armour.Shield;
+import com.callum.model.items.characterItems.weapons.Arrow;
 import com.callum.model.items.characterItems.weapons.Bow;
 import com.callum.model.items.characterItems.weapons.Staff;
 import com.callum.model.items.characterItems.weapons.Sword;
@@ -25,6 +26,7 @@ public class ItemFactory {
             case "helmet" : return new Helmet(name, description, Integer.parseInt(value));
             case "shield" : return new Shield(name, description, Integer.parseInt(value));
             case "chestplate": return new Chestplate(name, description, Integer.parseInt(value));
+            case "arrow": return new Arrow(name,description, Integer.parseInt(value));
             default: return null;
         }
     }

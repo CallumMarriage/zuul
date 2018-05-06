@@ -1,6 +1,6 @@
 package com.callum.model.commands.noArgCommands;
 
-import com.callum.model.Game;
+import com.callum.Game;
 import com.callum.model.characters.player.Player;
 import com.callum.model.items.characterItems.CharacterItem;
 import com.callum.model.items.characterItems.armour.Armour;

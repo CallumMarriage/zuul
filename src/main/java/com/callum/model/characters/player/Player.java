@@ -4,6 +4,7 @@ import com.callum.model.characters.AbstractCharacter;
 import com.callum.model.characters.Character;
 import com.callum.model.items.characterItems.CharacterItem;
 import com.callum.model.items.characterItems.armour.*;
+import com.callum.model.items.characterItems.weapons.Bow;
 import com.callum.model.items.factory.ItemFactory;
 import com.callum.model.items.characterItems.weapons.Weapon;
 import com.callum.model.items.Item;
@@ -21,7 +22,6 @@ public class Player extends AbstractCharacter{
 
     private List<Item> items;
     private int score;
-
     private List<CharacterItem> assignedItems;
 
     public Player(Weapon weapon, String name, int health){
@@ -92,7 +92,11 @@ public class Player extends AbstractCharacter{
     public void setCharacterItem(Item item){
         System.out.println("You have picked up " + item.getBasicInfo());
         if(item instanceof Weapon){
-            setWeapon((Weapon) item);
+            if(item instanceof Bow) {
+                setBow((Bow) item);
+            } else {
+                setWeapon((Weapon) item);
+            }
         } else if(item instanceof Armour){
             if (item instanceof Shield) {
                 setShield((Shield) item);
@@ -109,20 +113,23 @@ public class Player extends AbstractCharacter{
     public void changeCharacterItem(String name){
         for(Item item: items){
             if(item instanceof Weapon && item.getName().equals(name)){
+                if(item instanceof Bow){
+                    setBow((Bow) item);
+                }
                 setWeapon((Weapon) item);
-            } else if(item instanceof Armour) {
-                if (item instanceof Helmet && item.getName().equals(name)) {
+            } else if(item instanceof Armour && item.getName().equals(name)) {
+                if (item instanceof Helmet) {
                     setHelmet((Helmet) item);
-                } else if (item instanceof Chestplate && item.getName().equals(name)){
+                } else if (item instanceof Chestplate ){
                     setChestplate((Chestplate) item);
-                } else if(item instanceof Shield && item.getName().equals(name)){
+                } else if(item instanceof Shield){
                     setShield((Shield) item);
                 }
             }
         }
     }
 
-    public void addCharItem(CharacterItem item){
+    private void addCharItem(CharacterItem item){
         items.remove(item);
         assignedItems.add(item);
         System.out.println("You are now using the " + item.getName());
@@ -130,7 +137,7 @@ public class Player extends AbstractCharacter{
     }
 
 
-    public void removeCharItem(CharacterItem item){
+    private void removeCharItem(CharacterItem item){
         assignedItems.remove(item);
         items.add(item);
     }
@@ -144,7 +151,7 @@ public class Player extends AbstractCharacter{
 
     }
 
-    public void setHelmet(Helmet helmet){
+    private void setHelmet(Helmet helmet){
         if(this.helmet != null){
             removeCharItem(this.helmet);
         }
@@ -152,7 +159,7 @@ public class Player extends AbstractCharacter{
         this.helmet = helmet;
     }
 
-    public void setChestplate(Chestplate chestplate){
+    private void setChestplate(Chestplate chestplate){
         if(this.chestplate != null){
             removeCharItem(this.chestplate);
         }
@@ -160,7 +167,7 @@ public class Player extends AbstractCharacter{
         this.chestplate = chestplate;
     }
 
-    public void setShield(Shield shield){
+    private void setShield(Shield shield){
         if(this.shield != null){
             removeCharItem(this.chestplate);
         }
@@ -185,6 +192,16 @@ public class Player extends AbstractCharacter{
             return armour.get(rand).deflect();
         }
         return false;
+    }
+
+    @Override
+    public void setBow(Bow bow) {
+        if(this.bow != null) {
+            removeCharItem(this.bow);
+        }
+
+        this.bow = bow;
+        addCharItem(this.bow);
     }
 
     public void updateScore(int score){

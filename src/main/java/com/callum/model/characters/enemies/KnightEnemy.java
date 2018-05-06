@@ -1,6 +1,7 @@
 package com.callum.model.characters.enemies;
 
 import com.callum.model.characters.Character;
+import com.callum.model.items.characterItems.weapons.Bow;
 import com.callum.model.items.characterItems.weapons.Weapon;
 
 /**
@@ -29,6 +30,11 @@ public class KnightEnemy extends Enemy {
     @Override
     public boolean deflectAttack() {
         return false;
+    }
+
+    @Override
+    public void setBow(Bow bow) {
+        return;
     }
 
 }

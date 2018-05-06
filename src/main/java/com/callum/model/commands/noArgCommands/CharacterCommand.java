@@ -1,11 +1,9 @@
 package com.callum.model.commands.noArgCommands;
 
-import com.callum.model.Game;
+import com.callum.Game;
 import com.callum.model.characters.player.Player;
-import com.callum.model.items.characterItems.CharacterItem;
 import com.callum.model.items.characterItems.armour.Armour;
-
-import java.util.List;
+import com.callum.model.items.characterItems.weapons.Arrow;
 
 
 /**
@@ -14,7 +12,7 @@ import java.util.List;
 public class CharacterCommand extends NoArgCommand {
     @Override
     public boolean act(Game g) {
-        System.out.println("YOUR CHARACTER");
+        System.out.println(createTitle(g.getCurrentPlayer().getName()));
         Player player = g.getCurrentPlayer();
 
         if(player.getWeapon() != null){
@@ -40,6 +38,15 @@ public class CharacterCommand extends NoArgCommand {
         } else {
             System.out.println("Shield : EMPTY");
         }
+
+        if(player.getBow() != null){
+            System.out.println("Bow : " + player.getBow().getCharacterItemsAndValues());
+        } else {
+            System.out.println("Bow : EMPTY");
+        }
+
+        System.out.println("Quiver : " + player.getArrows().size());
+
         return false;
     }
 

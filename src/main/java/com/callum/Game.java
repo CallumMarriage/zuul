@@ -1,5 +1,6 @@
-package com.callum.model;
+package com.callum;
 
+import com.callum.model.MapBuilder;
 import com.callum.model.Parsers.Parser;
 import com.callum.model.characters.player.Player;
 import com.callum.model.items.characterItems.weapons.Sword;
@@ -38,7 +39,6 @@ public class Game {
     public Game(int numberOfLevls) throws Exception {
         parser = new Parser();
         Weapon weapon = new Sword("Sword","The Sword of Destiny!",  50);
-        System.out.println("Starting weapon: " + weapon.getName() + ".");
         currentPlayer = new Player(weapon, "Steve", 200);
         level = 1;
         this.numberOfLevls = numberOfLevls;
@@ -56,6 +56,8 @@ public class Game {
         }
 
         System.out.println(currentRoom.getLongDescription());
+        System.out.println("Starting weapon: " + getCurrentPlayer().getWeapon().getName() + ".");
+        System.out.println();
         if(currentRoom.getEnemy() == null){
             System.out.println("\nIt is empty, you may move on");
         } else if(!currentRoom.getEnemy().getDead()){

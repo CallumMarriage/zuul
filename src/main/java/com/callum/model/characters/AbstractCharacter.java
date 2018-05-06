@@ -3,7 +3,12 @@ package com.callum.model.characters;
 import com.callum.model.items.characterItems.armour.Chestplate;
 import com.callum.model.items.characterItems.armour.Helmet;
 import com.callum.model.items.characterItems.armour.Shield;
+import com.callum.model.items.characterItems.weapons.Arrow;
+import com.callum.model.items.characterItems.weapons.Bow;
 import com.callum.model.items.characterItems.weapons.Weapon;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by callummarriage on 26/04/2018.
@@ -17,6 +22,9 @@ public abstract class AbstractCharacter implements Character {
     protected Helmet helmet;
     protected Chestplate chestplate;
     protected Shield shield;
+    private List<Arrow> arrows;
+    protected Bow bow;
+
 
     public AbstractCharacter(String name, Weapon weapon, int health) {
         this.weapon = weapon;
@@ -26,6 +34,8 @@ public abstract class AbstractCharacter implements Character {
         helmet = null;
         chestplate = null;
         shield = null;
+        arrows = new ArrayList<>();
+        bow = null;
     }
 
     @Override
@@ -81,4 +91,25 @@ public abstract class AbstractCharacter implements Character {
         return shield;
     }
 
+    @Override
+    public List<Arrow> getArrows() {
+        return arrows;
+    }
+
+    @Override
+    public void addArrow(Arrow arrow) {
+        this.arrows.add(arrow);
+    }
+
+    @Override
+    public void setArrows(List<Arrow> arrows){
+        this.arrows = arrows;
+    }
+    @Override
+    public Bow getBow() {
+        return bow;
+    }
+
+    @Override
+    public abstract void setBow(Bow bow);
 }

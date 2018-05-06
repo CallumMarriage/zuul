@@ -2,6 +2,8 @@ package com.callum.model.commands.factory;
 
 import com.callum.model.commands.*;
 import com.callum.model.commands.noArgCommands.*;
+import com.callum.model.commands.noArgCommands.attackCommands.FireCommand;
+import com.callum.model.commands.noArgCommands.attackCommands.SwordAttackCommand;
 import com.callum.model.commands.oneArgCommands.ChangeWeaponCommand;
 import com.callum.model.commands.oneArgCommands.GoCommand;
 import com.callum.model.commands.oneArgCommands.SpeakCommand;
@@ -29,7 +31,7 @@ public class CommandFactory {
             case "quit": return new QuitCommand();
             case "look": return new LookCommand();
             case "xray": return new XrayCommand();
-            case "attack" : return new AttackCommand();
+            case "attack" : return new SwordAttackCommand();
             case "pickup": return new PickupCommand();
             case "heal": return new HealCommand();
             case "stats": return new StatsCommand();
@@ -37,6 +39,7 @@ public class CommandFactory {
             case "inventory": return new ListItemsCommand();
             case "character": return new CharacterCommand();
             case "speak": return new SpeakCommand();
+            case "fire": return new FireCommand();
             default: return null;
         }
     }

@@ -1,6 +1,6 @@
 package com.callum.model.commands.noArgCommands;
 
-import com.callum.model.Game;
+import com.callum.Game;
 import com.callum.model.commands.Command;
 
 /**
@@ -25,5 +25,9 @@ public class NoArgCommand implements Command {
     @Override
     public void addArgument(String arg) {
 
+    }
+
+    public String createTitle(String title){
+        return "<------------| " + title +" |------------>";
     }
 }
