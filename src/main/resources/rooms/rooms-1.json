@@ -12,7 +12,7 @@
   {
     "roomName":"Computer",
     "isLocked":"false",
-    "description":"The Computer Room",
+    "description":"the Computer Room",
     "roomType":"NormalRoom",
     "isBossRoom":"false",
     "Exits":[
@@ -22,7 +22,7 @@
   {
     "roomName":"Library",
     "isLocked":"false",
-    "description":"This is the library",
+    "description":"the library",
     "roomType":"NormalRoom",
     "isBossRoom":"false",
     "Exits":[
@@ -32,7 +32,7 @@
   {
     "roomName":"Fish",
     "isLocked":"false",
-    "description":"The Fish Room",
+    "description":"the Aquarium",
     "roomType":"NormalRoom",
     "isBossRoom":"false",
     "Exits":[
@@ -42,7 +42,7 @@
   {
     "roomName":"Toliet",
     "isLocked":"false",
-    "description":"The Toliet Room",
+    "description":"the Toliets",
     "roomType":"NormalRoom",
     "isBossRoom":"false",
     "Exits":[
@@ -52,7 +52,7 @@
   {
     "roomName": "Pub",
     "isLocked": "false",
-    "description": "This is the pub",
+    "description": "the pub",
     "roomType": "NormalRoom",
     "isBossRoom": "false",
     "Exits": [
@@ -62,7 +62,7 @@
   {
     "roomName":"Corridor",
     "isLocked":"false",
-    "description":"The Corridor, there are no windows either side.. there is a door to the east and at the end there is a single giant door.",
+    "description":"the Corridor, there are no windows either side.. there is a door to the east and at the end there is a single giant door.",
     "roomType":"NormalRoom",
     "isBossRoom":"false",
     "Exits":[
