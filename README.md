@@ -2,7 +2,7 @@
 
 mvn clean install to download dependencies
 
-navigate to Game then run Game Main method to run game.
+navigate to Game then run Game Main method to run the game.
 
 Use Game run terminal to enter commands
 
