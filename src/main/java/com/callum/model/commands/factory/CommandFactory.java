@@ -22,7 +22,7 @@ import com.callum.model.commands.oneArgCommands.XrayCommand;
 
 public class CommandFactory {
     // a constant array that holds all valid command words
-    private static final String[] ALL_COMMANDS = new String[]{ "go", "quit", "help", "attack", "look", "xray", "pickup", "heal", "stats", "pickup", "change", "inventory", "character"};
+    private static final String[] ALL_COMMANDS = new String[]{ "go", "quit", "help", "attack", "look", "xray", "pickup", "heal", "stats", "pickup", "change", "inventory", "character", "fire"};
 
     public Command createCommand(String command){
         switch (command) {

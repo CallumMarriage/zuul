@@ -1,4 +1,4 @@
-package com.callum.model.Parsers;
+package com.callum.model.parsers;
 
 import com.callum.model.characters.enemies.factory.EnemyFactory;
 import com.callum.model.characters.enemies.EnemySet;

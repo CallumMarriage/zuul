@@ -19,15 +19,8 @@ public class Helmet extends AbstractArmour {
 
         if(deflection > (int)(value*(80.0f/100.0f))){
             System.out.println("The enemy has struck your Helmet...");
-            if(random.nextBoolean()){
-                System.out.println("And was deflected!");
-                return true;
-            } else {
-                System.out.println("And your " + name + " has failed you!");
-                return false;
-            }
+            decideDeflection(random);
         }
-
         return false;
     }
 

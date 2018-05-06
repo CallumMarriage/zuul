@@ -1,4 +1,4 @@
-package com.callum.model.Parsers;
+package com.callum.model.parsers;
 
 import com.callum.model.rooms.Room;
 import com.callum.model.rooms.factory.RoomFactory;
