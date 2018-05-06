@@ -1,0 +1,74 @@
+[
+  {
+    "roomName":"BoardRoom",
+    "isLocked":"true",
+    "description":"the Board Room, a large dark room with a large table lined with chairs.\n At the end of the table sits a man in a dark suit",
+    "roomType":"NormalRoom",
+    "isBossRoom":"true",
+    "Exits":[
+
+    ]
+  },
+  {
+    "roomName":"Toliet",
+    "isLocked":"false",
+    "description":"The Toliet Room",
+    "roomType":"NormalRoom",
+    "isBossRoom":"false",
+    "Exits":[
+
+    ]
+  },
+  {
+    "roomName": "ADC",
+    "isLocked": "false",
+    "description": "the ADC, this is hell",
+    "roomType": "NormalRoom",
+    "isBossRoom": "false",
+    "Exits": [
+      {"room": "Toliet", "direction": "north" }
+    ]
+  },
+  {
+    "roomName":"MeetingRooms",
+    "isLocked":"false",
+    "description":"The meeting rooms.",
+    "roomType":"NormalRoom",
+    "isBossRoom":"false",
+    "Exits":[
+      {"room": "BoardRoom", "direction": "north"}
+    ]
+  },
+  {
+    "roomName":"Canteen",
+    "isLocked":"false",
+    "description":"An abandoned Canteen, magnificent food was once served here.",
+    "roomType":"NormalRoom",
+    "isBossRoom":"false",
+    "Exits":[
+    ]
+  },
+  {
+    "roomName":"Reception",
+    "isLocked":"false",
+    "description":"the main reception for the Capgemini office",
+    "roomType":"NormalRoom",
+    "isBossRoom":"false",
+    "Exits": [
+      {"room": "MeetingRooms", "direction": "east"},
+      {"room": "ADC", "direction": "west"},
+      {"room": "Canteen", "direction": "north"}
+    ]
+  },
+  {
+    "roomName":"Outside",
+    "isLocked":"false",
+    "description":"outside the main entrance of the Aston office",
+    "roomType":"NormalRoom",
+    "isBossRoom":"false",
+    "isStartingRoom": "true",
+    "Exits": [
+      {"room": "Reception", "direction": "north"}
+    ]
+  }
+]

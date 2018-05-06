@@ -1,6 +1,6 @@
 package com.callum.model.Parsers;
 import com.callum.model.commands.Command;
-import com.callum.model.commands.CommandFactory;
+import com.callum.model.commands.factory.CommandFactory;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -64,6 +64,10 @@ public class Parser {
         else
             word2 = null;
 
+        if(word1 == null){
+            System.out.println("Please enter a command!");
+            return null;
+        }
 
 
         Command command = commandFactory.createCommand(word1);

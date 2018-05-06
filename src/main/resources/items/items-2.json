@@ -1,0 +1,38 @@
+[
+  {
+    "name":"BoardRoom-key",
+    "description":"The BoardRoom Key.",
+    "type":"key",
+    "value":"BoardRoom"
+  },
+  {
+    "name":"health-pack",
+    "description": "Health Pack.",
+    "type": "health",
+    "value": "50"
+  },
+  {
+    "name":"elder-sword",
+    "description": "The ancient Elder Sword.",
+    "type": "sword",
+    "value": "90"
+  },
+  {
+    "name":"elfish-shield",
+    "description": "The most intricate elfish shield.",
+    "type": "shield",
+    "value": "40"
+  },
+  {
+    "name" : "golden-helmet",
+    "description": "A shining golden helmet, he wont deflect much but look great!",
+    "type": "helmet",
+    "value": "5"
+  },
+  {
+    "name" : "roman-chestplate",
+    "description": "A solid chestplate for the legions",
+    "type": "chestplate",
+    "value": "70"
+  }
+]

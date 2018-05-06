@@ -1,40 +1,68 @@
 package com.callum.model.Parsers;
 
-import com.callum.model.rooms.RoomFactory;
+import com.callum.model.rooms.Room;
+import com.callum.model.rooms.factory.RoomFactory;
 import com.callum.model.rooms.RoomSet;
-import com.sun.org.apache.xpath.internal.operations.Bool;
-import org.apache.commons.io.FileUtils;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.lang.reflect.Array;
-import java.security.SecureRandom;
-
-import static com.callum.model.constants.GameConstants.ROOMS;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by callummarriage on 27/04/2018.
  */
 public class RoomParser {
 
-    public static RoomSet readFile(String file){
+    public static List<RoomSet> readFile(String file){
+        List<RoomSet> normalAndBossRooms = new ArrayList<>();
         RoomSet roomSet = new RoomSet();
+        RoomSet bossRooms = new RoomSet();
 
         try {
             Object object = new JSONParser().parse(new FileReader(file));
 
-            JSONArray jsonArray= (JSONArray) object;
+            JSONArray rooms = (JSONArray) object;
 
             RoomFactory roomFactory = new RoomFactory();
 
-            for(Object o : jsonArray) {
-                JSONObject room = (JSONObject) o;
-                roomSet.addRoom(roomFactory.createRoom((String) room.get("roomType"),(String) room.get("roomName"), (String) room.get("description"), Boolean.parseBoolean((String) room.get("isLocked")), Boolean.parseBoolean((String) room.get("isBossRoom"))));
+            for(Object Oroom : rooms) {
+                JSONObject room = (JSONObject) Oroom;
+                Room newRoom = roomFactory.createRoom((String) room.get("roomType"),(String) room.get("roomName"), (String) room.get("description"), Boolean.parseBoolean((String) room.get("isLocked")), Boolean.parseBoolean((String) room.get("isBossRoom")));
+                JSONArray exits = (JSONArray) room.get("Exits");
+                for(Object Oexit : exits){
+                    JSONObject exit = (JSONObject) Oexit;
+                    Boolean found = false;
+                    for(Room otherRoom : roomSet.getRooms()){
+                        if(otherRoom.getName().equals(exit.get("room"))) {
+                            found = true;
+                            newRoom.joinRooms((String) exit.get("direction"), otherRoom);
+                        }
+                    }
+                    if(!found){
+                        for(Room bossRoom : bossRooms.getRooms()){
+                            if(bossRoom.getName().equals(exit.get("room"))) {
+                                found = true;
+                                newRoom.joinRooms((String) exit.get("direction"), bossRoom);
+                            }
+                        }
+                    }
+                    if(!found){
+                        System.out.println("Room not connected:" + newRoom.getName());
+                    }
+                }
+                if(!newRoom.getIsBossRoom()) {
+                    if(room.get("isStartingRoom") != null){
+                        newRoom.setIsStartingRoom(true);
+                    }
+                    roomSet.addRoom(newRoom);
+                } else {
+                    bossRooms.addRoom(newRoom);
+                }
             }
 
         } catch (IOException e) {
@@ -42,6 +70,11 @@ public class RoomParser {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        return roomSet;
+
+        //Element one contains the normal rooms
+        normalAndBossRooms.add(roomSet);
+        //Element two contains the boss rooms
+        normalAndBossRooms.add(bossRooms);
+        return normalAndBossRooms;
     }
 }

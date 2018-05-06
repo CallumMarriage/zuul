@@ -23,11 +23,6 @@ public class TransporterRoomTest {
         transporterRoom.setRoomSet(roomSet);
 
         assertSame(room, transporterRoom.getExit("any"));
-
-
-        assertEquals(.3, .15 + .15, 1e-6);
-
-
     }
 
     @Test

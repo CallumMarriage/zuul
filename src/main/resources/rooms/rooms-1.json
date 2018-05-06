@@ -1,0 +1,96 @@
+[
+  {
+    "roomName":"ThroneRoom",
+    "isLocked":"true",
+    "description":"the Throne Room, it is a huge room with a large throne in the center",
+    "roomType":"NormalRoom",
+    "isBossRoom":"true",
+    "Exits":[
+
+    ]
+  },
+  {
+    "roomName":"Computer",
+    "isLocked":"false",
+    "description":"The Computer Room",
+    "roomType":"NormalRoom",
+    "isBossRoom":"false",
+    "Exits":[
+
+    ]
+  },
+  {
+    "roomName":"Library",
+    "isLocked":"false",
+    "description":"This is the library",
+    "roomType":"NormalRoom",
+    "isBossRoom":"false",
+    "Exits":[
+      {"room":"Computer", "direction": "north"}
+    ]
+  },
+  {
+    "roomName":"Fish",
+    "isLocked":"false",
+    "description":"The Fish Room",
+    "roomType":"NormalRoom",
+    "isBossRoom":"false",
+    "Exits":[
+
+    ]
+  },
+  {
+    "roomName":"Toliet",
+    "isLocked":"false",
+    "description":"The Toliet Room",
+    "roomType":"NormalRoom",
+    "isBossRoom":"false",
+    "Exits":[
+
+    ]
+  },
+  {
+    "roomName": "Pub",
+    "isLocked": "false",
+    "description": "This is the pub",
+    "roomType": "NormalRoom",
+    "isBossRoom": "false",
+    "Exits": [
+      {"room": "Toliet", "direction": "north" }
+    ]
+  },
+  {
+    "roomName":"Corridor",
+    "isLocked":"false",
+    "description":"The Corridor, there are no windows either side.. there is a door to the east and at the end there is a single giant door.",
+    "roomType":"NormalRoom",
+    "isBossRoom":"false",
+    "Exits":[
+      {"room": "ThroneRoom", "direction": "north"},
+      {"room": "Fish", "direction": "east" }
+    ]
+  },
+  {
+    "roomName":"Reception",
+    "isLocked":"false",
+    "description":"the computing admin office",
+    "roomType":"NormalRoom",
+    "isBossRoom":"false",
+    "Exits": [
+      {"room": "Pub", "direction": "east"},
+      {"room": "Library", "direction": "west"},
+      {"room": "Corridor", "direction": "north"}
+    ]
+  },
+  {
+    "roomName":"Outside",
+    "isLocked":"false",
+    "description":"outside the main entrance of the university",
+    "roomType":"NormalRoom",
+    "isBossRoom":"false",
+    "isStartingRoom": "true",
+    "Exits": [
+      {"room": "Reception", "direction": "north"}
+    ]
+  }
+]

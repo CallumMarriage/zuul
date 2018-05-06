@@ -1,0 +1,36 @@
+[
+  {
+    "type":"KnightEnemy",
+    "name":"Level 2 Enemy 1",
+    "health":"80",
+    "weapon": {
+      "name":"Sword",
+      "description":"A sword",
+      "type":"sword",
+      "value":"27"
+    }
+  },
+  {
+    "type":"KnightEnemy",
+    "name":"Level 2 Enemy 2",
+    "health":"55",
+    "weapon": {
+      "name":"Sword",
+      "description":"A sword",
+      "type":"sword",
+      "value":"20"
+    }
+  },
+
+  {
+  "type":"BossEnemy",
+  "name":"Level 2 Boss",
+  "health":"105",
+  "weapon": {
+    "name":"Staff",
+    "description":"A mighty Staff",
+    "type":"staff",
+    "value":"60"
+  }
+}
+]

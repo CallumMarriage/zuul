@@ -14,7 +14,7 @@ public abstract class AbstractItem implements Item{
 
     public AbstractItem(String name, String description){
         this.description = description;
-        isActive = true;
+        this.isActive = true;
         this.name = name;
     }
 
@@ -36,6 +36,12 @@ public abstract class AbstractItem implements Item{
         sb.append(description + ".");
         return sb.toString();
     }
+
+    @Override
+    public String getBasicInfo() {
+        return name;
+    }
+
 
     public abstract Integer act(Character character);
 

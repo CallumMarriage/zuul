@@ -1,7 +1,7 @@
 package com.callum.model.characters.enemies;
 
 import com.callum.model.characters.Character;
-import com.callum.model.items.Weapon;
+import com.callum.model.items.characterItems.weapons.Weapon;
 
 /**
  * Created by callummarriage on 26/04/2018.
@@ -11,6 +11,7 @@ public class KnightEnemy extends Enemy {
     public KnightEnemy(Weapon weapon, String name, int health){
         super(name, weapon, health);
         type ="Knight";
+        this.value = 50;
     }
 
     @Override
@@ -23,6 +24,11 @@ public class KnightEnemy extends Enemy {
     @Override
     public void speak(String command) {
         System.out.println("Hi, I am a knight");
+    }
+
+    @Override
+    public boolean deflectAttack() {
+        return false;
     }
 
 }

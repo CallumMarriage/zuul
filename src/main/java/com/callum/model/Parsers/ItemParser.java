@@ -1,7 +1,7 @@
 package com.callum.model.Parsers;
 
 import com.callum.model.items.Item;
-import com.callum.model.items.ItemFactory;
+import com.callum.model.items.factory.ItemFactory;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -12,18 +12,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.callum.model.constants.GameConstants.ITEMS;
-
 /**
  * Created by callummarriage on 27/04/2018.
  */
 public class ItemParser {
 
-    public static List<Item> readFile(){
+    public static List<Item> readFile(String itemsFile){
 
         List<Item> items = new ArrayList<>();
         try {
-            Object object = new JSONParser().parse(new FileReader(ITEMS));
+            Object object = new JSONParser().parse(new FileReader(itemsFile));
 
             JSONArray jsonArray= (JSONArray) object;
 

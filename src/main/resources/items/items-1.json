@@ -1,0 +1,38 @@
+[
+  {
+    "name":"ThroneRoom-key",
+    "description":"The ThroneRoom Key.",
+    "type":"key",
+    "value":"ThroneRoom"
+  },
+  {
+    "name":"health-pack",
+    "description": "Health Pack.",
+    "type": "health",
+    "value": "10"
+  },
+  {
+    "name":"DragonsBourne-sword",
+    "description": "The mighty Dragons Bourne.",
+    "type": "sword",
+    "value": "70"
+  },
+  {
+    "name":"nilfgardian-shield",
+    "description": "The mighty Nilfgardian Shield.",
+    "type": "shield",
+    "value": "40"
+  },
+  {
+    "name" : "basic-helmet",
+    "description": "A simple helmet for a simple man.",
+    "type": "helmet",
+    "value": "30"
+  },
+  {
+    "name" : "basic-chestplate",
+    "description": "A simple chestplate for a simple man.",
+    "type": "chestplate",
+    "value": "60"
+  }
+]

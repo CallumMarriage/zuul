@@ -1,16 +1,11 @@
 package com.callum.model;
 
 import com.callum.model.Parsers.Parser;
-import com.callum.model.Parsers.RoomParser;
 import com.callum.model.characters.player.Player;
-import com.callum.model.items.Weapon;
+import com.callum.model.items.characterItems.weapons.Sword;
+import com.callum.model.items.characterItems.weapons.Weapon;
 import com.callum.model.commands.Command;
 import com.callum.model.rooms.*;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static com.callum.model.constants.GameConstants.BASICMAP;
 
 /**
  *  This class is the main class of the "World of Zuul" application. 
@@ -34,23 +29,43 @@ public class Game {
     private Room currentRoom;
     private Player currentPlayer;
 
+    public int level;
+    public int numberOfLevls;
+
     /**
      * Create the game and initialise its internal map.
      */
-    public Game() {
-        MapBuilder mapBuilder = new MapBuilder();
-        mapBuilder.start(generateBasicMap());
+    public Game(int numberOfLevls) throws Exception {
         parser = new Parser();
-        Weapon weapon = new Weapon("Sword","The Sword of Destiny!",  50);
+        Weapon weapon = new Sword("Sword","The Sword of Destiny!",  50);
+        System.out.println("Starting weapon: " + weapon.getName() + ".");
         currentPlayer = new Player(weapon, "Steve", 200);
+        level = 1;
+        this.numberOfLevls = numberOfLevls;
     }
 
+    public void loadLevel() throws Exception {
+        System.out.println("LEVEL " + level);
+        System.out.println();
+        MapBuilder mapBuilder = new MapBuilder();
+        Room room = mapBuilder.start("./src/main/resources/enemies/enemies-"+level+".json", "./src/main/resources/items/items-"+level+".json", "./src/main/resources/rooms/rooms-"+level+".json");
+        if(room != null){
+            currentRoom = room;
+        } else {
+            throw new Exception("No starting Room generated");
+        }
+
+        System.out.println(currentRoom.getLongDescription());
+        if(currentRoom.getEnemy() == null){
+            System.out.println("\nIt is empty, you may move on");
+        } else if(!currentRoom.getEnemy().getDead()){
+            System.out.println(currentRoom.getEnemy().getDescription());
+        }
+    }
     /**
      *  Main play routine.  Loops until end of play.
      */
     public void play() {
-        printWelcome();
-
 
         // Enter the main command loop.  Here we repeatedly read commands and
         // execute them until the game is over.
@@ -62,16 +77,24 @@ public class Game {
                 finished = command.act(this);
             }
         }
-        System.out.println("Thank you for playing.  Good bye.");
+        System.out.println("Your score was: " + getCurrentPlayer().getScore() +"\nThank you for playing.  Good bye.");
     }
 
     /**
      * Main method to start the game outside BlueJ
      */
     public static void main(String[] args) {
-        Game g = new Game();
-        g.play();
-        System.out.println(g);
+        try {
+            Game g = null;
+            g = new Game(2);
+            printWelcome();
+            g.loadLevel();
+            g.play();
+            System.out.println(g);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /*
@@ -84,13 +107,22 @@ public class Game {
     /**
      * Print out the opening message for the player.
      */
-    private void printWelcome() {
+    private static void printWelcome() {
         System.out.println();
+        System.out.println("" +
+                "   ▄██████▄     ▄████████   ▄▄▄▄███▄▄▄▄      ▄████████       ▄██████▄     ▄████████       ▄███████▄  ███    █▄  ███    █▄   ▄█       \n" +
+                "  ███    ███   ███    ███ ▄██▀▀▀███▀▀▀██▄   ███    ███      ███    ███   ███    ███      ██▀     ▄██ ███    ███ ███    ███ ███       \n" +
+                "  ███    █▀    ███    ███ ███   ███   ███   ███    █▀       ███    ███   ███    █▀             ▄███▀ ███    ███ ███    ███ ███       \n" +
+                " ▄███          ███    ███ ███   ███   ███  ▄███▄▄▄          ███    ███  ▄███▄▄▄           ▀█▀▄███▀▄▄ ███    ███ ███    ███ ███       \n" +
+                "▀▀███ ████▄  ▀███████████ ███   ███   ███ ▀▀███▀▀▀          ███    ███ ▀▀███▀▀▀            ▄███▀   ▀ ███    ███ ███    ███ ███       \n" +
+                "  ███    ███   ███    ███ ███   ███   ███   ███    █▄       ███    ███   ███             ▄███▀       ███    ███ ███    ███ ███       \n" +
+                "  ███    ███   ███    ███ ███   ███   ███   ███    ███      ███    ███   ███             ███▄     ▄█ ███    ███ ███    ███ ███▌    ▄ \n" +
+                "  ████████▀    ███    █▀   ▀█   ███   █▀    ██████████       ▀██████▀    ███              ▀████████▀ ████████▀  ████████▀  █████▄▄██ \n" +
+                "                                                                                                                           ▀         ");
         System.out.println("Welcome to the World of Zuul!");
-        System.out.println("World of Zuul is a new, incredibly boring adventure game.");
+        System.out.println("Bruh.. this shit is dope.");
         System.out.println("Type 'help' if you need help.");
         System.out.println();
-        System.out.println(currentRoom.getLongDescription());
     }
 
     public void setCurrentRoom(Room newRoom){
@@ -105,21 +137,13 @@ public class Game {
         return currentPlayer;
     }
 
-    public List<Area> generateBasicMap(){
-
-        RoomSet roomSet = RoomParser.readFile(BASICMAP);
-
-        Room outside = roomSet.getRooms().get(0);
-        currentRoom = outside;
-        Room office = roomSet.getRooms().get(2);
-        Room lab = roomSet.getRooms().get(1);
-        Area baseArea = new Area(outside, office);
-        Area bossArea = new Area(lab);
-
-        List<Area> areas = new ArrayList<>();
-        areas.add(baseArea);
-        areas.add(bossArea);
-        return areas;
+    public int getLevel() {
+        return level;
     }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
 }
 

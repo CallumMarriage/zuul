@@ -1,7 +1,5 @@
 package com.callum.model.rooms;
 
-import com.callum.model.characters.Character;
-
 /**
  * Created by callummarriage on 20/04/2018.
  */

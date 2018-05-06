@@ -9,13 +9,15 @@ public interface Item {
 
     public boolean isActive();
 
-    public void setActive(boolean inActive);
+    public void setActive(boolean isActive);
 
     public String giveDescription();
 
     public String getName();
 
     public String getLongDescription();
+
+    public String getBasicInfo();
 
     public Integer act(Character character);
 }
