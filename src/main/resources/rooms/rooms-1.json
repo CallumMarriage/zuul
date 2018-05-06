@@ -22,7 +22,7 @@
   {
     "roomName":"Library",
     "isLocked":"false",
-    "description":"the library",
+    "description":"the library, a dark abandoned room, it looks like no one has been in here for a long time.",
     "roomType":"NormalRoom",
     "isBossRoom":"false",
     "Exits":[
@@ -32,7 +32,7 @@
   {
     "roomName":"Fish",
     "isLocked":"false",
-    "description":"the Aquarium",
+    "description":"fish as far as the eye can see.",
     "roomType":"NormalRoom",
     "isBossRoom":"false",
     "Exits":[
@@ -42,7 +42,7 @@
   {
     "roomName":"Toliet",
     "isLocked":"false",
-    "description":"the Toliets",
+    "description":"the Toliets, nothing special here.",
     "roomType":"NormalRoom",
     "isBossRoom":"false",
     "Exits":[
@@ -52,7 +52,7 @@
   {
     "roomName": "Pub",
     "isLocked": "false",
-    "description": "the pub",
+    "description": "the pub, a once vibrant area of the community, now full with sorrow.",
     "roomType": "NormalRoom",
     "isBossRoom": "false",
     "Exits": [
@@ -62,7 +62,7 @@
   {
     "roomName":"Corridor",
     "isLocked":"false",
-    "description":"the Corridor, there are no windows either side.. there is a door to the east and at the end there is a single giant door.",
+    "description":"the Corridor, a dark part of the building, there is an exit to the east and a giant door at the end.",
     "roomType":"NormalRoom",
     "isBossRoom":"false",
     "Exits":[
@@ -73,7 +73,7 @@
   {
     "roomName":"Reception",
     "isLocked":"false",
-    "description":"the computing admin office",
+    "description":"the reception, nothing special here.",
     "roomType":"NormalRoom",
     "isBossRoom":"false",
     "Exits": [
