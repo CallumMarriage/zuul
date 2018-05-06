@@ -1,12 +1,12 @@
 package com.callum.model;
 
-import com.callum.model.Parsers.EnemyParser;
-import com.callum.model.Parsers.RoomParser;
+import com.callum.model.parsers.EnemyParser;
+import com.callum.model.parsers.RoomParser;
 import com.callum.model.characters.enemies.BossEnemy;
 import com.callum.model.characters.enemies.Enemy;
 import com.callum.model.characters.enemies.EnemySet;
 import com.callum.model.items.Item;
-import com.callum.model.Parsers.ItemParser;
+import com.callum.model.parsers.ItemParser;
 import com.callum.model.rooms.Room;
 import com.callum.model.rooms.RoomSet;
 

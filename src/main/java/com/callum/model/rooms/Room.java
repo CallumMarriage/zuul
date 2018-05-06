@@ -21,6 +21,7 @@ import java.util.*;
  */
 
 public abstract class Room {
+
     protected String description;
     protected HashMap<String, Room> exits;        // stores exits of this room.
     protected Enemy enemy;

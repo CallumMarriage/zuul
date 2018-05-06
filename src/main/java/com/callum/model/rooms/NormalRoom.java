@@ -5,7 +5,6 @@ package com.callum.model.rooms;
  */
 public class NormalRoom extends Room {
 
-
     /**
      * Create a room described "description". Initially, it has no exits.
      * "description" is something like "in a kitchen" or "in an open court

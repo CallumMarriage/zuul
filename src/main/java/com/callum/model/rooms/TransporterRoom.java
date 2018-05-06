@@ -6,6 +6,7 @@ package com.callum.model.rooms;
 public class TransporterRoom extends Room {
 
     private RoomSet roomSet;
+
     /**
      * Create a room described "description". Initially, it has no exits.
      * "description" is something like "in a kitchen" or "in an open court
@@ -14,7 +15,6 @@ public class TransporterRoom extends Room {
      * @param description
      */
     public TransporterRoom(String name, String description, boolean isLocked, boolean isBossRoom) {
-
         super(name,description, isLocked, isBossRoom);
         roomSet = new RoomSet();
     }

@@ -22,9 +22,8 @@ public class HelpCommand extends NoArgCommand {
         System.out.println("around at the university.");
         System.out.println();
         System.out.println("Your command words are:");
-        for(String command : commands){
-            System.out.println(" ");
-            System.out.println(command);
+        for(int i = 0; i < commands.length; i++){
+            System.out.println(" " + commands[i]);
         }
         return false;
     }

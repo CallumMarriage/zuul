@@ -1,7 +1,7 @@
 package com.callum;
 
 import com.callum.model.MapBuilder;
-import com.callum.model.Parsers.Parser;
+import com.callum.model.parsers.Parser;
 import com.callum.model.characters.player.Player;
 import com.callum.model.items.characterItems.weapons.Sword;
 import com.callum.model.items.characterItems.weapons.Weapon;
@@ -64,6 +64,7 @@ public class Game {
             System.out.println(currentRoom.getEnemy().getDescription());
         }
     }
+
     /**
      *  Main play routine.  Loops until end of play.
      */

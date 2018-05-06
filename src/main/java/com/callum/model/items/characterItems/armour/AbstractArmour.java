@@ -3,6 +3,8 @@ package com.callum.model.items.characterItems.armour;
 import com.callum.model.characters.Character;
 import com.callum.model.items.characterItems.AbstractCharacterItem;
 
+import java.util.Random;
+
 /**
  * Created by callummarriage on 02/05/2018.
  */
@@ -26,6 +28,16 @@ public abstract class AbstractArmour extends AbstractCharacterItem implements Ar
     }
 
     public abstract boolean deflect();
+
+    public boolean decideDeflection(Random random){
+        if(random.nextBoolean()){
+            System.out.println("And was deflected!");
+            return true;
+        } else {
+            System.out.println("And your " + name + " has failed you!");
+            return false;
+        }
+    }
 
     @Override
     public void setValue(Integer value) {

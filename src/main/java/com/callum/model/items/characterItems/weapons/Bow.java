@@ -20,16 +20,13 @@ public class Bow extends AbstractWeapon {
         return null;
     }
 
-    public Integer fire(List<Arrow> arrows, Character character){
+    public void fire(List<Arrow> arrows, Character character){
         if(arrows != null){
             int i = arrows.get(0).getDamage();
             character.setHealth(character.getHealth() - i);
             System.out.println("You have fired and have done " + i + "damage!w");
-            return i;
-
         } else {
             System.out.println("Hmm. something went wrong.");
         }
-        return null;
     }
 }
