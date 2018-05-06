@@ -7,7 +7,7 @@
   },
   {
     "name":"health-pack",
-    "description": "Health Pack.",
+    "description": "a Health Pack.",
     "type": "health",
     "value": "50"
   },
