@@ -98,7 +98,7 @@ public abstract class AbstractCharacter implements Character {
 
     @Override
     public void addArrow(Arrow arrow) {
-        System.out.println("You have picked up the arrow");
+        System.out.println("You have picked up the arrow.");
         this.arrows.add(arrow);
     }
 

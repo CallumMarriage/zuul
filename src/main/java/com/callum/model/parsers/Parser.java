@@ -25,13 +25,7 @@ import java.util.StringTokenizer;
 
 public class Parser {
 
-
-    public Parser() 
-    {
-
-    }
-
-    public Command getCommand() {
+    public static Command getCommand() {
 
         CommandFactory commandFactory = new CommandFactory();
 

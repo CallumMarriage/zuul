@@ -134,7 +134,7 @@ public abstract class Room {
                     if (item.isActive()) {
                         sb.append(item.getLongDescription());
                     } else {
-                        sb.append("\nYou have already picked up the ");
+                        sb.append("\nYou have already picked up ");
                         sb.append(item.getName());
                     }
                 }

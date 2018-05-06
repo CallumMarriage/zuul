@@ -26,7 +26,6 @@ import com.callum.model.rooms.*;
  */
 
 public class Game {
-    private Parser parser;
     private Room currentRoom;
     private Player currentPlayer;
 
@@ -37,11 +36,27 @@ public class Game {
      * Create the game and initialise its internal map.
      */
     public Game(int numberOfLevls) throws Exception {
-        parser = new Parser();
         Weapon weapon = new Sword("Sword","The Sword of Destiny!",  50);
         currentPlayer = new Player(weapon, "Steve", 200);
         level = 1;
         this.numberOfLevls = numberOfLevls;
+    }
+
+    /**
+     * Main method to start the game outside BlueJ
+     */
+    public static void main(String[] args) {
+        try {
+            Game g = null;
+            g = new Game(Integer.parseInt(args[0]));
+            printWelcome();
+            g.loadLevel();
+            g.play();
+            System.out.println(g);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void loadLevel() throws Exception {
@@ -75,29 +90,12 @@ public class Game {
 
         boolean finished = false;
         while (!finished) {
-            Command command = parser.getCommand();
+            Command command = Parser.getCommand();
             if(command != null){
                 finished = command.act(this);
             }
         }
         System.out.println("Your score was: " + getCurrentPlayer().getScore() +"\nThank you for playing.  Good bye.");
-    }
-
-    /**
-     * Main method to start the game outside BlueJ
-     */
-    public static void main(String[] args) {
-        try {
-            Game g = null;
-            g = new Game(2);
-            printWelcome();
-            g.loadLevel();
-            g.play();
-            System.out.println(g);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     /*

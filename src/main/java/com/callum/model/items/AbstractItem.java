@@ -32,7 +32,7 @@ public abstract class AbstractItem implements Item{
     public String getLongDescription(){
         StringBuilder sb = new StringBuilder();
 
-        sb.append("\nThe room contains a ");
+        sb.append("\nThe room contains ");
         sb.append(description + ".");
         return sb.toString();
     }

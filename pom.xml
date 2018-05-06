@@ -16,12 +16,15 @@
                 <version>1.2.1</version>
                 <configuration>
                     <mainClass>com.callum.Game</mainClass>
+                    <arguments>
+                        <argument>2</argument>
+                    </arguments>
                 </configuration>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.7.0</version>
                 <configuration>
                     <source>1.7</source>
                     <target>1.7</target>
