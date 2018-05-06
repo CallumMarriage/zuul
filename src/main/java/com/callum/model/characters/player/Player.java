@@ -58,7 +58,7 @@ public class Player extends AbstractCharacter{
 
     @Override
     public void speak(String command) {
-        System.out.println("I am the player. I currently have " + weapon.getName() + "equiped.");
+        System.out.println(command);
     }
 
     public boolean unlock(Room room){
@@ -66,6 +66,7 @@ public class Player extends AbstractCharacter{
             if(item.getName().split("-")[0].equals(room.getName())){
                 room.setLocked(false);
                 item.setActive(false);
+                items.remove(item);
                 return true;
             }
         }
@@ -81,6 +82,7 @@ public class Player extends AbstractCharacter{
                 System.out.println("You have increased your health by " + increase);
                 this.health += increase;
                 item.setActive(false);
+                items.remove(item);
                 return;
             }
         }
@@ -90,106 +92,90 @@ public class Player extends AbstractCharacter{
     public void setCharacterItem(Item item){
         System.out.println("You have picked up " + item.getBasicInfo());
         if(item instanceof Weapon){
-
-            if(this.weapon != null) {
-                items.add(this.weapon);
-                assignedItems.remove(this.weapon);
-            }
-            this.weapon = (Weapon) item;
-            assignedItems.add(this.weapon);
-
+            setWeapon((Weapon) item);
         } else if(item instanceof Armour){
-            armour += ((Armour) item).getValue();
             if (item instanceof Shield) {
-                if(shield != null){
-                    assignedItems.remove(this.shield);
-                    items.add(this.shield);
-                }
-                this.shield = (Shield) item;
-                assignedItems.add(this.shield);
+                setShield((Shield) item);
             } else if (item instanceof Helmet) {
-                if(helmet != null){
-                    assignedItems.remove(this.helmet);
-                    items.add(this.helmet);
-                }
-                this.helmet = (Helmet) item;
+                setHelmet((Helmet) item);
             } else if (item instanceof Chestplate) {
-                if(chestplate != null){
-                    assignedItems.remove(this.chestplate);
-                    items.add(this.chestplate);
-                }
-                this.chestplate = (Chestplate) item;
-                assignedItems.add(this.chestplate);
+                setChestplate((Chestplate) item);
             }
         } else {
             items.add(item);
         }
     }
 
-    public void changeWeapons(String name){
+    public void changeCharacterItem(String name){
         for(Item item: items){
             if(item instanceof Weapon && item.getName().equals(name)){
-                if(this.weapon != null){
-                    assignedItems.remove(this.weapon);
-                    items.add(this.weapon);
-                }
-                items.remove(item);
-                this.weapon = (Weapon) item;
-                assignedItems.add(this.weapon);
-
-                System.out.println("You are now using the " + item.getName());
+                setWeapon((Weapon) item);
             } else if(item instanceof Armour) {
                 if (item instanceof Helmet && item.getName().equals(name)) {
-                    if(this.helmet != null){
-                        assignedItems.remove(this.helmet);
-                        items.add(this.helmet);
-                        health -= this.helmet.getValue();
-                    }
-                    items.remove(item);
-                    this.helmet = (Helmet) item;
-                    assignedItems.add(this.helmet);
-                    health += this.helmet.getValue();
-                    System.out.println("You are now wearing " + item.getName());
+                    setHelmet((Helmet) item);
                 } else if (item instanceof Chestplate && item.getName().equals(name)){
-                    if(this.chestplate != null){
-                        items.add(this.chestplate);
-                        assignedItems.remove(this.chestplate);
-                        health -= this.chestplate.getValue();
-
-                    }
-                    items.remove(item);
-                    this.chestplate = (Chestplate) item;
-                    assignedItems.add(this.chestplate);
-                    health += this.chestplate.getValue();
-                    System.out.println("You are now wearing " + item.getName());
+                    setChestplate((Chestplate) item);
                 } else if(item instanceof Shield && item.getName().equals(name)){
-                    if(this.shield != null){
-                        assignedItems.remove(this.chestplate);
-                        items.add(this.shield);
-                        health -= this.shield.getValue();
-                    }
-                    items.remove(item);
-                    this.shield = (Shield) item;
-                    assignedItems.add(this.shield);
-                    health += this.chestplate.getValue();
-                    System.out.println("You now hold " + item.getName());
+                    setShield((Shield) item);
                 }
             }
         }
+    }
+
+    public void addCharItem(CharacterItem item){
+        items.remove(item);
+        assignedItems.add(item);
+        System.out.println("You are now using the " + item.getName());
+
+    }
+
+
+    public void removeCharItem(CharacterItem item){
+        assignedItems.remove(item);
+        items.add(item);
+    }
+
+    public void setWeapon(Weapon weapon){
+        if(this.weapon != null){
+            removeCharItem(this.weapon);
+        }
+        addCharItem(weapon);
+        this.weapon = weapon;
+
+    }
+
+    public void setHelmet(Helmet helmet){
+        if(this.helmet != null){
+            removeCharItem(this.helmet);
+        }
+        addCharItem(helmet);
+        this.helmet = helmet;
+    }
+
+    public void setChestplate(Chestplate chestplate){
+        if(this.chestplate != null){
+            removeCharItem(this.chestplate);
+        }
+        addCharItem(chestplate);
+        this.chestplate = chestplate;
+    }
+
+    public void setShield(Shield shield){
+        if(this.shield != null){
+            removeCharItem(this.chestplate);
+        }
+        addCharItem(shield);
+        this.shield = shield;
     }
 
     @Override
     public boolean deflectAttack(){
         List<Armour> armour = new ArrayList<>();
 
-        if(this.helmet != null){
-            armour.add(this.helmet);
-        }
-        if(this.shield != null){
-            armour.add(this.shield);
-        }
-        if(this.chestplate != null){
-            armour.add(chestplate);
+        for(CharacterItem characterItem : getAssignedItems()){
+            if(characterItem instanceof Armour){
+                armour.add((Armour) characterItem);
+            }
         }
 
         if(armour.size() > 0) {
@@ -199,7 +185,6 @@ public class Player extends AbstractCharacter{
             return armour.get(rand).deflect();
         }
         return false;
-
     }
 
     public void updateScore(int score){

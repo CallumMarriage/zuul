@@ -1,6 +1,6 @@
 [
   {
-    "roomName":"ThroneRoom",
+    "roomName":"BoardRoom",
     "isLocked":"true",
     "description":"the Board Room, a large dark room with a large table lined with chairs.\n At the end of the table sits a man in a dark suit",
     "roomType":"NormalRoom",
@@ -36,7 +36,7 @@
     "roomType":"NormalRoom",
     "isBossRoom":"false",
     "Exits":[
-      {"room": "ThroneRoom", "direction": "north"}
+      {"room": "BoardRoom", "direction": "north"}
     ]
   },
   {

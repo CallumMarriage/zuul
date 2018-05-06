@@ -4,6 +4,7 @@ import com.callum.model.commands.*;
 import com.callum.model.commands.noArgCommands.*;
 import com.callum.model.commands.oneArgCommands.ChangeWeaponCommand;
 import com.callum.model.commands.oneArgCommands.GoCommand;
+import com.callum.model.commands.oneArgCommands.SpeakCommand;
 import com.callum.model.commands.oneArgCommands.XrayCommand;
 
 /**
@@ -35,6 +36,7 @@ public class CommandFactory {
             case "change": return new ChangeWeaponCommand();
             case "inventory": return new ListItemsCommand();
             case "character": return new CharacterCommand();
+            case "speak": return new SpeakCommand();
             default: return null;
         }
     }

@@ -1,9 +1,9 @@
 [
   {
-    "name":"ThroneRoom-key",
-    "description":"The ThroneRoom Key.",
+    "name":"BoardRoom-key",
+    "description":"The BoardRoom Key.",
     "type":"key",
-    "value":"ThroneRoom"
+    "value":"BoardRoom"
   },
   {
     "name":"health-pack",

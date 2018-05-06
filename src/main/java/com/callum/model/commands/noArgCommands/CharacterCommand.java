@@ -1,7 +1,9 @@
 package com.callum.model.commands.noArgCommands;
 
 import com.callum.model.Game;
+import com.callum.model.characters.player.Player;
 import com.callum.model.items.characterItems.CharacterItem;
+import com.callum.model.items.characterItems.armour.Armour;
 
 import java.util.List;
 
@@ -12,33 +14,41 @@ import java.util.List;
 public class CharacterCommand extends NoArgCommand {
     @Override
     public boolean act(Game g) {
-        List<CharacterItem> assignedItems = g.getCurrentPlayer().getAssignedItems();
         System.out.println("YOUR CHARACTER");
+        Player player = g.getCurrentPlayer();
 
-        if(g.getCurrentPlayer().getWeapon() != null){
-            System.out.println("Weapon : " + g.getCurrentPlayer().getWeapon().getCharacterItemsAndValues());
+        if(player.getWeapon() != null){
+            System.out.println("Weapon : " + player.getWeapon().getCharacterItemsAndValues());
         } else {
             System.out.println("Weapon : EMPTY");
         }
 
-        if(g.getCurrentPlayer().getHelmet() != null){
-            System.out.println("Helmet : " + g.getCurrentPlayer().getHelmet().getCharacterItemsAndValues());
+        if(player.getHelmet() != null){
+            System.out.println("Helmet : " + player.getHelmet().getCharacterItemsAndValues() + checkIfBroken(player.getHelmet()));
         } else {
             System.out.println("Helmet : EMPTY");
         }
 
-        if(g.getCurrentPlayer().getChestplate() != null){
-            System.out.println("Chestplate : " + g.getCurrentPlayer().getChestplate().getCharacterItemsAndValues());
+        if(player.getChestplate() != null){
+            System.out.println("Chestplate : " + player.getChestplate().getCharacterItemsAndValues() + checkIfBroken(player.getChestplate()));
         } else {
             System.out.println("Chestplate : EMPTY");
         }
 
-        if(g.getCurrentPlayer().getShield() != null){
-            System.out.println("Shield : " + g.getCurrentPlayer().getShield().getCharacterItemsAndValues());
+        if(player.getShield() != null){
+            System.out.println("Shield : " + player.getShield().getCharacterItemsAndValues() + checkIfBroken(player.getShield()));
         } else {
             System.out.println("Shield : EMPTY");
         }
         return false;
+    }
+
+    public String checkIfBroken(Armour armour){
+        if(armour.getValue() <= 0){
+            return " (Broken)";
+        } else {
+            return "";
+        }
     }
 
     @Override

@@ -7,7 +7,7 @@ import com.callum.model.items.characterItems.CharacterItem;
  */
 public interface Armour extends CharacterItem {
 
-    public Integer getValue();
+    Integer getValue();
 
     void setValue(Integer value);
 

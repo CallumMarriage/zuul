@@ -17,7 +17,6 @@ public abstract class AbstractCharacter implements Character {
     protected Helmet helmet;
     protected Chestplate chestplate;
     protected Shield shield;
-    protected int armour;
 
     public AbstractCharacter(String name, Weapon weapon, int health) {
         this.weapon = weapon;
@@ -27,7 +26,6 @@ public abstract class AbstractCharacter implements Character {
         helmet = null;
         chestplate = null;
         shield = null;
-        armour = 0;
     }
 
     @Override
@@ -83,13 +81,4 @@ public abstract class AbstractCharacter implements Character {
         return shield;
     }
 
-    @Override
-    public int getArmour() {
-        return armour;
-    }
-
-    @Override
-    public void setArmour(int armour) {
-        this.armour = armour;
-    }
 }

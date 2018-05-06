@@ -26,7 +26,14 @@ public class ListItemsCommand extends NoArgCommand {
         }
         for(Item item : g.getCurrentPlayer().getItems()){
             if(item instanceof CharacterItem){
-                System.out.println(((CharacterItem) item).getCharacterItemsAndValues());
+                String isBroken = "";
+                if(item instanceof Armour ) {
+                    Armour armour = (Armour) item;
+                    if(armour.getValue() <= 0){
+                        isBroken = " (Broken)";
+                    }
+                }
+                System.out.println(((CharacterItem) item).getCharacterItemsAndValues() + isBroken);
             } else {
                 System.out.println(item.getName());
             }

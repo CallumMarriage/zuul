@@ -33,8 +33,4 @@ public interface Character {
      Chestplate getChestplate();
 
      Shield getShield();
-
-     int getArmour();
-
-     void setArmour(int armour);
 }

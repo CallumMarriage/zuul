@@ -16,7 +16,7 @@ public class ChangeWeaponCommand extends OneArgCommand {
 
     @Override
     public boolean act(Game g){
-        g.getCurrentPlayer().changeWeapons(this.arg);
+        g.getCurrentPlayer().changeCharacterItem(this.arg);
         return false;
     }
 }
