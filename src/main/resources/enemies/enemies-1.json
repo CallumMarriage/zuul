@@ -5,7 +5,7 @@
     "health":"80",
     "weapon": {
       "name":"Sword",
-      "description":"A sword",
+      "description":"a sword",
       "type":"sword",
       "value":"27"
     }
@@ -16,7 +16,7 @@
     "health":"55",
     "weapon": {
       "name":"Sword",
-      "description":"A sword",
+      "description":"a sword",
       "type":"sword",
       "value":"20"
     }
@@ -27,7 +27,7 @@
     "health":"68",
     "weapon": {
       "name":"Sword",
-      "description":"A sword",
+      "description":"a sword",
       "type":"sword",
       "value":"30"
     }
@@ -38,7 +38,7 @@
     "health":"40",
     "weapon": {
       "name":"Sword",
-      "description":"A sword",
+      "description":"a sword",
       "type":"sword",
       "value":"20"
     }
@@ -49,7 +49,7 @@
     "health":"30",
     "weapon": {
       "name":"Sword",
-      "description":"A sword",
+      "description":"a sword",
       "type":"sword",
       "value":"30"
     }
@@ -60,7 +60,7 @@
   "health":"105",
   "weapon": {
     "name":"Staff",
-    "description":"A mighty Staff",
+    "description":"a mighty Staff",
     "type":"staff",
     "value":"60"
   }
