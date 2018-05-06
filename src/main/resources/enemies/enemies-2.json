@@ -1,7 +1,7 @@
 [
   {
     "type":"KnightEnemy",
-    "name":"Level 2 Enemy 1",
+    "name":"Sales Boi",
     "health":"80",
     "weapon": {
       "name":"Sword",
@@ -12,7 +12,7 @@
   },
   {
     "type":"KnightEnemy",
-    "name":"Level 2 Enemy 2",
+    "name":"Ben Rubery",
     "health":"55",
     "weapon": {
       "name":"Sword",
@@ -24,7 +24,7 @@
 
   {
   "type":"BossEnemy",
-  "name":"Level 2 Boss",
+  "name":"Paul Barker",
   "health":"105",
   "weapon": {
     "name":"Staff",
