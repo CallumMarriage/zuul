@@ -32,7 +32,7 @@
   {
     "roomName":"MeetingRooms",
     "isLocked":"false",
-    "description":"The meeting rooms.",
+    "description":"the meeting rooms.",
     "roomType":"NormalRoom",
     "isBossRoom":"false",
     "Exits":[
@@ -42,7 +42,7 @@
   {
     "roomName":"Canteen",
     "isLocked":"false",
-    "description":"An abandoned Canteen, magnificent food was once served here.",
+    "description":"an abandoned Canteen, magnificent food was once served here.",
     "roomType":"NormalRoom",
     "isBossRoom":"false",
     "Exits":[
