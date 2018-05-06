@@ -1,6 +1,6 @@
 package com.callum.model.commands.noArgCommands;
 
-import com.callum.model.Game;
+import com.callum.Game;
 
 /**
  * Created by callummarriage on 25/04/2018.

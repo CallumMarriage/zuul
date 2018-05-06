@@ -1,14 +1,15 @@
 package com.callum.model;
 
+import com.callum.Game;
 import com.callum.model.characters.enemies.BossEnemy;
 import com.callum.model.characters.enemies.Enemy;
 import com.callum.model.characters.enemies.EnemySet;
 import com.callum.model.characters.enemies.KnightEnemy;
 import com.callum.model.items.characterItems.weapons.Sword;
-import com.callum.model.items.characterItems.weapons.Weapon;
-import com.callum.model.commands.noArgCommands.AttackCommand;
+import com.callum.model.commands.noArgCommands.attackCommands.AttackCommand;
 import com.callum.model.commands.Command;
 import com.callum.model.commands.oneArgCommands.GoCommand;
+import com.callum.model.items.characterItems.weapons.Weapon;
 import com.callum.model.rooms.*;
 
 import org.junit.Test;
@@ -99,7 +100,7 @@ public class RoomTest {
 
     @Test
     public void testEnemySetup(){
-        /*
+
         MapBuilder mapBuilder = new MapBuilder();
         RoomSet roomSet = new RoomSet();
         Room room = new NormalRoom("room", "this room", false, false);
@@ -129,7 +130,12 @@ public class RoomTest {
         enemySet.addEnemy(enemy2);
         enemySet.addEnemy(enemy3);
 
-        mapBuilder.setUpEnemies(roomSet, enemySet);
+        RoomSet bossRoomSet = new RoomSet();
+
+        Room bossRoom = new NormalRoom("Boss", "boss", true, true);
+        bossRoom.setEnemy(new BossEnemy(new Sword("sword", "sword", 100), "boss", 100));
+        bossRoomSet.addRoom(bossRoom);
+        mapBuilder.setUpEnemies(roomSet, bossRoomSet, enemySet);
 
         for(Room newRoom : roomSet.getRooms()){
             if(newRoom.getEnemy() != null){
@@ -138,6 +144,8 @@ public class RoomTest {
                 System.out.println("The room " + newRoom.getName() + " is empty");
             }
         }
+
+        assertEquals(100, bossRoomSet.getRooms().get(0).getEnemy().getValue());
 
         roomSet.addRoom(room3);
         roomSet.addRoom(room4);
@@ -151,6 +159,5 @@ public class RoomTest {
                 System.out.println("The room " + newRoom.getName() + " is empty");
             }
         }
-*/
     }
 }

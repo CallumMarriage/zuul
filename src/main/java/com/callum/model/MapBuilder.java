@@ -43,10 +43,8 @@ public class MapBuilder {
         return null;
     }
 
-
-
     public void setUpEnemies(RoomSet normallRooms, RoomSet bossRooms, EnemySet enemies){
-        for(Enemy enemy : (List<Enemy>) enemies.getEnemies()){
+        for(Enemy enemy : enemies.getEnemies()){
             if(enemy instanceof BossEnemy){
                 for(Room room : bossRooms.getRooms()){
                     if(room.getIsBossRoom()){

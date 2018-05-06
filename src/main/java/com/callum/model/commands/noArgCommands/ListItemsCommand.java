@@ -1,10 +1,9 @@
 package com.callum.model.commands.noArgCommands;
 
-import com.callum.model.Game;
+import com.callum.Game;
 import com.callum.model.items.Item;
 import com.callum.model.items.characterItems.CharacterItem;
 import com.callum.model.items.characterItems.armour.Armour;
-import com.callum.model.items.characterItems.weapons.Weapon;
 
 /**
  * Created by callummarriage on 02/05/2018.
@@ -20,6 +19,7 @@ public class ListItemsCommand extends NoArgCommand {
 
     public boolean act(Game g){
 
+        System.out.println(createTitle("INVENTORY"));
         if(g.getCurrentPlayer().getItems().size() == 0){
             System.out.println("You have no items");
             return false;

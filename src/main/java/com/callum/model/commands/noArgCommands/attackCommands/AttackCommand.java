@@ -1,27 +1,48 @@
-package com.callum.model.commands.noArgCommands;
+package com.callum.model.commands.noArgCommands.attackCommands;
 
-import com.callum.model.Game;
+import com.callum.Game;
 import com.callum.model.characters.enemies.Enemy;
 import com.callum.model.characters.player.Player;
+import com.callum.model.commands.noArgCommands.NoArgCommand;
+import com.callum.model.items.characterItems.weapons.Arrow;
+
+import java.util.List;
 
 /**
  * Created by callummarriage on 26/04/2018.
  */
 public class AttackCommand extends NoArgCommand {
 
-    /**
-     * @param g
-     * @return
-     */
-    @Override
-    public boolean act(Game g) {
+    public boolean attack(Game g, String type) {
         Enemy currentEnemy = g.getCurrentRoom().getEnemy();
         Player player = g.getCurrentPlayer();
-        player.attack(g.getCurrentRoom().getEnemy());
+        if(type.equals("sword")) {
+            player.attack(g.getCurrentRoom().getEnemy());
+        } else {
+            if (player.getBow() != null) {
+                if(g.getCurrentPlayer().getArrows().size() > 0) {
+                    player.getBow().fire(g.getCurrentPlayer().getArrows(), currentEnemy);
+                    List<Arrow> arrows = player.getArrows();
+                    arrows.remove(0);
+                    player.setArrows(arrows);
+                } else {
+                    System.out.println("You do not have any arrows");
+                }
+            } else {
+                System.out.println("You do not have a bow!");
+            }
+        }
 
         if(currentEnemy != null) {
             if (currentEnemy.getHealth() > 0) {
-                currentEnemy.attack(player);
+                if(type.equals("sword")) {
+                    currentEnemy.attack(player);
+                } else {
+                    if (currentEnemy.getBow() != null) {
+                        currentEnemy.getBow().fire(currentEnemy.getArrows(), player);
+
+                    }
+                }
                 if (player.getHealth() <= 0) {
                     System.out.println("You have been defeated!!!");
                     System.out.println(

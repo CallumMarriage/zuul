@@ -1,8 +1,9 @@
 package com.callum.model.commands.noArgCommands;
 
-import com.callum.model.Game;
+import com.callum.Game;
 import com.callum.model.characters.player.Player;
 import com.callum.model.items.Item;
+import com.callum.model.items.characterItems.weapons.Arrow;
 
 import java.util.List;
 
@@ -24,7 +25,11 @@ public class PickupCommand extends NoArgCommand {
                     System.out.println("There is nothing to pickup");
                 } else {
                     for(Item item : items){
-                        p.setCharacterItem(item);
+                        if(item instanceof Arrow){
+                            p.addArrow((Arrow) item);
+                        } else {
+                            p.setCharacterItem(item);
+                        }
                         item.setActive(false);
                     }
                 }

@@ -1,6 +1,6 @@
 package com.callum.model.commands.oneArgCommands;
 
-import com.callum.model.Game;
+import com.callum.Game;
 import com.callum.model.characters.enemies.Enemy;
 
 /**

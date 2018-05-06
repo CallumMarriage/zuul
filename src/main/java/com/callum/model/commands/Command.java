@@ -1,6 +1,6 @@
 package com.callum.model.commands;
 
-import com.callum.model.Game;
+import com.callum.Game;
 
 public interface Command{
 
