@@ -7,25 +7,25 @@
       "name":"Sword",
       "description":"a sword",
       "type":"sword",
-      "value":"27"
+      "value":"55"
     }
   },
   {
     "type":"KnightEnemy",
     "name":"Ben Rubery",
-    "health":"55",
+    "health":"80",
     "weapon": {
       "name":"Sword",
       "description":"a sword",
       "type":"sword",
-      "value":"20"
+      "value":"50"
     }
   },
 
   {
   "type":"BossEnemy",
   "name":"Paul Barker",
-  "health":"105",
+  "health":"150",
   "weapon": {
     "name":"Staff",
     "description":"a mighty Staff",

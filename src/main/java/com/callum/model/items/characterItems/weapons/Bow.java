@@ -1,9 +1,7 @@
 package com.callum.model.items.characterItems.weapons;
 
 import com.callum.model.characters.Character;
-import com.callum.model.characters.player.Player;
 
-import java.security.SecureRandom;
 import java.util.List;
 
 /**
@@ -24,7 +22,7 @@ public class Bow extends AbstractWeapon {
         if(arrows != null){
             int i = arrows.get(0).getDamage();
             character.setHealth(character.getHealth() - i);
-            System.out.println("You have fired and have done " + i + "damage!w");
+            System.out.println("You have fired and have done " + i + " damage!");
         } else {
             System.out.println("Hmm. something went wrong.");
         }

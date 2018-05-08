@@ -46,7 +46,7 @@
   {
     "type":"KnightEnemy",
     "name":"Bob",
-    "health":"30",
+    "health":"50",
     "weapon": {
       "name":"Sword",
       "description":"a sword",

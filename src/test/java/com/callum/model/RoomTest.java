@@ -5,6 +5,7 @@ import com.callum.model.characters.enemies.BossEnemy;
 import com.callum.model.characters.enemies.Enemy;
 import com.callum.model.characters.enemies.EnemySet;
 import com.callum.model.characters.enemies.KnightEnemy;
+import com.callum.model.commands.noArgCommands.attackCommands.SwordAttackCommand;
 import com.callum.model.items.characterItems.weapons.Sword;
 import com.callum.model.commands.noArgCommands.attackCommands.AttackCommand;
 import com.callum.model.commands.Command;
@@ -66,7 +67,7 @@ public class RoomTest {
         NormalRoom room = new NormalRoom("Room", "Room", false, false);
         NormalRoom room2 = new NormalRoom("Room2", "Room2", false, false);
 
-        room2.setEnemy(new BossEnemy(new Sword("Sword","the sword", 30), "Enemy", 10));
+        room2.setEnemy(new BossEnemy(new Sword("Sword","the sword", 30), "Enemy", 1));
         try {
             room.joinRooms("north", room2);
         } catch (Exception e){
@@ -82,7 +83,7 @@ public class RoomTest {
         assertEquals("Room2", game.getCurrentRoom().getShortDescription());
 
         System.out.println(game.getCurrentPlayer().getName());
-        Command attackCommand = new AttackCommand();
+        Command attackCommand = new SwordAttackCommand();
 
 
         attackCommand.act(game);
@@ -145,7 +146,7 @@ public class RoomTest {
             }
         }
 
-        assertEquals(100, bossRoomSet.getRooms().get(0).getEnemy().getValue());
+        assertEquals(100, bossRoomSet.getRooms().get(0).getEnemy().getHealth());
 
         roomSet.addRoom(room3);
         roomSet.addRoom(room4);

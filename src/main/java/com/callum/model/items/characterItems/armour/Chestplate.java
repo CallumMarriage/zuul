@@ -19,7 +19,7 @@ public class Chestplate extends AbstractArmour {
 
         if(deflection > (int)(value*(60.0f/100.0f))) {
             System.out.println("The enemy has struck your Chestplate...");
-            decideDeflection(random);
+           return decideDeflection(random);
         }
         return false;
     }

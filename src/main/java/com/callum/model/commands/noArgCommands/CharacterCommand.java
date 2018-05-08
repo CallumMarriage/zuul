@@ -3,8 +3,6 @@ package com.callum.model.commands.noArgCommands;
 import com.callum.Game;
 import com.callum.model.characters.player.Player;
 import com.callum.model.items.characterItems.armour.Armour;
-import com.callum.model.items.characterItems.weapons.Arrow;
-
 
 /**
  * Created by callummarriage on 04/05/2018.

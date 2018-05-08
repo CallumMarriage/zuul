@@ -1,6 +1,5 @@
 package com.callum.model.items.characterItems.weapons;
 
-
 import com.callum.model.items.characterItems.CharacterItem;
 
 /**

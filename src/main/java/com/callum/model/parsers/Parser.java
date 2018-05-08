@@ -1,4 +1,5 @@
 package com.callum.model.parsers;
+
 import com.callum.model.commands.Command;
 import com.callum.model.commands.factory.CommandFactory;
 

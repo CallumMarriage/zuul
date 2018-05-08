@@ -11,8 +11,4 @@ public class Arrow extends AbstractWeapon {
         super(name, description, maxDamage);
     }
 
-    @Override
-    public Integer act(Character character) {
-        return null;
-    }
 }

@@ -12,7 +12,6 @@ public class BossEnemy extends Enemy {
     public BossEnemy(Weapon weapon, String name, int health){
         super(name, weapon, health);
         type = "Boss";
-        this.value = 200;
     }
 
     @Override

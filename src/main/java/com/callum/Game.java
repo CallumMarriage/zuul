@@ -48,7 +48,8 @@ public class Game {
     public static void main(String[] args) {
         try {
             Game g = null;
-            g = new Game(Integer.parseInt(args[0]));
+         //   g = new Game(Integer.parseInt(args[0]));
+           g = new Game(2);
             printWelcome();
             g.loadLevel();
             g.play();
