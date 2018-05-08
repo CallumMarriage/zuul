@@ -79,7 +79,7 @@
     "Exits": [
       {"room": "Pub", "direction": "east"},
       {"room": "Library", "direction": "west"},
-      {"room": "Corridor", "direction": "north"}
+      {"room": "Corridor", "direction": "down"}
     ]
   },
   {

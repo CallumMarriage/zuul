@@ -57,7 +57,7 @@
     "Exits": [
       {"room": "MeetingRooms", "direction": "east"},
       {"room": "ADC", "direction": "west"},
-      {"room": "Canteen", "direction": "north"}
+      {"room": "Canteen", "direction": "down"}
     ]
   },
   {
