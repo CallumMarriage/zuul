@@ -1,12 +1,26 @@
 package com.callum.zuul;
 
 import com.callum.zuul.model.MapBuilder;
-import com.callum.zuul.model.parsers.Parser;
+import com.callum.zuul.model.characters.Character;
+import com.callum.zuul.model.containers.Container;
+import com.callum.zuul.model.items.characterItems.CharacterItem;
+import com.callum.zuul.model.items.characterItems.weapons.Arrow;
+import com.callum.zuul.model.items.characterItems.weapons.Bow;
+import com.callum.zuul.model.parsers.CommandParser;
 import com.callum.zuul.model.characters.player.Player;
 import com.callum.zuul.model.items.characterItems.weapons.Sword;
 import com.callum.zuul.model.items.characterItems.weapons.Weapon;
 import com.callum.zuul.model.commands.Command;
+import com.callum.zuul.model.parsers.PlayerSelection;
+import com.callum.zuul.model.parsers.jsonParsers.CharacterParser;
+import com.callum.zuul.model.parsers.jsonParsers.LevelParser;
 import com.callum.zuul.model.rooms.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.callum.zuul.model.constants.FileConstants.*;
+import static com.callum.zuul.model.constants.bigWords.*;
 
 /**
  *  This class is the main class of the "World of Zuul" application. 
@@ -30,16 +44,47 @@ public class Application {
     private Player currentPlayer;
 
     public int level;
-    public int numberOfLevls;
-
     /**
      * Create the game and initialise its internal map.
      */
-    public Application(int numberOfLevls) throws Exception {
-        Weapon weapon = new Sword("Sword","The Sword of Destiny!",  50);
-        currentPlayer = new Player(weapon, "Steve", 200);
+    public Application() throws Exception {
+        boolean playerSelected = false;
+        currentPlayer = null;
+
+        List<Character> characters = CharacterParser.readFile(CHARACTER_FILE);
+
+        System.out.print("Please select one of the following characters: ");
+
+        for(int i = 0; i < characters.size(); i++){
+            System.out.print(characters.get(i).getName());
+            if(i !=characters.size()-1){
+                System.out.print(", ");
+            }
+        }
+        System.out.println("\n");
+
+        while(!playerSelected){
+
+            PlayerSelection playerSelection = new PlayerSelection();
+            String type = playerSelection.selectCharacter();
+
+            if(type!= null) {
+                playerSelected = selectPlayer(type, characters);
+            }
+        }
+
         level = 1;
-        this.numberOfLevls = numberOfLevls;
+    }
+
+    public boolean selectPlayer(String type, List<Character> characters){
+        for(Character character : characters){
+            if(type.equals(character.getName())){
+                currentPlayer = (Player) character;
+                return true;
+            }
+        }
+        System.out.println("Please select a character from the above choices!");
+        return false;
     }
 
     /**
@@ -49,22 +94,20 @@ public class Application {
         try {
             Application g = null;
          //   g = new Application(Integer.parseInt(args[0]));
-           g = new Application(2);
+            g = new Application();
             printWelcome();
-            g.loadLevel();
+
             g.play();
-            System.out.println(g);
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public void loadLevel() throws Exception {
-        System.out.println("LEVEL " + level);
+    public void loadLevel(Integer level) throws Exception {
         System.out.println();
         MapBuilder mapBuilder = new MapBuilder();
-        Room room = mapBuilder.start("./src/main/resources/enemies/enemies-"+level+".json", "./src/main/resources/items/items-"+level+".json", "./src/main/resources/rooms/rooms-"+level+".json");
+        Room room = mapBuilder.start(LEVEL_CONTENT_FILE+level+"/enemies.json", LEVEL_CONTENT_FILE+level+"/items.json", LEVEL_CONTENT_FILE+level+"/rooms.json");
         if(room != null){
             currentRoom = room;
         } else {
@@ -84,18 +127,36 @@ public class Application {
     /**
      *  Main play routine.  Loops until end of play.
      */
-    public void play() {
+    public void play() throws Exception {
 
         // Enter the main command loop.  Here we repeatedly read commands and
         // execute them until the game is over.
 
-        boolean finished = false;
-        while (!finished) {
-            Command command = Parser.getCommand();
-            if(command != null){
-                finished = command.act(this);
+        List<Container> chapters = LevelParser.readFile(CHAPTERS_FILE);
+        for(Container chapter : chapters) {
+            System.out.println("!!-------!===" + chapter.getName() + "===!-------!!\n");
+            System.out.println(chapter.getDescription() + "\n");
+            System.out.println("-----------------------------------------------------------\n");
+            List<Container> levels = LevelParser.readFile(LEVELS_FILE + chapter.getNumber() + ".json");
+
+            for(Container level : levels) {
+                System.out.println("!---- Welcome to " + level.getName() + "----!\n");
+                System.out.println(level.getDescription());
+                loadLevel(level.getNumber());
+                boolean finished = false;
+                while (!finished) {
+                    Command command = CommandParser.getCommand();
+                    if (command != null) {
+                        finished = command.act(this);
+                    }
+                }
+                System.out.println( LEVEL_COMPLETED);
             }
+            System.out.println(this);
         }
+
+        System.out.println(YOU_WIN);
+
         System.out.println("Your score was: " + getCurrentPlayer().getScore() +"\nThank you for playing.  Good bye.");
     }
 
@@ -111,16 +172,7 @@ public class Application {
      */
     private static void printWelcome() {
         System.out.println();
-        System.out.println("" +
-                "   ▄██████▄     ▄████████   ▄▄▄▄███▄▄▄▄      ▄████████       ▄██████▄     ▄████████       ▄███████▄  ███    █▄  ███    █▄   ▄█       \n" +
-                "  ███    ███   ███    ███ ▄██▀▀▀███▀▀▀██▄   ███    ███      ███    ███   ███    ███      ██▀     ▄██ ███    ███ ███    ███ ███       \n" +
-                "  ███    █▀    ███    ███ ███   ███   ███   ███    █▀       ███    ███   ███    █▀             ▄███▀ ███    ███ ███    ███ ███       \n" +
-                " ▄███          ███    ███ ███   ███   ███  ▄███▄▄▄          ███    ███  ▄███▄▄▄           ▀█▀▄███▀▄▄ ███    ███ ███    ███ ███       \n" +
-                "▀▀███ ████▄  ▀███████████ ███   ███   ███ ▀▀███▀▀▀          ███    ███ ▀▀███▀▀▀            ▄███▀   ▀ ███    ███ ███    ███ ███       \n" +
-                "  ███    ███   ███    ███ ███   ███   ███   ███    █▄       ███    ███   ███             ▄███▀       ███    ███ ███    ███ ███       \n" +
-                "  ███    ███   ███    ███ ███   ███   ███   ███    ███      ███    ███   ███             ███▄     ▄█ ███    ███ ███    ███ ███▌    ▄ \n" +
-                "  ████████▀    ███    █▀   ▀█   ███   █▀    ██████████       ▀██████▀    ███              ▀████████▀ ████████▀  ████████▀  █████▄▄██ \n" +
-                "                                                                                                                           ▀         ");
+        System.out.println(GAME_OF_ZUUL);
         System.out.println("Welcome to the World of Zuul!");
         System.out.println("Bruh.. this shit is dope.");
         System.out.println("Type 'help' if you need help.");

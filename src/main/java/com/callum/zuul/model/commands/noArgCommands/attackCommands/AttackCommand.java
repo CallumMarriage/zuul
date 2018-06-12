@@ -6,14 +6,19 @@ import com.callum.zuul.model.characters.player.Player;
 import com.callum.zuul.model.commands.noArgCommands.NoArgCommand;
 import com.callum.zuul.model.items.characterItems.weapons.Arrow;
 
+import java.security.SecureRandom;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by callummarriage on 26/04/2018.
  */
 public class AttackCommand extends NoArgCommand {
 
+
     public boolean attack(Application g, String type) {
+        Random random = new SecureRandom();
+
         Enemy currentEnemy = g.getCurrentRoom().getEnemy();
         Player player = g.getCurrentPlayer();
         if(type.equals("sword")) {
@@ -23,6 +28,9 @@ public class AttackCommand extends NoArgCommand {
                 if(g.getCurrentPlayer().getArrows().size() > 0) {
                     player.getBow().fire(g.getCurrentPlayer().getArrows(), currentEnemy);
                     List<Arrow> arrows = player.getArrows();
+                    if(random.nextBoolean()) {
+                        g.getCurrentRoom().setItem(arrows.get(0));
+                    }
                     arrows.remove(0);
                     player.setArrows(arrows);
                 } else {
@@ -62,35 +70,8 @@ public class AttackCommand extends NoArgCommand {
                 currentEnemy.kill();
                 g.getCurrentPlayer().updateScore(currentEnemy.getValue());
                 if (currentEnemy.getType().equals("Boss")) {
-                    System.out.println("You have defeated " + currentEnemy.getName() + "\n"+
-                            "▄█          ▄████████  ▄█    █▄     ▄████████  ▄█             ▄████████  ▄██████▄    ▄▄▄▄███▄▄▄▄      ▄███████▄  ▄█          ▄████████     ███        ▄████████ ████████▄  \n" +
-                            "███         ███    ███ ███    ███   ███    ███ ███            ███    ███ ███    ███ ▄██▀▀▀███▀▀▀██▄   ███    ███ ███         ███    ███ ▀█████████▄   ███    ███ ███   ▀███ \n" +
-                            "███         ███    █▀  ███    ███   ███    █▀  ███            ███    █▀  ███    ███ ███   ███   ███   ███    ███ ███         ███    █▀     ▀███▀▀██   ███    █▀  ███    ███ \n" +
-                            "███        ▄███▄▄▄     ███    ███  ▄███▄▄▄     ███            ███        ███    ███ ███   ███   ███   ███    ███ ███        ▄███▄▄▄         ███   ▀  ▄███▄▄▄     ███    ███ \n" +
-                            "███       ▀▀███▀▀▀     ███    ███ ▀▀███▀▀▀     ███            ███        ███    ███ ███   ███   ███ ▀█████████▀  ███       ▀▀███▀▀▀         ███     ▀▀███▀▀▀     ███    ███ \n" +
-                            "███         ███    █▄  ███    ███   ███    █▄  ███            ███    █▄  ███    ███ ███   ███   ███   ███        ███         ███    █▄      ███       ███    █▄  ███    ███ \n" +
-                            "███▌    ▄   ███    ███ ███    ███   ███    ███ ███▌    ▄      ███    ███ ███    ███ ███   ███   ███   ███        ███▌    ▄   ███    ███     ███       ███    ███ ███   ▄███ \n" +
-                            "█████▄▄██   ██████████  ▀██████▀    ██████████ █████▄▄██      ████████▀   ▀██████▀   ▀█   ███   █▀   ▄████▀      █████▄▄██   ██████████    ▄████▀     ██████████ ████████▀  \n" +
-                            "▀                                              ▀                                                                 ▀                                                          ");
-                    if(g.getLevel() < g.numberOfLevls){
-                        g.setLevel(g.getLevel()+1);
-                        try {
-                            g.loadLevel();
-                            return false;
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    }
-                    System.out.println("\n\n\n\n" +
-                            "    _       _     __   __            _    _ _____ _   _ _ _ _      _       _    \n" +
-                            " /\\| |/\\ /\\| |/\\  \\ \\ / /           | |  | |_   _| \\ | | | | |  /\\| |/\\ /\\| |/\\ \n" +
-                            " \\ ` ' / \\ ` ' /   \\ V /___  _   _  | |  | | | | |  \\| | | | |  \\ ` ' / \\ ` ' / \n" +
-                            "|_     _|_     _|   \\ // _ \\| | | | | |/\\| | | | | . ` | | | | |_     _|_     _|\n" +
-                            " / , . \\ / , . \\    | | (_) | |_| | \\  /\\  /_| |_| |\\  |_|_|_|  / , . \\ / , . \\ \n" +
-                            " \\/|_|\\/ \\/|_|\\/    \\_/\\___/ \\__,_|  \\/  \\/ \\___/\\_| \\_(_|_|_)  \\/|_|\\/ \\/|_|\\/ \n" +
-                            "                                                                                \n" +
-                            "                                                                                ");
-                           return true;
+                    System.out.println("You have defeated " + currentEnemy.getName());
+                    return true;
                 }
                 System.out.println(currentEnemy.getName() + " lies defeated, you may move on.");
             }

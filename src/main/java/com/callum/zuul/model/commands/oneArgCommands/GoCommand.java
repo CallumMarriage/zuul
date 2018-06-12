@@ -3,6 +3,8 @@ package com.callum.zuul.model.commands.oneArgCommands;
 import com.callum.zuul.Application;
 import com.callum.zuul.model.characters.enemies.Enemy;
 
+import static com.callum.zuul.model.constants.bigWords.BOSS_ROOM;
+
 /**
  * Created by callummarriage on 24/04/2018.
  */
@@ -29,16 +31,7 @@ public class GoCommand extends OneArgCommand {
                 }
                 g.setCurrentRoom(g.getCurrentRoom().getExit(arg));
                 if(g.getCurrentRoom().getIsBossRoom()){
-                    System.out.println(
-                            " ▀█████████▄   ▄██████▄     ▄████████    ▄████████         ▄████████  ▄██████▄   ▄██████▄    ▄▄▄▄███▄▄▄▄   \n" +
-                            "  ███    ███ ███    ███   ███    ███   ███    ███        ███    ███ ███    ███ ███    ███ ▄██▀▀▀███▀▀▀██▄ \n" +
-                            "  ███    ███ ███    ███   ███    █▀    ███    █▀         ███    ███ ███    ███ ███    ███ ███   ███   ███ \n" +
-                            " ▄███▄▄▄██▀  ███    ███   ███          ███              ▄███▄▄▄▄██▀ ███    ███ ███    ███ ███   ███   ███ \n" +
-                            "▀▀███▀▀▀██▄  ███    ███ ▀███████████ ▀███████████      ▀▀███▀▀▀▀▀   ███    ███ ███    ███ ███   ███   ███ \n" +
-                            "  ███    ██▄ ███    ███          ███          ███      ▀███████████ ███    ███ ███    ███ ███   ███   ███ \n" +
-                            "  ███    ███ ███    ███    ▄█    ███    ▄█    ███        ███    ███ ███    ███ ███    ███ ███   ███   ███ \n" +
-                            "▄█████████▀   ▀██████▀   ▄████████▀   ▄████████▀         ███    ███  ▀██████▀   ▀██████▀   ▀█   ███   █▀  \n" +
-                            "                                                         ███    ███                                       ");
+                    System.out.println(BOSS_ROOM);
                 }
                 System.out.println(g.getCurrentRoom().getLongDescription());
                 Enemy newEnemy = g.getCurrentRoom().getEnemy();

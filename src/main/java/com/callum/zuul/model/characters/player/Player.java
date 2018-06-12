@@ -42,6 +42,10 @@ public class Player extends AbstractCharacter{
 
     @Override
     public boolean attack(Character opponent) {
+        if(weapon == null){
+            System.out.println("You do not have a sword!");
+            return false;
+        }
         if(opponent != null){
             if(opponent.getHealth() >0) {
                 int damage = weapon.act(opponent);
@@ -115,8 +119,9 @@ public class Player extends AbstractCharacter{
             if(item instanceof Weapon && item.getName().equals(name)){
                 if(item instanceof Bow){
                     setBow((Bow) item);
+                } else {
+                    setWeapon((Weapon) item);
                 }
-                setWeapon((Weapon) item);
             } else if(item instanceof Armour && item.getName().equals(name)) {
                 if (item instanceof Helmet) {
                     setHelmet((Helmet) item);
@@ -210,5 +215,9 @@ public class Player extends AbstractCharacter{
 
     public int getScore(){
         return this.score;
+    }
+
+    public void setName(String name){
+        this.name = name;
     }
 }

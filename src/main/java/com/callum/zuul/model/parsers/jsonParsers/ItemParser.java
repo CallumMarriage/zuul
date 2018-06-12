@@ -1,4 +1,4 @@
-package com.callum.zuul.model.parsers;
+package com.callum.zuul.model.parsers.jsonParsers;
 
 import com.callum.zuul.model.items.Item;
 import com.callum.zuul.model.items.factory.ItemFactory;

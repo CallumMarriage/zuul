@@ -8,6 +8,12 @@ import com.callum.zuul.Application;
 public class SwordAttackCommand extends AttackCommand {
     @Override
     public boolean act(Application g){
-        return attack(g, "sword");
+        if(g.getCurrentPlayer().getWeapon() != null){
+            return attack(g, "sword");
+
+        } else {
+            System.out.println("You do not have a sword!");
+            return false;
+        }
     }
 }

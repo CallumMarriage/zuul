@@ -4,10 +4,7 @@ import com.callum.zuul.model.commands.*;
 import com.callum.zuul.model.commands.noArgCommands.*;
 import com.callum.zuul.model.commands.noArgCommands.attackCommands.FireCommand;
 import com.callum.zuul.model.commands.noArgCommands.attackCommands.SwordAttackCommand;
-import com.callum.zuul.model.commands.oneArgCommands.ChangeWeaponCommand;
-import com.callum.zuul.model.commands.oneArgCommands.GoCommand;
-import com.callum.zuul.model.commands.oneArgCommands.SpeakCommand;
-import com.callum.zuul.model.commands.oneArgCommands.XrayCommand;
+import com.callum.zuul.model.commands.oneArgCommands.*;
 
 /**
  * This class is part of the "World of Zuul" application. 
@@ -36,7 +33,8 @@ public class CommandFactory {
             "change",
             "inventory",
             "character",
-            "fire"
+            "fire",
+            "changeName"
     };
 
     public Command createCommand(String command){
@@ -55,6 +53,7 @@ public class CommandFactory {
             case "character": return new CharacterCommand();
             case "speak": return new SpeakCommand();
             case "fire": return new FireCommand();
+            case "changeName": return new ChangeNameCommand();
             default: return null;
         }
     }

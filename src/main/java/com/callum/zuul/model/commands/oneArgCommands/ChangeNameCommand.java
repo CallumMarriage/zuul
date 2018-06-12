@@ -3,10 +3,9 @@ package com.callum.zuul.model.commands.oneArgCommands;
 import com.callum.zuul.Application;
 
 /**
- * Created by callummarriage on 01/05/2018.
+ * Created by callummarriage on 29/05/2018.
  */
-public class ChangeWeaponCommand extends OneArgCommand {
-
+public class ChangeNameCommand extends OneArgCommand {
 
     @Override
     public String getSyntax() {
@@ -15,7 +14,8 @@ public class ChangeWeaponCommand extends OneArgCommand {
 
     @Override
     public boolean act(Application g){
-        g.getCurrentPlayer().changeCharacterItem(this.arg);
+        g.getCurrentPlayer().setName(arg);
+        System.out.println("Changed name to " + g.getCurrentPlayer().getName());
         return false;
     }
 }

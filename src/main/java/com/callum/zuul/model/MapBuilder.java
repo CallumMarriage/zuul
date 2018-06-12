@@ -1,12 +1,12 @@
 package com.callum.zuul.model;
 
-import com.callum.zuul.model.parsers.EnemyParser;
-import com.callum.zuul.model.parsers.RoomParser;
+import com.callum.zuul.model.parsers.jsonParsers.EnemyParser;
+import com.callum.zuul.model.parsers.jsonParsers.RoomParser;
 import com.callum.zuul.model.characters.enemies.BossEnemy;
 import com.callum.zuul.model.characters.enemies.Enemy;
 import com.callum.zuul.model.characters.enemies.EnemySet;
 import com.callum.zuul.model.items.Item;
-import com.callum.zuul.model.parsers.ItemParser;
+import com.callum.zuul.model.parsers.jsonParsers.ItemParser;
 import com.callum.zuul.model.rooms.Room;
 import com.callum.zuul.model.rooms.RoomSet;
 

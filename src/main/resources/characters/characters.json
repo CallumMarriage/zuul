@@ -1,0 +1,32 @@
+[
+  {
+    "name": "knight",
+    "health": "100",
+    "weapon": {
+      "name":"Sword",
+      "description":"a sword",
+      "type":"sword",
+      "value":"20"
+    }
+  },
+  {
+    "name": "elf",
+    "health": "100",
+    "weapon": {
+      "name":"Bow",
+      "description":"a bow",
+      "type":"bow",
+      "value":"20"
+    }
+  },
+  {
+    "name": "wizard",
+    "health": "100",
+    "weapon": {
+      "name":"Staff",
+      "description":"a staff",
+      "type":"staff",
+      "value":"20"
+    }
+  }
+]

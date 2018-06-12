@@ -24,7 +24,7 @@ import java.util.StringTokenizer;
  * @version 1.0 (February 2002)
  */
 
-public class Parser {
+public class CommandParser {
 
     public static Command getCommand() {
 
@@ -63,7 +63,6 @@ public class Parser {
             System.out.println("Please enter a command!");
             return null;
         }
-
 
         Command command = commandFactory.createCommand(word1);
 
