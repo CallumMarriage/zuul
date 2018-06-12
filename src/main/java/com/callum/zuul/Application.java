@@ -37,7 +37,6 @@ public class Application {
     private Room currentRoom;
     private Player currentPlayer;
 
-    public int level;
     /**
      * Create the game and initialise its internal map.
      */
@@ -66,8 +65,6 @@ public class Application {
                 playerSelected = selectPlayer(type, characters);
             }
         }
-
-        level = 1;
     }
 
     public boolean selectPlayer(String type, List<Character> characters){
@@ -183,14 +180,6 @@ public class Application {
 
     public Player getCurrentPlayer() {
         return currentPlayer;
-    }
-
-    public int getLevel() {
-        return level;
-    }
-
-    public void setLevel(int level) {
-        this.level = level;
     }
 
 }
