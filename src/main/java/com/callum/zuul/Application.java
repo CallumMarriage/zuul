@@ -3,24 +3,18 @@ package com.callum.zuul;
 import com.callum.zuul.model.MapBuilder;
 import com.callum.zuul.model.characters.Character;
 import com.callum.zuul.model.containers.Container;
-import com.callum.zuul.model.items.characterItems.CharacterItem;
-import com.callum.zuul.model.items.characterItems.weapons.Arrow;
-import com.callum.zuul.model.items.characterItems.weapons.Bow;
 import com.callum.zuul.model.parsers.CommandParser;
 import com.callum.zuul.model.characters.player.Player;
-import com.callum.zuul.model.items.characterItems.weapons.Sword;
-import com.callum.zuul.model.items.characterItems.weapons.Weapon;
 import com.callum.zuul.model.commands.Command;
 import com.callum.zuul.model.parsers.PlayerSelection;
 import com.callum.zuul.model.parsers.jsonParsers.CharacterParser;
 import com.callum.zuul.model.parsers.jsonParsers.LevelParser;
 import com.callum.zuul.model.rooms.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static com.callum.zuul.model.constants.FileConstants.*;
-import static com.callum.zuul.model.constants.bigWords.*;
+import static com.callum.zuul.model.constants.BigWords.*;
 
 /**
  *  This class is the main class of the "World of Zuul" application. 

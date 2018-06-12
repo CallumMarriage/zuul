@@ -3,7 +3,7 @@ package com.callum.zuul.model.constants;
 /**
  * Created by callummarriage on 12/06/2018.
  */
-public class bigWords {
+public class BigWords {
 
     public static final String LEVEL_COMPLETED = "\n"+
             "▄█          ▄████████  ▄█    █▄     ▄████████  ▄█             ▄████████  ▄██████▄    ▄▄▄▄███▄▄▄▄      ▄███████▄  ▄█          ▄████████     ███        ▄████████ ████████▄  \n" +

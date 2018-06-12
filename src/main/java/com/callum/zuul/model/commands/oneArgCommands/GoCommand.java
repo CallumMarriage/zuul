@@ -3,7 +3,7 @@ package com.callum.zuul.model.commands.oneArgCommands;
 import com.callum.zuul.Application;
 import com.callum.zuul.model.characters.enemies.Enemy;
 
-import static com.callum.zuul.model.constants.bigWords.BOSS_ROOM;
+import static com.callum.zuul.model.constants.BigWords.BOSS_ROOM;
 
 /**
  * Created by callummarriage on 24/04/2018.
