@@ -12,6 +12,7 @@ import com.callum.zuul.model.commands.oneArgCommands.GoCommand;
 import com.callum.zuul.model.items.characterItems.weapons.Weapon;
 import com.callum.zuul.model.rooms.*;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -23,6 +24,7 @@ public class RoomTest {
 
     private KnightEnemy enemy;
 
+    @Ignore
     @Test
     public void testRoomConnect(){
         enemy = new KnightEnemy(new Sword("Steve","the sword", 10), "Steve", 200);
@@ -53,6 +55,7 @@ public class RoomTest {
         assertEquals("Room2", application.getCurrentRoom().getShortDescription());
     }
 
+    @Ignore
     @Test
     public void testEnemy(){
         enemy = new KnightEnemy(new Sword("Steve","the sword", 10), "Steve", 200);

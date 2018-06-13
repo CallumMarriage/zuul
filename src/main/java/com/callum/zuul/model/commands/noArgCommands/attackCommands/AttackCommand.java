@@ -10,6 +10,8 @@ import java.security.SecureRandom;
 import java.util.List;
 import java.util.Random;
 
+import static com.callum.zuul.model.constants.BigWords.GAME_OVER;
+
 /**
  * Created by callummarriage on 26/04/2018.
  */
@@ -53,17 +55,7 @@ public class AttackCommand extends NoArgCommand {
                 }
                 if (player.getHealth() <= 0) {
                     System.out.println("You have been defeated!!!");
-                    System.out.println(
-                            "\n" +
-                            "   ▄██████▄     ▄████████   ▄▄▄▄███▄▄▄▄      ▄████████       ▄██████▄   ▄█    █▄     ▄████████    ▄████████ \n" +
-                            "  ███    ███   ███    ███ ▄██▀▀▀███▀▀▀██▄   ███    ███      ███    ███ ███    ███   ███    ███   ███    ███ \n" +
-                            "  ███    █▀    ███    ███ ███   ███   ███   ███    █▀       ███    ███ ███    ███   ███    █▀    ███    ███ \n" +
-                            " ▄███          ███    ███ ███   ███   ███  ▄███▄▄▄          ███    ███ ███    ███  ▄███▄▄▄      ▄███▄▄▄▄██▀ \n" +
-                            "▀▀███ ████▄  ▀███████████ ███   ███   ███ ▀▀███▀▀▀          ███    ███ ███    ███ ▀▀███▀▀▀     ▀▀███▀▀▀▀▀   \n" +
-                            "  ███    ███   ███    ███ ███   ███   ███   ███    █▄       ███    ███ ███    ███   ███    █▄  ▀███████████ \n" +
-                            "  ███    ███   ███    ███ ███   ███   ███   ███    ███      ███    ███ ███    ███   ███    ███   ███    ███ \n" +
-                            "  ████████▀    ███    █▀   ▀█   ███   █▀    ██████████       ▀██████▀   ▀██████▀    ██████████   ███    ███ \n" +
-                            "                                                                                                 ███    ███ ");
+                    System.out.println(GAME_OVER);
                     return true;
                 }
             } else {

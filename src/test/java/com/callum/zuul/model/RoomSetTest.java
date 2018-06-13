@@ -8,6 +8,7 @@ import com.callum.zuul.model.rooms.NormalRoom;
 import com.callum.zuul.model.rooms.Room;
 import com.callum.zuul.model.rooms.RoomSet;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
