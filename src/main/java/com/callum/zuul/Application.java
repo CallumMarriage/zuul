@@ -67,17 +67,6 @@ public class Application {
         }
     }
 
-    public boolean selectPlayer(String type, List<Character> characters){
-        for(Character character : characters){
-            if(type.equals(character.getName())){
-                currentPlayer = (Player) character;
-                return true;
-            }
-        }
-        System.out.println("Please select a character from the above choices!");
-        return false;
-    }
-
     /**
      * Main method to start the game outside BlueJ
      */
@@ -95,7 +84,26 @@ public class Application {
         }
     }
 
-    public void loadLevel(Integer level) throws Exception {
+    /*
+        * Provide string representation
+     */
+    public String toString() {
+        return "Current room is " + currentRoom;
+    }
+
+    public void setCurrentRoom(Room newRoom){
+        this.currentRoom = newRoom;
+    }
+
+    public Room getCurrentRoom(){
+        return this.currentRoom;
+    }
+
+    public Player getCurrentPlayer() {
+        return currentPlayer;
+    }
+
+    private void loadLevel(Integer level) throws Exception {
         System.out.println();
         MapBuilder mapBuilder = new MapBuilder();
         Room room = mapBuilder.start(LEVEL_CONTENT_FILE+level+"/enemies.json", LEVEL_CONTENT_FILE+level+"/items.json", LEVEL_CONTENT_FILE+level+"/rooms.json");
@@ -118,21 +126,23 @@ public class Application {
     /**
      *  Main play routine.  Loops until end of play.
      */
-    public void play() throws Exception {
+    private void play() throws Exception {
 
         // Enter the main command loop.  Here we repeatedly read commands and
         // execute them until the game is over.
 
         List<Container> chapters = LevelParser.readFile(CHAPTERS_FILE);
         for(Container chapter : chapters) {
-            System.out.println("!!-------!===" + chapter.getName() + "===!-------!!\n");
+            System.out.println("<>-------<===> " + chapter.getName() + " <===>-------<>\n");
             System.out.println(chapter.getDescription() + "\n");
-            System.out.println("-----------------------------------------------------------\n");
+            System.out.println("<----------------------------------------------------------->\n");
             List<Container> levels = LevelParser.readFile(LEVELS_FILE + chapter.getNumber() + ".json");
 
             for(Container level : levels) {
-                System.out.println("!---- Welcome to " + level.getName() + "----!\n");
-                System.out.println(level.getDescription());
+                System.out.println("<>----<> Welcome to " + level.getName() + " <>----<>\n");
+                System.out.println(level.getDescription() +"\n");
+                System.out.println("<------------------------------------>\n");
+
                 loadLevel(level.getNumber());
                 boolean finished = false;
                 while (!finished) {
@@ -151,13 +161,16 @@ public class Application {
         System.out.println("Your score was: " + getCurrentPlayer().getScore() +"\nThank you for playing.  Good bye.");
     }
 
-    /*
-     * Provide string representation
-     */
-    public String toString() {
-        return "Current room is " + currentRoom;
+    private boolean selectPlayer(String type, List<Character> characters){
+        for(Character character : characters){
+            if(type.equals(character.getName())){
+                currentPlayer = (Player) character;
+                return true;
+            }
+        }
+        System.out.println("Please select a character from the above choices!");
+        return false;
     }
-
     /**
      * Print out the opening message for the player.
      */
@@ -169,18 +182,5 @@ public class Application {
         System.out.println("Type 'help' if you need help.");
         System.out.println();
     }
-
-    public void setCurrentRoom(Room newRoom){
-        this.currentRoom = newRoom;
-    }
-
-    public Room getCurrentRoom(){
-        return this.currentRoom;
-    }
-
-    public Player getCurrentPlayer() {
-        return currentPlayer;
-    }
-
 }
 
