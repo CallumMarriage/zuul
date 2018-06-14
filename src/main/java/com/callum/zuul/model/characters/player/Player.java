@@ -4,6 +4,7 @@ import com.callum.zuul.model.characters.AbstractCharacter;
 import com.callum.zuul.model.characters.Character;
 import com.callum.zuul.model.items.characterItems.CharacterItem;
 import com.callum.zuul.model.items.characterItems.armour.*;
+import com.callum.zuul.model.items.characterItems.weapons.Arrow;
 import com.callum.zuul.model.items.characterItems.weapons.Bow;
 import com.callum.zuul.model.items.factory.ItemFactory;
 import com.callum.zuul.model.items.characterItems.weapons.Weapon;
@@ -31,6 +32,19 @@ public class Player extends AbstractCharacter{
         assignedItems = new ArrayList<>();
         assignedItems.add(weapon);
     }
+
+    public Player(Weapon weapon, String name,Bow bow, int health, int numOfArrows){
+        super(name, weapon, bow, health);
+        items = new ArrayList<>();
+        score = 0;
+        assignedItems = new ArrayList<>();
+        assignedItems.add(weapon);
+
+        for(int i = 0; i < numOfArrows; i++){
+            arrows.add(new Arrow("Arrow", "arrow", 20));
+        }
+    }
+
 
     public List<CharacterItem> getAssignedItems(){
         return this.assignedItems;

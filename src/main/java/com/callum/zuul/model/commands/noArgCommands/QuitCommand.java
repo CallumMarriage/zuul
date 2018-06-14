@@ -12,6 +12,9 @@ public class QuitCommand extends NoArgCommand {
     }
 
     public boolean act(Application g) {
+
+        System.out.println("Thank you for playing!");
+        System.exit(200);
         return true;
     }
 

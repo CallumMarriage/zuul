@@ -6,7 +6,7 @@ import com.callum.zuul.model.characters.Character;
 /**
  * Created by callummarriage on 26/04/2018.
  */
-public abstract class AbstractItem implements Item{
+public abstract class AbstractItem implements Item {
 
     protected boolean isActive;
     protected String name;

@@ -2,6 +2,7 @@ package com.callum.zuul.model.parsers.jsonParsers;
 
 import com.callum.zuul.model.characters.Character;
 import com.callum.zuul.model.characters.player.Player;
+import com.callum.zuul.model.items.characterItems.weapons.Bow;
 import com.callum.zuul.model.items.characterItems.weapons.Weapon;
 import com.callum.zuul.model.items.factory.ItemFactory;
 import org.json.simple.JSONArray;
@@ -35,7 +36,16 @@ public class CharacterParser {
 
                 JSONObject JSONWeapon = (JSONObject) item.get("weapon");
                 Weapon weapon = (Weapon) ItemFactory.createItem((String) JSONWeapon.get("type"),(String) JSONWeapon.get("name"),(String) JSONWeapon.get("description"), (String) JSONWeapon.get("value"));
-                characters.add(new Player(weapon, name, health));
+                Player player = null;
+                if(item.get("bow") != null){
+                    JSONObject JSONBow = (JSONObject) item.get("bow");
+                    Bow bow = new Bow((String) JSONBow.get("name"), (String) JSONBow.get("description"), (Integer) Integer.parseInt((String) JSONBow.get("value")));
+                    Integer numOfArrows = Integer.parseInt((String) JSONBow.get("numOfArrows"));
+                    player = new Player(weapon, name, bow, health, numOfArrows);
+                } else {
+                    player = new Player(weapon, name, health);
+                }
+                characters.add(player);
             }
 
         } catch (IOException e) {

@@ -13,10 +13,17 @@
     "name": "elf",
     "health": "100",
     "weapon": {
-      "name":"Bow",
-      "description":"a bow",
-      "type":"bow",
-      "value":"20"
+        "name": "knife",
+        "description": "a knife",
+        "type": "sword",
+        "value": "20"
+    },
+    "bow": {
+      "name": "bow",
+      "description": "a bow",
+      "type": "Bow",
+      "value": "0",
+      "numOfArrows": "3"
     }
   },
   {

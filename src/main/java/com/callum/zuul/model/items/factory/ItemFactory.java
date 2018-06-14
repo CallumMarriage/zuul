@@ -1,6 +1,6 @@
 package com.callum.zuul.model.items.factory;
 
-import com.callum.zuul.model.items.Health;
+import com.callum.zuul.model.items.GeneratedItems.Health;
 import com.callum.zuul.model.items.Item;
 import com.callum.zuul.model.items.Key;
 import com.callum.zuul.model.items.characterItems.armour.Chestplate;

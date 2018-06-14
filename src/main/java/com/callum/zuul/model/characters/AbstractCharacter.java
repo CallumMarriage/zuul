@@ -22,7 +22,7 @@ public abstract class AbstractCharacter implements Character {
     protected Helmet helmet;
     protected Chestplate chestplate;
     protected Shield shield;
-    private List<Arrow> arrows;
+    protected List<Arrow> arrows;
     protected Bow bow;
 
 
@@ -36,6 +36,19 @@ public abstract class AbstractCharacter implements Character {
         shield = null;
         arrows = new ArrayList<>();
         bow = null;
+    }
+
+    public AbstractCharacter(String name, Weapon weapon, Bow bow, int health){
+        this.weapon = weapon;
+        this.name = name;
+        this.health = health;
+        this.isDead = false;
+        helmet = null;
+        chestplate = null;
+        shield = null;
+        arrows = new ArrayList<>();
+        this.bow = bow;
+
     }
 
     @Override
